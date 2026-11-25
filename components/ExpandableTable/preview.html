@@ -1,0 +1,25 @@
+<!-- @dsCard group="Dati" height=445 width=900 -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>ExpandableTable · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-frame { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--page-bg); }
+.p-note { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-secondary); padding: 10px 12px; background: var(--surface-sunken); border: 1px solid var(--border); border-radius: 10px; }
+.p-spotbox { padding: 16px; min-height: 210px; overflow: hidden; border-radius: 12px; position: relative; isolation: isolate; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const h=React.createElement;const{useState,Fragment}=React;const{Badge,Card,ExpandableTable,KeyValue,Segmented,formatEuro}=window.STC;const R=[{id:'o1',n:'OR-8824',c:'Giulia Ferri',d:'25/11/2026',r:3,t:142.5,s:['success','Pagato']},{id:'o2',n:'OR-8823',c:'Officine Bruni',d:'25/11/2026',r:12,t:1840,s:['warning','Da incassare']},{id:'o3',n:'OR-8822',c:'Sara Rinaldi',d:'24/11/2026',r:1,t:59,s:['success','Pagato']}];
+function Demo(){const[d,setD]=useState('comfortable');return h(Card,{flush:true,title:'Ordini di novembre',action:h(Segmented,{value:d,onChange:setD,options:[{value:'comfortable',label:'Comoda'},{value:'compact',label:'Compatta'}],label:'Densità'})},
+ h(ExpandableTable,{density:d,rows:R,defaultExpanded:['o2'],columns:[{key:'n',label:'Ordine',mono:true},{key:'c',label:'Cliente'},{key:'d',label:'Data',mono:true},{key:'r',label:'Righe',align:'right',mono:true},{key:'t',label:'Totale',align:'right',mono:true,render:r=>formatEuro(r.t)},{key:'s',label:'Stato',render:r=>h(Badge,{tone:r.s[0],size:'sm'},r.s[1])}],
+  renderDetail:r=>h(KeyValue,{items:[{label:'Tapis roulant T-200 × 2',value:'€ 1.240,00',mono:true},{label:'Consegna e montaggio',value:'€ 120,00',mono:true}]}),
+  footer:{n:'3 ordini',r:'16',t:formatEuro(2041.5)}}))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!-- @dsCard group="Testate" height=664 width=1000 -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>RichPageHeader · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-frame { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--page-bg); }
+.p-note { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-secondary); padding: 10px 12px; background: var(--surface-sunken); border: 1px solid var(--border); border-radius: 10px; }
+.p-spotbox { padding: 16px; min-height: 210px; overflow: hidden; border-radius: 12px; position: relative; isolation: isolate; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const h=React.createElement;const{useState,Fragment}=React;const{Avatar,Badge,Button,Checkbox,RichPageHeader,Segmented}=window.STC;function Demo(){const[t,setT]=useState('righe');return h('div',{className:'p-col'},
+ h('div',{className:'p-frame'},h(RichPageHeader,{crumbs:['Clienti','Giulia Ferri','Contratti','CT-2026-0418'],title:'Contratto annuale',badge:h(Badge,{tone:'info'},'Da firmare'),subtitle:h(Fragment,null,h('span',{className:'stc-num'},'CT-2026-0418'),' · creato il ',h('span',{className:'stc-num'},'18/11/2026')),actions:h(Fragment,null,h(Button,{icon:'download'},'PDF'),h(Button,{variant:'primary',icon:'send'},'Invia per la firma')),tabs:{value:t,onChange:setT,items:[{id:'righe',label:'Righe'},{id:'pag',label:'Pagamenti',count:2},{id:'doc',label:'Documenti'}]}})),
+ h('div',{className:'p-frame'},h(RichPageHeader,{avatar:h(Avatar,{name:'Officine Bruni',size:56,className:'stc-avatar--square'}),title:'Officine Bruni S.p.A.',badge:h(Badge,{tone:'success'},'Cliente attivo'),subtitle:'P.IVA 01234567890 · Bergamo',actions:h(Button,{variant:'primary'},'Nuovo preventivo'),stats:[{label:'Fatturato 2026',value:'€ 48.320'},{label:'Da incassare',value:'€ 3.140'},{label:'Ordini aperti',value:'7'}]})),
+ h('div',{className:'p-frame'},h(RichPageHeader,{title:h(Fragment,null,'Preventivo ',h('span',{className:'stc-num',style:{fontWeight:500}},'PR-1182')),subtitle:'Officine Bruni · € 12.400,00',actions:h(Button,{variant:'primary'},'Crea la fattura'),status:{steps:['Bozza','Inviato','Accettato','Fatturato','Pagato'],current:2}})),
+ h('div',{className:'p-frame'},h(RichPageHeader,{title:'Incassi',subtitle:'Tutte le sedi · aggiornato alle 15:40',actions:h(Button,{icon:'download'},'Esporta'),toolbar:h(Fragment,null,h(Segmented,{defaultValue:'30',options:[{value:'7',label:'7 giorni'},{value:'30',label:'30 giorni'},{value:'a',label:'Anno'}],label:'Periodo'}),h(Checkbox,{defaultChecked:true,label:'Confronta con i 30 giorni prima'}))})))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>

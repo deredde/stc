@@ -1,0 +1,91 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>STC</title>
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--page-bg); color: var(--text-primary); font-family: var(--font-text); overflow: hidden; padding: 0; }
+  .cover { position: relative; width: 960px; height: 288px; overflow: hidden; }
+  .art { position: absolute; top: 0; left: 480px; width: 480px; height: 288px; overflow: hidden; }
+  .art svg { display: block; }
+  .slab { fill: var(--text-primary); rx: var(--r-16); }
+  .dot { fill: var(--accent-400); }
+  .brand { fill: var(--accent-400); rx: var(--r-16); }
+  .tint { fill: var(--accent-200); rx: var(--r-16); }
+  .pill { fill: var(--accent-wash-strong); rx: var(--r-10); }
+  .bar { fill: var(--accent-line); rx: 1.5px; }
+  .words { position: absolute; left: var(--sp-8); bottom: var(--sp-8); max-width: 440px; }
+  .name { margin: 0; line-height: 0; }
+  .mark { display: block; height: 184px; width: auto; }
+  .mark--d { display: none; }
+  [data-theme="dark"] .mark--l { display: none; }
+  [data-theme="dark"] .mark--d { display: block; }
+  .tag { margin: var(--sp-3) 0 0 4px; font-size: 14px; line-height: 20px; color: var(--text-secondary); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 288" width="480" height="288">
+<!--
+  blocks      text-primary slab 176×256 bled off the top (inchiostro: brand-ink in chiaro, si inverte in scuro per non sparire sul nero di marca) · accent-400 128×176 · accent-200 128×112 · la pastiglia della voce attiva 144×40 in accent-wash-strong con la barretta accent-line — circa il 32% di 960×288
+  arrangement una lastra alta con tre satelliti, basi allineate a sp-12 dal fondo, spazi sp-4; la pastiglia esce dal bordo destro
+  pattern     griglia a punti, dalla testata della barra laterale («punti a passo 16, bagliore dell'accento»): 40 punti accent-400 sulla lastra, passo sp-8 per lato e 28 in altezza
+  scales      spazi sp-4 (16), sp-8 (32), sp-12 (48); raggi r-16 sui blocchi, r-10 sulla pastiglia (le voci della barra), 1,5 sulla barretta da 3
+-->
+<rect class="slab" x="0" y="-16" width="176" height="256"/>
+<circle class="dot" cx="24" cy="32" r="2.5"/>
+<circle class="dot" cx="56" cy="32" r="2.5"/>
+<circle class="dot" cx="88" cy="32" r="2.5"/>
+<circle class="dot" cx="120" cy="32" r="2.5"/>
+<circle class="dot" cx="152" cy="32" r="2.5"/>
+<circle class="dot" cx="24" cy="60" r="2.5"/>
+<circle class="dot" cx="56" cy="60" r="2.5"/>
+<circle class="dot" cx="88" cy="60" r="2.5"/>
+<circle class="dot" cx="120" cy="60" r="2.5"/>
+<circle class="dot" cx="152" cy="60" r="2.5"/>
+<circle class="dot" cx="24" cy="88" r="2.5"/>
+<circle class="dot" cx="56" cy="88" r="2.5"/>
+<circle class="dot" cx="88" cy="88" r="2.5"/>
+<circle class="dot" cx="120" cy="88" r="2.5"/>
+<circle class="dot" cx="152" cy="88" r="2.5"/>
+<circle class="dot" cx="24" cy="116" r="2.5"/>
+<circle class="dot" cx="56" cy="116" r="2.5"/>
+<circle class="dot" cx="88" cy="116" r="2.5"/>
+<circle class="dot" cx="120" cy="116" r="2.5"/>
+<circle class="dot" cx="152" cy="116" r="2.5"/>
+<circle class="dot" cx="24" cy="144" r="2.5"/>
+<circle class="dot" cx="56" cy="144" r="2.5"/>
+<circle class="dot" cx="88" cy="144" r="2.5"/>
+<circle class="dot" cx="120" cy="144" r="2.5"/>
+<circle class="dot" cx="152" cy="144" r="2.5"/>
+<circle class="dot" cx="24" cy="172" r="2.5"/>
+<circle class="dot" cx="56" cy="172" r="2.5"/>
+<circle class="dot" cx="88" cy="172" r="2.5"/>
+<circle class="dot" cx="120" cy="172" r="2.5"/>
+<circle class="dot" cx="152" cy="172" r="2.5"/>
+<circle class="dot" cx="24" cy="200" r="2.5"/>
+<circle class="dot" cx="56" cy="200" r="2.5"/>
+<circle class="dot" cx="88" cy="200" r="2.5"/>
+<circle class="dot" cx="120" cy="200" r="2.5"/>
+<circle class="dot" cx="152" cy="200" r="2.5"/>
+<circle class="dot" cx="24" cy="228" r="2.5"/>
+<circle class="dot" cx="56" cy="228" r="2.5"/>
+<circle class="dot" cx="88" cy="228" r="2.5"/>
+<circle class="dot" cx="120" cy="228" r="2.5"/>
+<circle class="dot" cx="152" cy="228" r="2.5"/>
+<rect class="brand" x="192" y="64" width="128" height="176"/>
+<rect class="tint" x="336" y="128" width="128" height="112"/>
+<rect class="pill" x="336" y="64" width="160" height="40"/>
+<rect class="bar" x="336" y="74" width="3" height="20"/>
+</svg>
+</div>
+<div class="words">
+<h1 class="name"><img class="mark mark--l" src="/_blob/b2cc1ac65e3e237df8378f2334d6edad" alt="STC"><img class="mark mark--d" src="/_blob/d6b0344e44975afd779efbf5c5e5f522" alt=""></h1>
+<p class="tag">La struttura dei gestionali, pronta: si cambia la marca e basta.</p>
+</div>
+</div>
+</body>
+</html>

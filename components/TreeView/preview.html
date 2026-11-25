@@ -1,0 +1,22 @@
+<!-- @dsCard group="Navigazione" height=357 -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>TreeView · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-frame { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--page-bg); }
+.p-note { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-secondary); padding: 10px 12px; background: var(--surface-sunken); border: 1px solid var(--border); border-radius: 10px; }
+.p-spotbox { padding: 16px; min-height: 210px; overflow: hidden; border-radius: 12px; position: relative; isolation: isolate; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const h=React.createElement;const{useState,Fragment}=React;const{Card,CheckboxTree,TreeView}=window.STC;const N=[{id:'a',label:'Abbigliamento',count:128,children:[{id:'a1',label:'Uomo',count:52},{id:'a2',label:'Donna',count:61,children:[{id:'a21',label:'Felpe',count:18},{id:'a22',label:'Leggings',count:24}]},{id:'a3',label:'Accessori',count:15}]},{id:'b',label:'Integratori',count:44,children:[{id:'b1',label:'Proteine',count:20}]},{id:'c',label:'Attrezzatura',count:31}];
+function Demo(){return h('div',{className:'p-grid'},h(Card,{padding:'sm'},h(TreeView,{nodes:N,defaultExpanded:['a','a2'],defaultSelected:'a21'})),h(Card,{padding:'sm'},h(CheckboxTree,{title:'Permessi · Reception',defaultValue:['p1','p2'],groups:[{id:'c',label:'Clienti',items:[{id:'p1',label:'Vedere'},{id:'p2',label:'Modificare'},{id:'p3',label:'Eliminare'}]},{id:'k',label:'Cassa',items:[{id:'p4',label:'Incassare'},{id:'p5',label:'Fare rimborsi'}]}]})))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>

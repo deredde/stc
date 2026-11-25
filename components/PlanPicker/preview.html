@@ -1,0 +1,22 @@
+<!-- @dsCard group="Form" height=467 width=980 -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>PlanPicker · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-frame { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--page-bg); }
+.p-note { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-secondary); padding: 10px 12px; background: var(--surface-sunken); border: 1px solid var(--border); border-radius: 10px; }
+.p-spotbox { padding: 16px; min-height: 210px; overflow: hidden; border-radius: 12px; position: relative; isolation: isolate; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const h=React.createElement;const{useState,Fragment}=React;const{PlanPicker}=window.STC;const P=[{id:'base',name:'Base',description:'Per una sede sola e chi parte adesso.',price:29,priceYearly:290,current:true,features:['1 sede','3 utenti','Clienti, agenda, cassa','Supporto via email']},{id:'pro',name:'Pro',description:'Per chi ha più sedi e vuole i report.',price:79,priceYearly:790,recommended:true,features:['Fino a 5 sedi','15 utenti','Report e esportazioni','App per i clienti']},{id:'rete',name:'Rete',description:'Per catene e franchising.',price:189,priceYearly:1890,features:['Sedi illimitate','Utenti illimitati','Permessi per sede','Collegamenti API']}];
+function Demo(){return h(PlanPicker,{plans:P,onChoose:()=>{}})}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>

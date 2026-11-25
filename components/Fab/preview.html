@@ -1,0 +1,29 @@
+<!-- @dsCard group="Mobile" height=682 -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>Fab · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-frame { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--page-bg); }
+.p-note { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-secondary); padding: 10px 12px; background: var(--surface-sunken); border: 1px solid var(--border); border-radius: 10px; }
+.p-spotbox { padding: 16px; min-height: 210px; overflow: hidden; border-radius: 12px; position: relative; isolation: isolate; }
+.p-phones { display: flex; gap: 24px; flex-wrap: wrap; }
+.p-phone { width: 340px; max-width: 100%; height: 640px; border-radius: 32px; border: 1px solid var(--border-strong); background: var(--page-bg); overflow: hidden; position: relative; display: flex; flex-direction: column; box-shadow: var(--shadow-md); flex: none; }
+.p-status { height: 32px; flex: none; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; font: 600 12px/1 var(--font-num); color: var(--text-primary); background: var(--surface); }
+.p-body { flex: 1; min-height: 0; overflow: auto; position: relative; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const h=React.createElement;const{useState,Fragment}=React;const{Avatar,Badge,BottomNav,Button,CtaBar,Fab,IconButton,Menu,MobileLargeTitle,formatEuro}=window.STC;const Phone=({children})=>h('div',{className:'p-phone'},h('div',{className:'p-status','aria-hidden':true},h('span',null,'9:41'),h('span',null,'100%')),children);
+const PList=({skip=0,onClick})=>h('div',{className:'p-body'},h('div',{style:{background:'var(--surface)'}},['Giulia Ferri','Andrea Ferraro','Luca Ferretti','Sara Rinaldi','Matteo Bruni','Elena Conti','Federica Ferrante','Paolo Gatti','Marta Lodi','Nicola Moro'].slice(skip).map((n,i)=>h('div',{key:n,onClick,style:{display:'flex',gap:12,alignItems:'center',padding:'12px 16px',borderBottom:'1px solid var(--divider)'}},h(Avatar,{name:n,size:40}),h('div',{style:{flex:1,minWidth:0}},h('div',{style:{fontWeight:600,fontSize:15}},n),h('div',{className:'stc-num',style:{fontSize:12,color:'var(--text-tertiary)'}},'CL-00'+(3318+i*97))),i===1&&h(Badge,{tone:'danger',size:'sm'},'Scaduto')))));
+function Demo(){return h('div',{className:'p-phones'},
+ h(Phone,null,h(MobileLargeTitle,{collapsed:true,title:'Clienti',left:h(IconButton,{icon:'menu',label:'Menu'}),right:h(IconButton,{icon:'search',label:'Cerca'})}),h(PList),h(Fab,{icon:'user-plus',label:'Nuovo cliente'}),h('div',{style:{position:'absolute',left:0,right:0,bottom:0}},h(BottomNav,{items:[{id:'a',label:'Oggi',icon:'layout-dashboard'},{id:'b',label:'Clienti',icon:'users'},{id:'c',label:'Agenda',icon:'calendar-days'},{id:'d',label:'Menu',icon:'menu'}],value:'b',onChange:()=>{}}))),
+ h(Phone,null,h(MobileLargeTitle,{collapsed:true,title:'Carrello',left:h(IconButton,{icon:'arrow-left',label:'Indietro'})}),h('div',{className:'p-body',style:{background:'var(--surface)'}},[['Ingresso singolo',1,12],['Pacchetto 10 ingressi',1,99],['Asciugamano',2,3]].map(([t,q,p])=>h('div',{key:t,style:{display:'flex',justifyContent:'space-between',padding:'14px 16px',borderBottom:'1px solid var(--divider)',fontSize:14}},h('span',null,t,h('span',{className:'stc-num',style:{color:'var(--text-tertiary)'}},' × '+q)),h('span',{className:'stc-num'},formatEuro(p*q))))),h(CtaBar,{total:{label:'Totale',value:'€ 117,00'}},h(Button,{variant:'primary',size:'header'},'Incassa'))))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!-- @dsCard group="Dati" height=482 -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>Timeline · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-frame { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--page-bg); }
+.p-note { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-secondary); padding: 10px 12px; background: var(--surface-sunken); border: 1px solid var(--border); border-radius: 10px; }
+.p-spotbox { padding: 16px; min-height: 210px; overflow: hidden; border-radius: 12px; position: relative; isolation: isolate; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const h=React.createElement;const{useState,Fragment}=React;const{Card,Timeline}=window.STC;function Demo(){return h(Card,{title:'Storico',style:{maxWidth:560}},h(Timeline,{groups:[{label:'Oggi',items:[
+ {id:1,icon:'circle-check',tone:'success',text:h(Fragment,null,h('b',null,'Chiara Marino'),' ha registrato un pagamento di ',h('span',{className:'stc-num'},'€ 69,00')),meta:'14:32 · Sede Milano'},
+ {id:2,icon:'pencil',tone:'neutral',text:h(Fragment,null,h('b',null,'Chiara Marino'),' ha cambiato il piano in ',h('b',null,'Annuale')),meta:'14:30'},
+ {id:3,icon:'door-open',tone:'warning',text:h(Fragment,null,h('b',null,'Luca Bassi'),' ha aperto il cancello comunque'),meta:'09:12 · Ingresso principale',note:'Ha mostrato la ricevuta del bonifico.'}]},
+ {label:'Ieri',items:[{id:4,icon:'mail',tone:'info',text:'Inviato il promemoria di scadenza',meta:'18:00 · automatico'}]}]}))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>

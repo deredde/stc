@@ -1,0 +1,22 @@
+<!-- @dsCard group="Grafici" height=391 width=640 -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>StackedBarChart · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-frame { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--page-bg); }
+.p-note { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-secondary); padding: 10px 12px; background: var(--surface-sunken); border: 1px solid var(--border); border-radius: 10px; }
+.p-spotbox { padding: 16px; min-height: 210px; overflow: hidden; border-radius: 12px; position: relative; isolation: isolate; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const h=React.createElement;const{useState,Fragment}=React;const{Card,ChartHeader,StackedBarChart}=window.STC;const M=['Giu','Lug','Ago','Set','Ott','Nov'];
+function Demo(){return h(Card,null,h(ChartHeader,{label:'Nuovi abbonamenti per sede',legend:[{label:'Milano',color:'viz-1'},{label:'Torino',color:'viz-2'},{label:'Genova',color:'viz-4'}]}),h(StackedBarChart,{categories:M,series:[{name:'Milano',values:[198,212,146,240,252,266],color:'viz-1'},{name:'Torino',values:[130,141,92,150,158,163],color:'viz-2'},{name:'Genova',values:[82,90,40,96,99,104],color:'viz-4'}]}))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>

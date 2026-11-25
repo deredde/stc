@@ -1,0 +1,24 @@
+<!-- @dsCard group="Form" height=656 width=860 -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>FormSection · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-frame { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--page-bg); }
+.p-note { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-secondary); padding: 10px 12px; background: var(--surface-sunken); border: 1px solid var(--border); border-radius: 10px; }
+.p-spotbox { padding: 16px; min-height: 210px; overflow: hidden; border-radius: 12px; position: relative; isolation: isolate; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const h=React.createElement;const{useState,Fragment}=React;const{Card,ErrorSummary,Field,FormRow,FormSection,TaxIdInput,TextInput}=window.STC;function Demo(){return h(Card,{padding:'lg'},
+ h(ErrorSummary,{errors:[{label:'Partita IVA',message:'manca una cifra',target:'piva'},{label:'CAP',message:'deve avere 5 cifre',target:'cap'}]}),
+ h(FormSection,{title:'Azienda',description:'Compare in fatture, ricevute e nell\'app dei clienti.'},h(Field,{label:'Ragione sociale'},h(TextInput,{defaultValue:'Rete Nord S.r.l.'})),h(Field,{label:'Partita IVA',error:'Manca una cifra: sono 11',id:'piva'},h(TaxIdInput,{kind:'piva',defaultValue:'0123456789'}))),
+ h(FormSection,{title:'Sede legale',description:'Deve essere uguale a quella in visura.'},h(Field,{label:'Indirizzo'},h(TextInput,{defaultValue:'Via Torino 48'})),h(FormRow,{columns:'110px 1fr 90px'},h(Field,{label:'CAP',error:'5 cifre',id:'cap'},h(TextInput,{defaultValue:'2012',numeric:true})),h(Field,{label:'Città'},h(TextInput,{defaultValue:'Milano'})),h(Field,{label:'Provincia'},h(TextInput,{defaultValue:'MI'})))))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>

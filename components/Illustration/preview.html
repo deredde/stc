@@ -1,0 +1,36 @@
+<!-- @dsCard group="Stato" height=1500 subtitle="66 illustrazioni per vuoti, esiti e messaggi" -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>Illustration · anteprima</title><style>
+body { padding: 20px; font-family: var(--font-text); color: var(--text-primary); background: var(--page-bg); }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); margin: 22px 0 10px; }
+.p-lab:first-child { margin-top: 0; }
+.p-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.p-tile { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 10px 12px; text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-16); box-shadow: var(--shadow-sm); }
+.p-tile .stc-ill { margin-bottom: 6px; }
+.p-n { font-size: 13px; font-weight: 600; }
+.p-c { font-family: var(--font-num); font-size: 11px; color: var(--text-tertiary); }
+.p-sizes { display: flex; gap: 24px; align-items: flex-end; flex-wrap: wrap; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-16); }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const { Illustration, ILLUSTRAZIONI } = window.STC;
+const e = React.createElement;
+function Demo() {
+  const groups = [];
+  ILLUSTRAZIONI.forEach(i => { let g = groups.find(x => x.name === i.group); if (!g) groups.push(g = { name: i.group, items: [] }); g.items.push(i); });
+  return e('div', null,
+    e('div', { className: 'p-lab' }, 'Misure · md 120 · sm 88 · xs 56'),
+    e('div', { className: 'p-sizes' }, e(Illustration, { name: 'search-empty', size: 'md' }), e(Illustration, { name: 'search-empty', size: 'sm' }), e(Illustration, { name: 'search-empty', size: 'xs' })),
+    groups.map(g => e(React.Fragment, { key: g.name },
+      e('div', { className: 'p-lab' }, g.name + ' · ' + g.items.length),
+      e('div', { className: 'p-grid' }, g.items.map(i => e('div', { key: i.name, className: 'p-tile' },
+        e(Illustration, { name: i.name, size: 96, animated: 'hover' }),
+        e('span', { className: 'p-n' }, i.label),
+        e('span', { className: 'p-c' }, i.name)))))));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(e(Demo));
+</script>
+</body>
+</html>

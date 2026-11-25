@@ -1,0 +1,23 @@
+<!-- @dsCard group="Grafici" height=427 width=820 -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>LineChart · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-frame { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--page-bg); }
+.p-note { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-secondary); padding: 10px 12px; background: var(--surface-sunken); border: 1px solid var(--border); border-radius: 10px; }
+.p-spotbox { padding: 16px; min-height: 210px; overflow: hidden; border-radius: 12px; position: relative; isolation: isolate; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const h=React.createElement;const{useState,Fragment}=React;const{Card,ChartHeader,Delta,LineChart,formatEuro}=window.STC;const D=Array.from({length:30},(_,i)=>{const d=new Date(2026,9,27+i);const l=String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0');return{label:l,tip:l+'/2026',value:Math.round(480+160*Math.sin(i/3.2)+i*9+((i*37)%140)+((i%7)>4?-180:0)),prev:Math.round(430+140*Math.sin(i/3.2+1)+((i*53)%120)+((i%7)>4?-170:0))}});
+function Demo(){const s=D.reduce((a,d)=>a+d.value,0),p=D.reduce((a,d)=>a+d.prev,0);
+return h(Card,null,h(ChartHeader,{label:'Incassi degli ultimi 30 giorni',value:formatEuro(s,0),delta:h(Delta,{value:+((s/p-1)*100).toFixed(1)}),legend:[{label:'27/10 – 25/11',kind:'line',color:'viz-line'},{label:'Periodo prima',kind:'dash'}]}),h(LineChart,{data:D,compare:true,tooltipFormat:v=>formatEuro(v,0),label:'Incassi giornalieri'}))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>

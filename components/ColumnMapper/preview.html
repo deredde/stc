@@ -1,0 +1,23 @@
+<!-- @dsCard group="Passi" height=459 width=820 -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>ColumnMapper · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-frame { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--page-bg); }
+.p-note { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-secondary); padding: 10px 12px; background: var(--surface-sunken); border: 1px solid var(--border); border-radius: 10px; }
+.p-spotbox { padding: 16px; min-height: 210px; overflow: hidden; border-radius: 12px; position: relative; isolation: isolate; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const h=React.createElement;const{useState,Fragment}=React;const{Badge,Card,ColumnMapper}=window.STC;const F=[{value:'nome',label:'Nome'},{value:'cognome',label:'Cognome'},{value:'email',label:'Email'},{value:'tel',label:'Telefono'},{value:'iscr',label:'Cliente dal'},{value:'skip',label:'Non importare'}];
+function Demo(){const[c,setC]=useState([{id:1,name:'Nome',example:'Giulia, Andrea, Luca…',value:'nome'},{id:2,name:'Cognome',example:'Ferri, Ferraro…',value:'cognome'},{id:3,name:'E-mail',example:'giulia.ferri@esempio.it…',value:'email'},{id:4,name:'Data iscr.',example:'12/03/2024…',value:''},{id:5,name:'Note interne',example:'Preferisce la sera…',value:'skip'}]);
+return h(Card,{title:'Abbina le colonne',action:h(Badge,{tone:'warning'},c.filter(x=>!x.value).length+' da abbinare')},h(ColumnMapper,{columns:c,fields:F,onChange:(id,v)=>setC(c.map(x=>x.id===id?{...x,value:v}:x))}))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>

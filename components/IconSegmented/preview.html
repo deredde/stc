@@ -1,0 +1,21 @@
+<!-- @dsCard group="Navigazione" height=76 -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>IconSegmented · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-frame { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--page-bg); }
+.p-note { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-secondary); padding: 10px 12px; background: var(--surface-sunken); border: 1px solid var(--border); border-radius: 10px; }
+.p-spotbox { padding: 16px; min-height: 210px; overflow: hidden; border-radius: 12px; position: relative; isolation: isolate; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const h=React.createElement;const{useState,Fragment}=React;const{IconSegmented}=window.STC;function Demo(){return h('div',{className:'p-row',style:{gap:24}},h(IconSegmented,{items:[{id:'g',icon:'layout-grid',label:'Griglia'},{id:'l',icon:'list',label:'Lista'},{id:'m',icon:'map',label:'Mappa'}]}),h(IconSegmented,{iconOnly:true,items:[{id:'g',icon:'layout-grid',label:'Griglia'},{id:'l',icon:'list',label:'Lista'}]}))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!-- @dsCard group="Caricamento" height=230 subtitle="Aggiorno sopra i dati" -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>RefreshOverlay · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); align-items: start; }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-box { border: 1px solid var(--border); border-radius: 16px; background: var(--surface); padding: 16px; }
+.p-sunk { background: var(--page-bg); }
+.p-center { display: grid; place-items: center; min-height: 180px; }
+.p-cap { font-size: 12px; color: var(--text-tertiary); font-family: var(--font-num); }
+
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const S=window.STC,h=React.createElement,{useState,useEffect}=React;
+function useTick(ms,n){const[i,setI]=useState(0);useEffect(()=>{if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const t=setInterval(()=>setI(x=>(x+1)%n),ms);return()=>clearInterval(t)},[]);return i}
+function useProgress(){const[p,setP]=useState(matchMedia("(prefers-reduced-motion: reduce)").matches?64:0);useEffect(()=>{if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const t=setInterval(()=>setP(x=>x>=100?0:Math.min(100,x+2+Math.random()*3)),220);return()=>clearInterval(t)},[]);return p}
+function Demo(){const on=useTick(2200,2)===0;const K=[["Incassato","€ 48.210"],["Da incassare","€ 12.940"],["Fatture","184"],["Scadute","7"]];return h(S.RefreshOverlay,{loading:on,label:"Aggiorno i numeri"},h("div",{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",gap:12,paddingTop:40}},K.map(k=>h(S.StatTile?"div":"div",{key:k[0],className:"p-box"},h("div",{style:{fontSize:12,color:"var(--text-tertiary)"}},k[0]),h("div",{style:{font:"500 24px var(--font-num)"}},k[1])))))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>

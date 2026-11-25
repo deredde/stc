@@ -1,0 +1,22 @@
+<!-- @dsCard group="Grafici" height=225 -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>Sparkline · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-frame { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--page-bg); }
+.p-note { display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--text-secondary); padding: 10px 12px; background: var(--surface-sunken); border: 1px solid var(--border); border-radius: 10px; }
+.p-spotbox { padding: 16px; min-height: 210px; overflow: hidden; border-radius: 12px; position: relative; isolation: isolate; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const h=React.createElement;const{useState,Fragment}=React;const{Card,Sparkline}=window.STC;const R=[['Giulia Ferri',[3,4,2,5,4,6,5,7],'42'],['Andrea Ferraro',[6,5,5,3,2,2,1,0],'8'],['Sara Rinaldi',[4,4,5,4,5,4,5,5],'36']];
+function Demo(){return h(Card,{flush:true,style:{maxWidth:520}},h('table',{className:'stc-xt'},h('thead',null,h('tr',null,h('th',null,'Cliente'),h('th',null,'Ultime 8 settimane'),h('th',{className:'r'},'Ingressi'))),h('tbody',null,R.map(([n,d,v],i)=>h('tr',{key:n},h('td',null,n),h('td',null,h(Sparkline,{data:d,width:110,height:26,accent:i===0})),h('td',{className:'r m'},v))))))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>

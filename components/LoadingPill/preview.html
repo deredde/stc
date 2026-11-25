@@ -1,0 +1,26 @@
+<!-- @dsCard group="Caricamento" height=200 subtitle="Pillola di vetro, carica altri" -->
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><title>LoadingPill · anteprima</title><style>
+body { padding: 20px; }
+.p-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.p-col { display: flex; flex-direction: column; gap: 14px; }
+.p-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); align-items: start; }
+.p-lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.p-box { border: 1px solid var(--border); border-radius: 16px; background: var(--surface); padding: 16px; }
+.p-sunk { background: var(--page-bg); }
+.p-center { display: grid; place-items: center; min-height: 180px; }
+.p-cap { font-size: 12px; color: var(--text-tertiary); font-family: var(--font-num); }
+
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const S=window.STC,h=React.createElement,{useState,useEffect}=React;
+function useTick(ms,n){const[i,setI]=useState(0);useEffect(()=>{if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const t=setInterval(()=>setI(x=>(x+1)%n),ms);return()=>clearInterval(t)},[]);return i}
+function useProgress(){const[p,setP]=useState(matchMedia("(prefers-reduced-motion: reduce)").matches?64:0);useEffect(()=>{if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const t=setInterval(()=>setP(x=>x>=100?0:Math.min(100,x+2+Math.random()*3)),220);return()=>clearInterval(t)},[]);return p}
+function Demo(){const L=[["GF","Giulia Ferri","€ 1.240,00"],["MB","Marco Bellini","€ 860,50"],["LC","Luca Conti","€ 2.105,00"]];return h("div",{className:"p-grid"},h("div",{className:"p-center p-box p-sunk"},h(S.LoadingPill,null,"Carico i clienti")),h("div",{className:"p-box"},h(S.List?"div":"div",null,L.map(r=>h("div",{key:r[0],style:{display:"flex",gap:10,alignItems:"center",padding:"8px 4px",borderBottom:"1px solid var(--border)",fontSize:13}},h(S.Avatar,{name:r[1],size:28}),r[1],h("span",{style:{marginLeft:"auto",fontFamily:"var(--font-num)"}},r[2])))),h(S.LoadMore,{count:50})))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(Demo));
+</script>
+</body>
+</html>
