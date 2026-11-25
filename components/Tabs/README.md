@@ -1,6 +1,6 @@
 # Tabs
 
-Tab come Ordinoo, con il tab scelto in vetro: una pillola di vetro che scivola da un tab all'altro, con dietro due luci dell'accento che scorrono lente (variante «Deriva»). Contatori grigi.
+Tab con il tab scelto in vetro: una pillola di vetro che scivola da un tab all'altro, con dietro due luci dell'accento che scorrono lente (variante «Deriva»). Contatori grigi.
 
 **Cosa passi:** `items` (`id`, `label`, `count`, `disabled`), `value`, `onChange`, `variant` (`page` nella testata · `card` in cima a una tabella), `label`.
 

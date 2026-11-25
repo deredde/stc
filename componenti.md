@@ -47,7 +47,7 @@ Tutti i 160 componenti, per gruppo, con cosa sono e le regole di `regole.md` che
 | [`PillTabs`](components/PillTabs/README.md) | Tab a pastiglia per i filtri rapidi di una lista, con il conteggio. | — |
 | [`SettingsNav`](components/SettingsNav/README.md) | Elenco delle sezioni delle impostazioni, a sinistra, largo 220. | — |
 | [`Sidebar`](components/Sidebar/README.md) | La barra laterale del gestionale: testata di marca con contesto, ricerca e azione principale; le sezioni con le voci; chi sei in fondo. | — |
-| [`Tabs`](components/Tabs/README.md) | Tab come Ordinoo, con il tab scelto in vetro: una pillola di vetro che scivola da un tab all'altro, con dietro due luci dell'accento che scorrono lente (variante «Deriva»). Contatori grigi. | D5 · C5 |
+| [`Tabs`](components/Tabs/README.md) | Tab con il tab scelto in vetro: una pillola di vetro che scivola da un tab all'altro, con dietro due luci dell'accento che scorrono lente (variante «Deriva»). Contatori grigi. | D5 · C5 |
 | [`TopNav`](components/TopNav/README.md) | Barra di navigazione in alto, per prodotti con 3–5 sezioni e senza cambio di sede. Stessa pastiglia della barra laterale. | — |
 | [`TreeView`](components/TreeView/README.md) | Albero di categorie o cartelle: rientro di 20 per livello, conteggio in mono a destra. Con `CheckboxTree` diventa l'elenco dei permessi a gruppi, con il gruppo «a metà» se non tutto è scelto. | — |
 | [`VerticalTabs`](components/VerticalTabs/README.md) | Tab verticali con la barretta d'accento, per dialog larghi e drawer con molte sezioni. | — |

@@ -333,11 +333,11 @@ Codici: **P** principi · **D** di serie e comportamenti · **C** quale componen
 ### M2 · L'accento lontano dalle tinte degli stati
 - **Regola:** la tinta dell'accento (H in OKLCH) sta lontana da quelle degli stati: pericolo e attenzione 20–55, successo 140–160. Rigenera tutta la scala `accent-*` con i ruoli di STC e cambia anche i token `ill-*`.
 - **Perché:** un accento rosso o verde si confonde con un errore o con un successo, e P2 salta. Una scala fatta a mano rompe i ruoli (il 400 pieno, il 600+ come inchiostro) e il contrasto.
-- **Invece:** scegli in 75–105, 185–220 o 280–340 (il blu di serie, 260, è un'eccezione accettata: l'informazione si riconosce da icona e parola). Rigenera con lo script del kit o dalla pagina del design system.
+- **Invece:** scegli in 75–105, 185–220 o 280–340 (il blu di serie, 260, è un'eccezione accettata: l'informazione si riconosce da icona e parola). Cambia la scala in `tokens.json` e `tokens.css` nei due temi e ricontrolla il contrasto.
 - **Fonte:** `adattare.md` › Scegliere l'accento
 
 ### M3 · Si importano i componenti, non si copiano nelle pagine
-- **Regola:** i componenti si usano da `window.STC` o si importano dai sorgenti del kit. Non si copiano dentro le pagine, non si sovrascrivono le classi `stc-` dal CSS del progetto.
+- **Regola:** i componenti si usano da `window.STC` con i tipi di `components/index.d.ts`. Non si copiano dentro le pagine, non si sovrascrivono le classi `stc-` dal CSS del progetto.
 - **Perché:** una copia nella pagina non riceve più le correzioni di STC e diverge in silenzio. Sovrascrivere `stc-` da fuori rompe il componente al primo aggiornamento.
-- **Invece:** se serve una variante, si aggiunge al sistema (P9). Con Tailwind o shadcn usa `stc-tailwind.css` e i controlli di STC.
+- **Invece:** se serve una variante, si aggiunge al sistema (P9). Con Tailwind o shadcn usa i token di `tokens.css` e i controlli di STC.
 - **Fonte:** `adattare.md` › In un progetto di codice

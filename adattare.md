@@ -25,20 +25,20 @@ Tutto ciò che sta nel README e in **Pattern di pagina**: le quattro altezze dei
 
 ## In un progetto di codice (Next.js, Vite, qualunque React)
 
-Il kit `stc-kit.zip` contiene i sorgenti dei componenti (`stc/src`), gli stili (`stc/styles/stc.css`), i token compilati (`stc/stc-tokens.css`), la mappa per Tailwind e shadcn (`stc/stc-tailwind.css`) e lo script che rigenera i token (`tools/token.py`).
+Tutto ciò che serve è in questa repo: `tokens.css` (i token compilati, chiaro e scuro), `components/bundle.css` (gli stili), `components/bundle.js` (i componenti come `window.STC`) e `components/index.d.ts` (i tipi).
 
-1. Copia la cartella `stc/` nel progetto (es. `src/stc/`).
-2. Nel CSS globale importa, in quest'ordine: `stc-tokens.css`, `stc.css` e, se usi Tailwind 4, `stc-tailwind.css`.
+1. Copia `tokens.css` e la cartella `components/` nel progetto (es. `public/stc/`).
+2. Carica, in quest'ordine: `tokens.css`, `components/bundle.css`, poi React 18 o 19 e `components/bundle.js` (come nella prova veloce del README).
 3. Avvolgi l'app in `<ToastProvider>` e metti il tema sulla radice: `<html data-theme="light">` (il tema lo sceglie ogni persona; al primo accesso parti da `prefers-color-scheme`).
 4. Costruisci le pagine dentro `<AppShell sidebar={…}>` con `ListPage`, `DetailPage`, `SettingsPage`; l'accesso con `AuthScreen`; l'app dell'utente con `MemberApp`.
-5. Importa i componenti da `stc/src` (`import { Button, Table } from '@/stc/src'`). Non copiarli dentro le pagine: se serve una variante, si aggiunge al sistema.
+5. Prendi i componenti da `window.STC` (`const { Button, Table } = window.STC`), con i tipi da `components/index.d.ts`. Non copiarli dentro le pagine: se serve una variante, si aggiunge al sistema.
 
-Con Tailwind: `stc-tailwind.css` espone i token come colori del tema (`bg-surface`, `text-text-secondary`, `border-border-field`, `bg-accent`…) e mappa le variabili di shadcn (`--background`, `--foreground`, `--primary`, `--muted`, `--ring`…) sui token di STC, così i componenti shadcn prendono gli stessi colori. Le misure restano nei componenti di STC: per i controlli usa quelli, non quelli di shadcn.
+Con Tailwind o shadcn: usa i token di `tokens.css` come colori del tema (`var(--surface)`, `var(--text-secondary)`, `var(--accent)`…) e lascia ai componenti di STC le misure: per i controlli usa quelli di STC, non quelli di shadcn.
 
 ### Cambiare l'accento nel codice
 
-- Con lo script: in `tools/token.py` cambia `H_ACC` (la tinta) e, se serve, le luminosità della scala `ACCENTO`; poi `python3 tools/token.py`. Riscrive `tokens.json` e `stc-tokens.css` e stampa le coppie di colori sotto il contrasto minimo nei due temi: devono restare solo quelle già note.
-- Dalla pagina del design system: modifica i token e salva; il file `tokens.css` compilato si scarica da lì.
+- In `tokens.json` cambia la tinta (H in OKLCH) e, se serve, le luminosità della scala `accent-*`, nei due temi; poi riporta i valori in `tokens.css`. Cambia anche i token `ill-*` con la stessa tinta.
+- Ricontrolla il contrasto nei due temi (vedi sopra): le coppie sotto il minimo devono restare solo quelle già note.
 
 ## In una chat di design o di codice
 
