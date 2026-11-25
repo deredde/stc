@@ -1738,7 +1738,7 @@ button.stc-file__n:hover { text-decoration: underline; text-underline-offset: 3p
 .stc-tabs { --tg-air: 30px; --tg-side: 12px; --tg-gi: .8; --tg-dur: 11s;
   --tg-glow: var(--accent); --tg-glow2: color-mix(in oklch, var(--accent) 70%, oklch(0.8 0.12 185));
   --tg-top: rgba(255,255,255,.72); --tg-bot: rgba(255,255,255,.34); --tg-rim: rgba(255,255,255,.95);
-  --tg-edge: color-mix(in oklch, var(--accent) 30%, transparent); --tg-shade: rgba(0,60,70,.10);
+  --tg-edge: color-mix(in oklch, var(--accent) 30%, transparent); --tg-shade: rgba(0,40,120,.10);
   z-index: 2; isolation: isolate; padding: var(--tg-air) var(--tg-side); margin-block: calc(-1 * var(--tg-air)); margin-inline: calc(-1 * var(--tg-side)); pointer-events: none; }
 [data-theme="dark"] .stc-tabs { --tg-top: rgba(255,255,255,.16); --tg-bot: rgba(255,255,255,.04); --tg-rim: rgba(255,255,255,.30);
   --tg-edge: color-mix(in oklch, var(--accent) 42%, transparent); --tg-shade: rgba(0,0,0,.35); --tg-gi: .85; }

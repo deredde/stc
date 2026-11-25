@@ -13,4 +13,4 @@ L'Esagono con STC in Michroma, logo di STC. Tutti i file sono SVG, con il testo 
 | simbolo-mono-nero.svg · simbolo-mono-bianco.svg | Un colore solo: stampa, timbri, fondi fotografici |
 | favicon.svg | Icona della scheda, chiara o scura da sola |
 
-Chiaro e scuro indicano il fondo su cui va il file. Colori: accento `#007C87` sul chiaro, `#3DC6D4` sullo scuro, come i token `accent` e `ill-*`. Caratteri: Michroma per STC, JetBrains Mono per il nome per esteso (Google Fonts, OFL).
+Chiaro e scuro indicano il fondo su cui va il file. Colori: accento `#0267F3` sul chiaro, `#83B2FF` sullo scuro, come i token `accent` e `ill-*`. Caratteri: Michroma per STC, JetBrains Mono per il nome per esteso (Google Fonts, OFL).

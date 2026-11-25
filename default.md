@@ -42,7 +42,7 @@ Valgono per tutti e due i sistemi. Dove STC e Lumen fanno in modo diverso, c'è 
 
 ## 4. Aspetto di partenza
 
-- **STC:** tema chiaro, accento petrolio (tinta 205), superfici neutre, Inter per l'interfaccia, Space Grotesk solo per i titoli di pagina e la marca, JetBrains Mono per i numeri, densità da gestionale.
+- **STC:** tema chiaro, accento blu elettrico `#0267F3` (tinta 260), superfici neutre, Inter per l'interfaccia, Space Grotesk solo per i titoli di pagina e la marca, JetBrains Mono per i numeri, densità da gestionale.
 - **Lumen:** tema scuro, cremisi `#C0202C` come primario da cui si calcola tutto, radice `.ds.ds-backdrop` con la luce del brand dietro, vetro per carte e navigazione, Inter per testo e titoli.
 - Icone a tratto in stile Lucide in tutti e due. Niente emoji nell'interfaccia.
 - La luce del brand (Lumen) e la superficie di marca (STC) si usano una volta per schermata.

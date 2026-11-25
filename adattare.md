@@ -15,9 +15,9 @@ STC si divide in due parti. La **parte A** è la marca e cambia a ogni progetto.
 
 ### Scegliere l'accento
 
-L'accento non deve sembrare uno stato. Tieni la tinta (H in OKLCH) lontana da quelle degli stati: pericolo e attenzione 20–55, successo 140–160, informazione 240–265. Vanno bene, per esempio: 75–105 (giallo e lime), 185–220 (petrolio, ciano: quello di serie è 205), 280–340 (viola, magenta).
+L'accento non deve sembrare uno stato. Tieni la tinta (H in OKLCH) lontana da quelle degli stati: pericolo e attenzione 20–55, successo 140–160, informazione 240–265. Vanno bene, per esempio: 75–105 (giallo e lime), 185–220 (petrolio, ciano), 280–340 (viola, magenta). Quello di serie è il blu elettrico (tinta 260, `#0267F3` in chiaro e `#83B2FF` in scuro): coincide con la tinta di informazione, che resta blu e si riconosce da icona e parola, come ogni stato.
 
-Le luminosità per ruolo restano quelle di `tokens.json`: in chiaro il pieno (`accent-400`) sta intorno a L 0,53 con testo bianco sopra; in scuro intorno a L 0,76 con testo `#111` sopra. Un accento molto chiaro (un giallo) va al contrario: pieno chiaro anche in chiaro, testo scuro sopra (`on-accent`), e niente testo d'accento su fondo chiaro. Ricontrolla sempre il contrasto (vedi sotto).
+Le luminosità per ruolo restano quelle di `tokens.json`: in chiaro il pieno (`accent-400`) sta intorno a L 0,53–0,56 con testo bianco sopra; in scuro intorno a L 0,76 con testo `#111` sopra. Un accento molto chiaro (un giallo) va al contrario: pieno chiaro anche in chiaro, testo scuro sopra (`on-accent`), e niente testo d'accento su fondo chiaro. Ricontrolla sempre il contrasto (vedi sotto).
 
 ## Parte B: cosa resta
 

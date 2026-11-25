@@ -80,6 +80,8 @@ Si scrive in italiano, dalla parte di chi usa il prodotto, con frasi brevi. Si d
 
 ## Colore
 
+L'accento di serie è un **blu elettrico**: `#0267F3` in chiaro (testo bianco sopra, 5:1) e `#83B2FF` in scuro (testo scuro sopra, 8,8:1), tinta 260 in OKLCH. Le luci delle illustrazioni ne prendono la tinta, chiare e leggere, con una seconda luce azzurra.
+
 Due temi, gli stessi nomi. Le scale si leggono per **ruolo**, non per luminosità, così un componente scritto una volta funziona nei due temi:
 
 | Gradini | Ruolo |
