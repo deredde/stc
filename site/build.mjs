@@ -13,6 +13,7 @@ const ROOT = path.resolve(HERE, process.env.STC_ROOT || "..");
 const OUT = path.resolve(HERE, process.argv[2] || "dist");
 const SRC = path.join(HERE, "src");
 const COMP = path.join(ROOT, "components");
+const SITE_URL = (process.env.SITE_URL || "https://stc.pages.dev").replace(/\/$/, "");
 const SKIP = new Set(["Cover", "lib"]);
 const GROUP_ORDER = ["Azioni", "Form", "Date e ore", "Passi", "Layout", "Testate", "Navigazione", "Overlay", "Mobile", "Dati", "Grafici", "Stato", "Caricamento", "Marca"];
 
@@ -206,7 +207,40 @@ async function main() {
   write(path.join(A, "docs-data.js"), "window.STC_DOCS=" + JSON.stringify(data) + ";");
 
   const stats = { comps: comps.length };
-  for (const f of ["index.html", "docs.html"]) write(path.join(OUT, f), read(path.join(SRC, f)).replace(/\{\{COMPS\}\}/g, stats.comps));
+  const META = {
+    home: { url: SITE_URL + "/", title: "STC · Design system per prodotti digitali", desc: `${stats.comps} componenti React, 2.322 icone, 66 illustrazioni animate e temi chiaro e scuro da un solo colore. Tutto già deciso, tutto coerente.` },
+    docs: { url: SITE_URL + "/docs", title: "Documentazione · STC", desc: `Guida, componenti dal vivo con codice, icone, illustrazioni e temi di STC: ${stats.comps} componenti React pronti da usare.` },
+  };
+  const meta = (k) => { const m = META[k]; return [
+    `<meta name="description" content="${esc(m.desc)}">`,
+    `<link rel="canonical" href="${m.url}">`,
+    `<meta name="theme-color" content="#F4F5F7" media="(prefers-color-scheme: light)">`,
+    `<meta name="theme-color" content="#16181C" media="(prefers-color-scheme: dark)">`,
+    `<link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">`,
+    `<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">`,
+    `<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">`,
+    `<link rel="manifest" href="site.webmanifest">`,
+    `<meta property="og:type" content="website">`,
+    `<meta property="og:site_name" content="STC">`,
+    `<meta property="og:locale" content="it_IT">`,
+    `<meta property="og:url" content="${m.url}">`,
+    `<meta property="og:title" content="${esc(m.title)}">`,
+    `<meta property="og:description" content="${esc(m.desc)}">`,
+    `<meta property="og:image" content="${SITE_URL}/assets/og.jpg">`,
+    `<meta property="og:image:secure_url" content="${SITE_URL}/assets/og.jpg">`,
+    `<meta property="og:image:type" content="image/jpeg">`,
+    `<meta property="og:image:width" content="1200">`,
+    `<meta property="og:image:height" content="630">`,
+    `<meta property="og:image:alt" content="STC: costruisci il prodotto, non ricominciare da zero">`,
+    `<meta name="twitter:card" content="summary_large_image">`,
+    `<meta name="twitter:title" content="${esc(m.title)}">`,
+    `<meta name="twitter:description" content="${esc(m.desc)}">`,
+    `<meta name="twitter:image" content="${SITE_URL}/assets/og.jpg">`,
+  ].join("\n"); };
+  for (const f of ["index.html", "docs.html"]) write(path.join(OUT, f), read(path.join(SRC, f)).replace(/\{\{COMPS\}\}/g, stats.comps).replace(/\{\{META:(\w+)\}\}/g, (_, k) => meta(k)));
+  write(path.join(OUT, "site.webmanifest"), JSON.stringify({ name: "STC Design System", short_name: "STC", start_url: "./", display: "standalone", background_color: "#F4F5F7", theme_color: "#0267F3", icons: [{ src: "assets/icon-192.png", sizes: "192x192", type: "image/png" }, { src: "assets/icon-512.png", sizes: "512x512", type: "image/png" }] }, null, 2));
+  write(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`);
+  write(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${SITE_URL}/</loc></url><url><loc>${SITE_URL}/docs</loc></url></urlset>\n`);
   console.log(`Fatto: ${comps.length} componenti, ${pages.length} pagine → ${path.relative(process.cwd(), OUT) || OUT}`);
 }
 main();
