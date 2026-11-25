@@ -157,9 +157,13 @@
   }
 
   // ---------- temi ----------
+  // tinta scelta con i pallini: vale solo per il riquadro dei temi, non per la pagina
+  var demo = { h: null, fns: [] };
+  function setDemoHue(h) { demo.h = h; demo.fns.forEach(function (f) { f(h); }); }
+  function useDemoHue() { var s = useState(demo.h); useEffect(function () { demo.fns.push(s[1]); }, []); return s[0]; }
   function Theme() {
-    var tk = useTick(2400), i = tk[1];
-    var hue = pick(S.HUES, i), dark = i % 2 === 1;
+    var tk = useTick(2400), i = tk[1], picked = useDemoHue();
+    var hue = picked != null ? (S.HUES.find(function (x) { return x[0] === picked; }) || [picked, "Tinta " + picked]) : pick(S.HUES, i), dark = i % 2 === 1;
     return h("div", { ref: tk[0] },
       h("div", { className: "theme-demo", "data-hue": "", "data-theme": dark ? "dark" : "light", style: { "--h": hue[0] } },
         h("div", { className: "f-row" }, h("b", null, hue[1]), h(X.Badge, { tone: "accent", icon: false, size: "sm" }, (dark ? "Scuro" : "Chiaro") + " · tinta " + hue[0])),
@@ -169,8 +173,8 @@
         h("div", { style: { display: "flex", justifyContent: "center" } }, h(X.Illustration, { name: "all-done", size: "sm" }))));
   }
   function PageSwatches() {
-    var s = useState(S.h); useEffect(function () { S.on(function () { s[1](S.h); }); }, []);
-    return h(R.Fragment, null, S.HUES.map(function (x) { return h("button", { key: x[0], type: "button", className: "sw", style: { "--sw": x[0] }, "aria-label": x[1], "aria-pressed": s[0] === x[0] ? "true" : "false", title: x[1], onClick: function () { S.setHue(x[0]); } }); }));
+    var cur = useDemoHue();
+    return h(R.Fragment, null, S.HUES.map(function (x) { return h("button", { key: x[0], type: "button", className: "sw", style: { "--sw": x[0] }, "aria-label": x[1], "aria-pressed": cur === x[0] ? "true" : "false", title: x[1], onClick: function () { setDemoHue(x[0]); } }); }));
   }
 
   // ---------- l'AI che guida ----------
