@@ -196,7 +196,7 @@ async function main() {
   const readme = splitDoc(read(path.join(ROOT, "README.md")));
   const pages = [
     { id: "introduzione", label: "Introduzione", lead: readme.lead, html: md(readme.body) },
-    { id: "installazione", label: "Installazione", lead: "Tre modi per usare STC: dal CDN in una pagina, dentro un progetto React, o copiando la repo.", html: md(read(path.join(SRC, "installazione.md"))) },
+    { id: "installazione", label: "Installazione", lead: "STC si prende dalla repo su GitHub: cloni, copi i file nel progetto e i componenti sono pronti.", html: md(read(path.join(SRC, "installazione.md"))) },
     { id: "temi", label: "Temi e colore", lead: "Chiaro e scuro sono di serie. L'accento si cambia da un solo valore: la tinta.", html: md(read(path.join(SRC, "temi.md"))), special: "temi" },
     pageDoc("default.md", "regole", "Regole di default"),
     pageDoc("pattern.md", "pattern", "Pattern di pagina"),

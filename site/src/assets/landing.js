@@ -23,18 +23,8 @@
   var pick = function (arr, i) { return arr[((i % arr.length) + arr.length) % arr.length]; };
 
   // ---------- installazione ----------
-  var INSTALL = {
-    cdn: { label: "CDN", value: '<script src="https://cdn.jsdelivr.net/gh/deredde/stc@main/components/bundle.js"></script>' },
-    git: { label: "GitHub", value: "git clone https://github.com/deredde/stc" },
-  };
-  var mode = "cdn", subs = [];
-  function InstallSeg() {
-    var s = useState(mode);
-    return h(X.Segmented, { size: "card", options: [{ value: "cdn", label: "CDN" }, { value: "git", label: "GitHub" }], value: s[0], label: "Come installare", onChange: function (v) { mode = v; s[1](v); subs.forEach(function (f) { f(v); }); } });
-  }
   function Install() {
-    var s = useState(mode); useEffect(function () { subs.push(s[1]); }, []);
-    return h(X.CopyField, { key: s[0], value: INSTALL[s[0]].value, copyLabel: "Copia", copiedLabel: "Copiato" });
+    return h(X.CopyField, { value: "git clone https://github.com/deredde/stc", copyLabel: "Copia", copiedLabel: "Copiato" });
   }
 
   // ---------- hero ----------
@@ -185,7 +175,6 @@
 
   // ---------- avvio ----------
   document.addEventListener("DOMContentLoaded", function () {
-    mount("install-seg", h(InstallSeg));
     mount("install", h(Install));
     mount("h-trend", h(HeroTrend)); mount("h-ctrl", h(HeroCtrl)); mount("h-ill", h(HeroIll)); mount("h-team", h(HeroTeam));
     mount("d-dash", h(Dash)); mount("d-ctrl", h(Ctrl)); mount("d-form", h(Form)); mount("d-icons", h(Icons));
