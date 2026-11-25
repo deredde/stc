@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>STC Design System</title>
+<meta name="description" content="STC: {{COMPS}} componenti React, 2.322 icone, 66 illustrazioni animate, temi chiaro e scuro da un solo colore.">
+<link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/stc/tokens.css">
+<link rel="stylesheet" href="assets/stc/bundle.css">
+<link rel="stylesheet" href="assets/stc/hue.css">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/stc/react.js"></script>
+<script src="assets/stc/react-dom.js"></script>
+<script src="assets/stc/bundle.js"></script>
+<script src="assets/common.js"></script>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<div class="nav-wrap">
+  <header class="nav glass">
+    <a class="brand" href="./" aria-label="STC, pagina iniziale"><img src="assets/logo/simbolo-piatto-chiaro.svg" alt="">STC</a>
+    <nav class="nav-links" aria-label="Sezioni">
+      <a href="docs.html#c-Button">Componenti</a>
+      <a href="docs.html#p-icone">Icone</a>
+      <a href="docs.html#p-illustrazioni">Illustrazioni</a>
+      <a href="docs.html#p-temi">Temi</a>
+    </nav>
+    <span class="grow"></span>
+    <a class="icon-btn hide-sm" href="https://github.com/deredde/stc" target="_blank" rel="noopener" aria-label="STC su GitHub"><i data-i="github"></i></a>
+    <button class="icon-btn" id="theme-btn" type="button" aria-label="Cambia tema"></button>
+    <a class="s-btn pri" href="docs.html">Documentazione <i data-i="arrow-right" data-s="16"></i></a>
+  </header>
+</div>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <span class="eyebrow glass"><b>Nuovo</b>{{COMPS}} componenti React, pronti</span>
+      <h1>Costruisci il prodotto. <span class="grad">Non ricominciare da zero.</span></h1>
+      <p class="lead">STC è un design system completo: componenti, icone, illustrazioni animate, attese e temi. Tutto già deciso, tutto coerente, dal primo pulsante all'ultima pagina.</p>
+      <div class="cta">
+        <a class="s-btn pri lg" href="docs.html">Apri la documentazione <i data-i="arrow-right" data-s="16"></i></a>
+        <a class="s-btn lg" href="https://github.com/deredde/stc" target="_blank" rel="noopener"><i data-i="github" data-s="16"></i> GitHub</a>
+      </div>
+      <div class="install glass">
+        <div class="install-head"><span>Inizia subito</span><span id="install-seg"></span></div>
+        <div id="install"></div>
+      </div>
+    </div>
+    <div class="stage" id="stage">
+      <div class="hexglow" aria-hidden="true"></div>
+      <div class="float glass f-trend" id="h-trend"></div>
+      <div class="float glass f-ctrl" id="h-ctrl"></div>
+      <div class="float glass f-ill" id="h-ill"></div>
+      <div class="float glass f-team" id="h-team"></div>
+    </div>
+  </section>
+
+  <section class="wrap rv" aria-label="Video di presentazione">
+    <div class="video glass">
+      <div class="video-in">
+        <img src="assets/logo/simbolo-chiaro.svg" alt="" id="video-mark">
+        <span class="play glass"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></i>Il video di lancio arriva qui</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-label="Cosa c'è dentro">
+    <div class="marquee" aria-hidden="true"><div class="marquee-track" id="mq"></div></div>
+  </section>
+
+  <div class="wrap">
+    <section class="feat rv">
+      <div class="feat-txt">
+        <div class="feat-ico glass"><i data-i="layout-dashboard" data-s="24"></i><em></em></div>
+        <h2>Pagine intere, pezzo per pezzo.</h2>
+        <p>Testate, tessere, grafici, tabelle e liste che si incastrano da soli. Con gli schemi di pagina pronti: dashboard, dettaglio, impostazioni, wizard.</p>
+        <div class="chips"><span class="glass">Layout</span><span class="glass">Testate</span><span class="glass">Dati</span><span class="glass">Navigazione</span></div>
+        <a class="more" href="docs.html#c-PageHeader">Vedi i componenti di pagina <i data-i="arrow-right" data-s="16"></i></a>
+      </div>
+      <div class="demo glass"><div class="demo-in" id="d-dash"></div></div>
+    </section>
+
+    <section class="feat flip rv">
+      <div class="feat-txt">
+        <div class="feat-ico glass"><i data-i="sliders-horizontal" data-s="24"></i><em></em></div>
+        <h2>Controlli che rispondono bene.</h2>
+        <p>Interruttori, slider, scelte, segmentati e menu. Stati chiari, tastiera e lettori di schermo già pensati, in blu dove serve.</p>
+        <div class="chips"><span class="glass">Switch</span><span class="glass">Slider</span><span class="glass">Segmented</span><span class="glass">Checkbox</span><span class="glass">ChoiceChips</span></div>
+        <a class="more" href="docs.html#c-Switch">Prova i controlli <i data-i="arrow-right" data-s="16"></i></a>
+      </div>
+      <div class="demo glass"><div class="demo-in" id="d-ctrl"></div></div>
+    </section>
+
+    <section class="feat rv">
+      <div class="feat-txt">
+        <div class="feat-ico glass"><i data-i="text-cursor-input" data-s="24"></i><em></em></div>
+        <h2>Form che si compilano da soli.</h2>
+        <p>Campi con formato, password con misuratore, importi, telefono, IBAN, codice fiscale. Errori scritti per le persone, non per il sistema.</p>
+        <div class="chips"><span class="glass">TextInput</span><span class="glass">PasswordInput</span><span class="glass">MoneyInput</span><span class="glass">OtpInput</span></div>
+        <a class="more" href="docs.html#c-TextInput">Vedi i campi <i data-i="arrow-right" data-s="16"></i></a>
+      </div>
+      <div class="demo glass"><div class="demo-in" id="d-form"></div></div>
+    </section>
+
+    <section class="feat flip rv">
+      <div class="feat-txt">
+        <div class="feat-ico glass"><i data-i="shapes" data-s="24"></i><em></em></div>
+        <h2>2.322 icone, una sola voce.</h2>
+        <p>Tutto il set Lucide dentro STC, con lo stesso tratto e le misure giuste per bottoni, menu, barre e stati vuoti. Cerchi, clicchi, copi il nome.</p>
+        <div class="chips"><span class="glass">Lucide 1.70</span><span class="glass">Ricerca</span><span class="glass">5 misure</span></div>
+        <a class="more" href="docs.html#p-icone">Cerca un'icona <i data-i="arrow-right" data-s="16"></i></a>
+      </div>
+      <div class="demo glass"><div class="demo-in" id="d-icons"></div></div>
+    </section>
+
+    <section class="feat rv">
+      <div class="feat-txt">
+        <div class="feat-ico glass"><i data-i="sparkles" data-s="24"></i><em></em></div>
+        <h2>Illustrazioni che si muovono piano.</h2>
+        <p>66 stati vuoti ed esiti animati: luce soffusa, vetro smerigliato e un solo bollino pieno che dice cosa succede. Seguono il colore del tema.</p>
+        <div class="chips"><span class="glass">66 illustrazioni</span><span class="glass">Animate in CSS</span><span class="glass">Chiaro e scuro</span></div>
+        <a class="more" href="docs.html#p-illustrazioni">Sfoglia le illustrazioni <i data-i="arrow-right" data-s="16"></i></a>
+      </div>
+      <div class="demo glass"><div class="demo-in" id="d-ill"></div></div>
+    </section>
+
+    <section class="feat flip rv">
+      <div class="feat-txt">
+        <div class="feat-ico glass"><i data-i="loader" data-s="24"></i><em></em></div>
+        <h2>Anche l'attesa è progettata.</h2>
+        <p>Loader, scheletri, barre di avanzamento, caricamenti lenti e connessione persa. Ogni attesa dice cosa sta succedendo e quanto manca.</p>
+        <div class="chips"><span class="glass">Loader</span><span class="glass">Skeleton</span><span class="glass">ProgressRing</span><span class="glass">LoadingPill</span></div>
+        <a class="more" href="docs.html#c-Loader">Vedi le attese <i data-i="arrow-right" data-s="16"></i></a>
+      </div>
+      <div class="demo glass"><div class="demo-in" id="d-wait"></div></div>
+    </section>
+
+    <section class="feat rv">
+      <div class="feat-txt">
+        <div class="feat-ico glass"><i data-i="chart-spline" data-s="24"></i><em></em></div>
+        <h2>Grafici leggibili al primo colpo.</h2>
+        <p>Linee, aree, barre, ciambelle, mappe di calore e imbuti. Colori delle serie già scelti, numeri allineati, tooltip in italiano.</p>
+        <div class="chips"><span class="glass">LineChart</span><span class="glass">AreaChart</span><span class="glass">DonutChart</span><span class="glass">Heatmap</span></div>
+        <a class="more" href="docs.html#c-LineChart">Vedi i grafici <i data-i="arrow-right" data-s="16"></i></a>
+      </div>
+      <div class="demo glass"><div class="demo-in" id="d-chart"></div></div>
+    </section>
+
+    <section class="feat flip rv" id="temi">
+      <div class="feat-txt">
+        <div class="feat-ico glass"><i data-i="palette" data-s="24"></i><em></em></div>
+        <h2>Un colore. Mille temi.</h2>
+        <p>Scegli una tinta: la scala dell'accento si ricalcola in OKLCH, per chiaro e scuro, illustrazioni comprese. Prova qui sotto: cambia tutta la pagina.</p>
+        <div class="swatches" id="page-sw" role="group" aria-label="Tinta dell'accento"></div>
+        <p style="margin-top:22px"><a class="more" href="docs.html#p-temi">Come funzionano i temi <i data-i="arrow-right" data-s="16"></i></a></p>
+      </div>
+      <div class="demo glass"><div class="demo-in" id="d-theme"></div></div>
+    </section>
+  </div>
+
+  <section class="wrap rv">
+    <div class="numbers glass">
+      <div><b>{{COMPS}}</b><span>componenti React</span></div>
+      <div><b>2.322</b><span>icone Lucide</span></div>
+      <div><b>66</b><span>illustrazioni animate</span></div>
+      <div><b>1</b><span>colore per un tema</span></div>
+    </div>
+  </section>
+
+  <section class="wrap rv">
+    <div class="final glass">
+      <img src="assets/logo/simbolo-chiaro.svg" alt="" id="final-mark">
+      <h2>Il prossimo prodotto parte da qui.</h2>
+      <p>Apri la documentazione, prova i componenti dal vivo e copia il codice che ti serve.</p>
+      <div class="cta">
+        <a class="s-btn pri lg" href="docs.html">Documentazione <i data-i="arrow-right" data-s="16"></i></a>
+        <a class="s-btn lg" href="https://github.com/deredde/stc" target="_blank" rel="noopener"><i data-i="github" data-s="16"></i> Vai alla repo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>STC · Standard Template Construct</span>
+  <span><a href="docs.html">Documentazione</a> · <a href="https://github.com/deredde/stc" target="_blank" rel="noopener">GitHub</a></span>
+</footer>
+<script src="assets/landing.js"></script>
+</body>
+</html>

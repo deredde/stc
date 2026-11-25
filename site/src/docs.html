@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Documentazione STC</title>
+<link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/stc/tokens.css">
+<link rel="stylesheet" href="assets/stc/bundle.css">
+<link rel="stylesheet" href="assets/stc/hue.css">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/stc/react.js"></script>
+<script src="assets/stc/react-dom.js"></script>
+<script src="assets/stc/bundle.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/docs-data.js"></script>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="nav-wrap">
+  <header class="nav glass">
+    <button class="icon-btn side-toggle" id="side-btn" type="button" aria-label="Apri il menu" aria-expanded="false"><i data-i="panel-left"></i></button>
+    <a class="brand" href="./" aria-label="STC, pagina iniziale"><img src="assets/logo/simbolo-piatto-chiaro.svg" alt="">STC</a>
+    <nav class="nav-links" aria-label="Sezioni">
+      <a href="#p-introduzione">Guida</a>
+      <a href="#c-Button">Componenti</a>
+      <a href="#p-icone">Icone</a>
+      <a href="#p-temi">Temi</a>
+    </nav>
+    <span class="grow"></span>
+    <a class="icon-btn hide-sm" href="https://github.com/deredde/stc" target="_blank" rel="noopener" aria-label="STC su GitHub"><i data-i="github"></i></a>
+    <button class="icon-btn" id="theme-btn" type="button" aria-label="Cambia tema"></button>
+    <a class="s-btn hide-sm" href="./"><i data-i="arrow-left" data-s="16"></i> Home</a>
+  </header>
+</div>
+<div class="docs">
+  <aside class="side glass" id="side" aria-label="Documentazione">
+    <div class="side-search"><i data-i="search" data-s="16"></i><input id="q" type="search" placeholder="Cerca" aria-label="Cerca nella documentazione" autocomplete="off"><kbd>⌘K</kbd></div>
+    <nav id="toc"></nav>
+  </aside>
+  <main class="content" id="content" tabindex="-1"></main>
+</div>
+<script src="assets/docs.js"></script>
+</body>
+</html>
