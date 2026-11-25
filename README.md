@@ -19,6 +19,8 @@ Design system neutro per gestionali e per le app che li accompagnano: token, olt
 | `components/<Nome>/` | Scheda (`README.md`) e anteprima (`preview.html`) di ogni componente |
 | `assets/Logo/` | Il logo in SVG: colonna, breve, riga, simbolo, favicon |
 | `adattare.md` · `pattern.md` · `default.md` | Adattare STC a un progetto, pattern di pagina, regole di default |
+| `regole.md` · `componenti.md` | Tutte le regole con il perché; indice dei componenti con le regole che li riguardano |
+| `CLAUDE.md` · `AGENTS.md` · `llms.txt` | Istruzioni per Claude e le altre AI che costruiscono con STC |
 
 ## Prova veloce
 
@@ -37,6 +39,22 @@ Design system neutro per gestionali e per le app che li accompagnano: token, olt
 </script>
 ```
 
+## Costruire con Claude o un'altra AI
+
+STC ha le istruzioni per le AI già pronte: `CLAUDE.md` (per Claude) e `AGENTS.md` (lo stesso testo, per Cursor, Codex, Copilot e le altre). Dicono cosa leggere, come costruire e cosa fare quando una richiesta va contro STC: l'AI lo segnala con il codice della regola e il perché (da `regole.md`), propone la via STC e, se insisti, lo fa e segna la deroga nel codice.
+
+- **Claude Code, Cursor, Codex:** clona la repo nel progetto o accanto. `CLAUDE.md` e `AGENTS.md` si leggono da soli.
+- **Progetto Claude (claude.ai):** aggiungi la repo da GitHub alle conoscenze del progetto, con almeno `CLAUDE.md`, `regole.md`, `componenti.md`, `README.md`, `default.md`, `pattern.md`, `adattare.md` e `components/index.d.ts`. Poi incolla questo nelle istruzioni del progetto:
+
+```
+Costruiamo con il design system STC, che è nelle conoscenze del progetto.
+Prima di tutto leggi CLAUDE.md e seguilo: leggi regole.md per intero e usa solo
+componenti, props e token che esistono in STC.
+Se ti chiedo qualcosa che va contro una regola di STC, prima di farlo dimmelo
+con il codice della regola, il perché e la soluzione STC. Se insisto, fallo e
+segna la deroga nel codice con un commento «deroga STC <codice>».
+```
+
 ---
 
 ## Guida
@@ -49,7 +67,7 @@ Leggi questo file per intero prima di disegnare o scrivere codice. Le altre sezi
 
 - Se non scrivi niente vale quanto dice **Regole di default**: illustrazioni animate, vuoti e pagine di stato con l'illustrazione, toast in alto su desktop e in basso sul telefono, tema chiaro. I valori sono in `STC.DEFAULTS`.
 - I valori stanno in `tokens.json` (e, compilati, in `tokens.css`). Nei componenti non scrivere mai un colore, un raggio o una durata a mano: usa il token.
-- I componenti React stanno in `components/bundle.js` come `window.STC` (React 18 o 19 sulla pagina), con gli stili in `components/bundle.css` e i tipi in `components/index.d.ts`. In un progetto vero si copiano i sorgenti dal kit (vedi `adattare.md`).
+- I componenti React stanno in `components/bundle.js` come `window.STC` (React 18 o 19 sulla pagina), con gli stili in `components/bundle.css` e i tipi in `components/index.d.ts`. Per portarli in un progetto vedi `adattare.md`.
 - Le classi hanno il prefisso `stc-`. Il tema si sceglie con `data-theme="light"` o `data-theme="dark"` su qualunque contenitore; senza attributo vale il chiaro.
 - Quando una regola qui non basta, guarda come lo fa il componente più vicino e fai lo stesso. Non inventare varianti nuove: aggiungile al sistema.
 
@@ -135,7 +153,7 @@ Tre livelli e due casi: `shadow-sm` per card e tabelle a riposo e per il segment
 
 ## Movimento
 
-Cinque durate e una curva, come Ordinoo: `dur-instant` 80 ms (hover e pressione), `dur-fast` 140 ms (interruttori, chip, segmentati), `dur-fade` 180 ms (entrata di tendine, dialog, toast), `dur-normal` 220 ms (linea dei tab e pastiglia della barra che scivolano; uscita dei drawer), `dur-slow` 300 ms (crescita delle barre dei grafici), `dur-drawer` 240 ms (entrata di drawer e fogli). Curva `ease` per tutto, `ease-enter` per gli overlay che entrano.
+Cinque durate e una curva: `dur-instant` 80 ms (hover e pressione), `dur-fast` 140 ms (interruttori, chip, segmentati), `dur-fade` 180 ms (entrata di tendine, dialog, toast), `dur-normal` 220 ms (linea dei tab e pastiglia della barra che scivolano; uscita dei drawer), `dur-slow` 300 ms (crescita delle barre dei grafici), `dur-drawer` 240 ms (entrata di drawer e fogli). Curva `ease` per tutto, `ease-enter` per gli overlay che entrano.
 
 - Tendine e menu: entrano con opacità e scala da 0,96 (e 6 px dall'alto), escono a 0,97.
 - Dialog: scala e opacità. Drawer: 28 px da destra. Fogli: dal basso. Toast: 12 px dall'alto.
