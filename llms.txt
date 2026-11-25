@@ -1,0 +1,28 @@
+# STC · Standard Template Construct
+
+> Design system per gestionali e per le app che li accompagnano: token, oltre 160 componenti React (window.STC), illustrazioni animate, loader, logo e regole di scrittura in italiano. Tema chiaro e scuro. Chi costruisce con STC deve seguire le regole di regole.md: quando una richiesta va contro una regola, l'AI lo segnala con il codice e il perché, propone la via STC e, se la persona insiste, lo fa e segna la deroga.
+
+Leggi prima le istruzioni per le AI, poi le regole. Le props esatte stanno in index.d.ts: non inventarne.
+
+## Per le AI
+
+- [Istruzioni per le AI](https://raw.githubusercontent.com/deredde/stc/main/AGENTS.md): cosa leggere, come costruire, come segnalare una richiesta contro STC
+- [Regole con il perché](https://raw.githubusercontent.com/deredde/stc/main/regole.md): ogni regola con codice, perché e cosa fare invece
+- [Indice dei componenti](https://raw.githubusercontent.com/deredde/stc/main/componenti.md): i componenti per gruppo, con le regole che li riguardano
+
+## Guida
+
+- [README](https://raw.githubusercontent.com/deredde/stc/main/README.md): principi, voce, colore, tipografia, misure, movimento, stati, layout, illustrazioni, logo
+- [Regole di default](https://raw.githubusercontent.com/deredde/stc/main/default.md): come si comporta STC appena installato
+- [Pattern di pagina](https://raw.githubusercontent.com/deredde/stc/main/pattern.md): elenco, scheda, impostazioni, wizard, report e gli altri
+- [Adattare STC a un progetto](https://raw.githubusercontent.com/deredde/stc/main/adattare.md): cosa cambia (la marca) e cosa resta
+
+## Codice
+
+- [Tipi dei componenti](https://raw.githubusercontent.com/deredde/stc/main/components/index.d.ts): tutte le props
+- [Token](https://raw.githubusercontent.com/deredde/stc/main/tokens.css): i valori in CSS, chiaro e scuro
+- [Schede dei componenti](https://github.com/deredde/stc/tree/main/components): components/<Nome>/README.md
+
+## Facoltativo
+
+- [Token in JSON](https://raw.githubusercontent.com/deredde/stc/main/tokens.json): sorgente dei valori, con note

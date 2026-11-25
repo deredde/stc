@@ -1,0 +1,17 @@
+name: Guida per le AI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  controlla:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Controlla che la guida sia allineata
+        run: node scripts/guida-ai.mjs
