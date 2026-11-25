@@ -144,7 +144,7 @@ async function main() {
   copy(path.join(COMP, "lib/react-dom.production.min.js"), path.join(A, "stc/react-dom.js"));
   const logoDir = path.join(ROOT, "assets/Logo");
   for (const f of fs.readdirSync(logoDir).filter((f) => f.endsWith(".svg"))) copy(path.join(logoDir, f), path.join(A, "logo", f));
-  for (const f of fs.readdirSync(path.join(SRC, "assets"))) copy(path.join(SRC, "assets", f), path.join(A, f));
+  fs.cpSync(path.join(SRC, "assets"), A, { recursive: true });
 
   // componenti
   const names = fs.readdirSync(COMP).filter((d) => !SKIP.has(d) && fs.statSync(path.join(COMP, d)).isDirectory()).sort();

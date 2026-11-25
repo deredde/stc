@@ -211,7 +211,7 @@
   // ---------- avvio ----------
   document.addEventListener("DOMContentLoaded", function () {
     mount("install", h(Install));
-    mount("h-trend", h(HeroTrend)); mount("h-ill", h(HeroIll));
+    
     mount("d-dash", h(Dash)); mount("d-ctrl", h(Ctrl)); mount("d-form", h(Form)); mount("d-icons", h(Icons));
     mount("d-ill", h(Ill)); mount("d-wait", h(Wait)); mount("d-chart", h(Chart)); mount("d-theme", h(Theme));
     mount("page-sw", h(PageSwatches)); mount("d-ai", h(Ai));
@@ -220,8 +220,19 @@
     var mq = document.getElementById("mq");
     if (mq) { var html = names.map(function (n) { return '<span class="glass">' + n + "</span>"; }).join(""); mq.innerHTML = html; var copy = mq.cloneNode(true); copy.removeAttribute("id"); mq.parentNode.appendChild(copy); }
     // logo chiaro/scuro
-    function logos() { var dk = S.theme === "dark"; document.querySelectorAll("#video-mark,#final-mark").forEach(function (im) { im.src = "assets/logo/simbolo-" + (dk ? "scuro" : "chiaro") + ".svg"; }); document.querySelectorAll(".brand img").forEach(function (im) { im.src = "assets/logo/simbolo-piatto-" + (dk ? "scuro" : "chiaro") + ".svg"; }); }
+    function logos() { var dk = S.theme === "dark"; document.querySelectorAll("#final-mark").forEach(function (im) { im.src = "assets/logo/simbolo-" + (dk ? "scuro" : "chiaro") + ".svg"; }); document.querySelectorAll(".brand img").forEach(function (im) { im.src = "assets/logo/simbolo-piatto-" + (dk ? "scuro" : "chiaro") + ".svg"; }); }
     S.on(logos); logos();
+    // video della hero: parte muto quando si vede; il bottone lo apre a schermo intero dall'inizio
+    var vid = document.getElementById("hero-vid"), vb = document.getElementById("vid-btn");
+    if (vid) {
+      if (!REDUCED) new IntersectionObserver(function (es) { es[0].isIntersecting ? vid.play().catch(function () {}) : vid.pause(); }, { threshold: 0.3 }).observe(vid);
+      vb.addEventListener("click", function () {
+        vid.currentTime = 0; vid.controls = true; vid.muted = false; vid.play().catch(function () {});
+        var fs = vid.requestFullscreen || vid.webkitRequestFullscreen || vid.webkitEnterFullscreen; if (fs) fs.call(vid);
+      });
+      var back = function () { if (!document.fullscreenElement && !document.webkitFullscreenElement) { vid.controls = false; vid.muted = true; if (REDUCED) vid.pause(); } };
+      document.addEventListener("fullscreenchange", back); document.addEventListener("webkitfullscreenchange", back); vid.addEventListener("webkitendfullscreen", back);
+    }
     // leggera parallasse nella hero
     var stage = document.getElementById("stage");
     if (stage && !REDUCED && matchMedia("(pointer: fine)").matches) {
