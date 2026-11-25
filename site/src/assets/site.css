@@ -86,7 +86,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .grad { background: linear-gradient(100deg, var(--accent) 0%, color-mix(in oklch, var(--accent) 72%, var(--ill-glow-2)) 60%, color-mix(in oklch, var(--accent) 60%, var(--ill-glow)) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
 /* ---------- hero ---------- */
-.hero { padding-block: 72px 40px; display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.hero { padding-block: 64px 40px; display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 48px; align-items: center; }
 .hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 6.2vw, 74px); line-height: 1.0; letter-spacing: -.035em; margin: 22px 0 20px; text-wrap: balance; }
 .hero .lead { font-size: clamp(16px, 1.6vw, 19px); color: var(--text-secondary); max-width: 34em; margin: 0 0 28px; }
 .cta { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -94,33 +94,33 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .install-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 12px; color: var(--text-tertiary); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 0 4px; }
 .install > div:last-child { min-width: 0; }
 
-.stage { position: relative; height: 560px; }
+.stage { position: relative; height: 520px; }
 .stage .float { position: absolute; padding: 16px; will-change: transform; animation: bob 7s ease-in-out infinite; }
 .stage .float:nth-child(2) { animation-delay: -2s; } .stage .float:nth-child(3) { animation-delay: -4s; } .stage .float:nth-child(4) { animation-delay: -1s; }
 @keyframes bob { 50% { translate: 0 -10px; } }
-.f-trend { left: 0; top: 90px; width: 290px; z-index: 2; padding: 8px !important; }
-.f-ctrl { right: 0; top: 0; width: 270px; display: flex; flex-direction: column; gap: 14px; }
-.f-ill { left: 10px; top: 330px; width: 240px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; padding-top: 22px !important; }
-.f-ill b { font-size: 15px; } .f-ill span { font-size: 13px; color: var(--text-secondary); }
-.f-team { right: 0; top: 420px; width: 280px; z-index: 2; display: flex; flex-direction: column; gap: 12px; }
-.f-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 14px; }
-.f-lab { font-size: 12px; color: var(--text-tertiary); font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
+.f-trend { left: -34px; top: 18px; width: 250px; z-index: 3; padding: 6px !important; }
+.f-ill { right: -26px; bottom: 26px; width: 180px; z-index: 3; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 14px 12px 12px !important; }
+.f-ill b { font-size: 14px; } .f-ill span { font-size: 12px; color: var(--text-secondary); }
+.hero-video { position: absolute; left: 0; right: 0; top: 50%; translate: 0 -50%; margin: 0 !important; z-index: 2; }
 .hexglow { position: absolute; left: 50%; top: 48%; width: 520px; height: 520px; translate: -50% -50%; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 45%, transparent) 0%, color-mix(in srgb, var(--ill-glow-2) 60%, transparent) 38%, transparent 68%); filter: blur(30px); opacity: .8; animation: breathe 6s ease-in-out infinite; }
 @keyframes breathe { 50% { scale: 1.08; opacity: 1; } }
 @media (max-width: 980px) {
-  .hero { grid-template-columns: 1fr; padding-block: 40px 20px; gap: 32px; }
-  .stage { height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .hero { grid-template-columns: 1fr; padding-block: 28px 20px; gap: 0; }
+  .hero-txt { display: contents; }
+  .hero .eyebrow { order: 1; justify-self: start; } .hero h1 { order: 2; } .hero .lead { order: 3; margin-bottom: 22px; }
+  .stage { order: 4; height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+  .hero .cta { order: 5; } .hero .install { order: 6; }
+  .hero-video { position: relative; inset: auto; translate: none; grid-column: 1 / -1; }
   .stage .float { position: relative; inset: auto; width: auto; animation: none; }
   .hexglow { display: none; }
 }
-@media (max-width: 560px) { .stage { grid-template-columns: 1fr; } .f-team { display: none !important; } }
+@media (max-width: 560px) { .stage { grid-template-columns: 1fr; } .stage .float { display: none !important; } .hero h1 { margin: 16px 0 14px; } }
 
-/* ---------- video ---------- */
 .video { margin-block: 40px 30px; padding: 10px; border-radius: 30px; }
 .video-in { position: relative; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 22px; overflow: hidden; display: grid; place-items: center;
   background: radial-gradient(80% 90% at 30% 20%, var(--ill-glow) 0%, transparent 60%), radial-gradient(70% 80% at 85% 90%, var(--ill-glow-2) 0%, transparent 60%), var(--surface-sunken); }
 .video-in img { width: min(220px, 34%); filter: drop-shadow(0 30px 40px var(--ill-shadow)); animation: bob 6s ease-in-out infinite; }
-.play { position: absolute; right: 22px; bottom: 22px; display: flex; align-items: center; gap: 12px; padding: 10px 18px 10px 10px; border-radius: 99px; font-size: 14px; font-weight: 600; }
+.play { position: absolute; left: 22px; bottom: 22px; display: flex; align-items: center; gap: 12px; padding: 10px 18px 10px 10px; border-radius: 99px; font-size: 14px; font-weight: 600; }
 .play i { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--on-accent); }
 .play i svg { width: 16px; height: 16px; margin-left: 2px; }
 
@@ -301,3 +301,23 @@ footer a { text-decoration: none; } footer a:hover { color: var(--text-primary);
   .side-toggle { display: inline-flex; }
   .hue input { width: 80px; }
 }
+
+/* ---------- l'AI che guida ---------- */
+.ai-list { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 14px; max-width: 32em; }
+.ai-list li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; font-size: 16px; color: var(--text-secondary); }
+.ai-list li > svg, .ai-list li > i { width: 34px; height: 34px; padding: 8px; border-radius: 10px; color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); box-sizing: border-box; }
+.ai-list b { color: var(--text-primary); font-weight: 600; }
+.chat { display: flex; flex-direction: column; gap: 14px; min-height: 400px; }
+.chat-head { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-secondary); padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.chat-head .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success, #1f9d55); }
+.chat-head b { color: var(--text-primary); font-weight: 600; }
+.bub-me { align-self: flex-end; max-width: 82%; padding: 10px 14px; border-radius: 16px 16px 4px 16px; background: var(--accent); color: var(--on-accent); font-size: 14.5px; line-height: 1.4; }
+.bub-me code { font-family: var(--font-num); font-size: 13px; background: color-mix(in srgb, var(--on-accent) 18%, transparent); padding: 1px 5px; border-radius: 5px; }
+.note { align-self: flex-start; max-width: 94%; display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border-radius: 4px 16px 16px 16px; background: var(--surface); border: 1px solid var(--border); font-size: 14px; line-height: 1.45; color: var(--text-secondary); }
+.note-t { display: flex; align-items: center; gap: 8px; color: var(--text-primary); font-weight: 600; font-size: 14px; flex-wrap: wrap; }
+.note-way { color: var(--text-primary); } .note-way b { font-weight: 600; }
+.note-prev { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; padding: 12px; border-radius: 12px; background: var(--surface-sunken, color-mix(in srgb, var(--text-primary) 4%, transparent)); }
+.note-q { display: flex; gap: 8px; flex-wrap: wrap; }
+.chat .in { animation: chatIn .45s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes chatIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (max-width: 560px) { .play { left: 12px; bottom: 12px; padding: 6px 14px 6px 6px; font-size: 13px; gap: 10px; } .play i { width: 32px; height: 32px; } .video-in img { width: 26%; translate: 0 -14px; } }
