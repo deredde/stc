@@ -83,7 +83,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .wrap { max-width: var(--s-max); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; border-radius: 99px; font-size: 13px; font-weight: 500; color: var(--text-secondary); }
 .eyebrow b { display: inline-grid; place-items: center; height: 24px; padding: 0 10px; border-radius: 99px; background: var(--accent); color: var(--on-accent); font-size: 12px; font-weight: 600; }
-.grad { background: linear-gradient(100deg, var(--accent) 10%, color-mix(in oklch, var(--accent) 55%, var(--ill-glow-2)) 55%, var(--accent-300) 95%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.grad { background: linear-gradient(100deg, var(--accent) 0%, color-mix(in oklch, var(--accent) 72%, var(--ill-glow-2)) 60%, color-mix(in oklch, var(--accent) 60%, var(--ill-glow)) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
 /* ---------- hero ---------- */
 .hero { padding-block: 72px 40px; display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr); gap: 48px; align-items: center; }
