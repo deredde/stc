@@ -24,7 +24,7 @@ Valgono per tutti e due i sistemi. Dove STC e Lumen fanno in modo diverso, c'è 
 | Tabella senza righe | Stato vuoto con illustrazione già messo | Passa il tuo vuoto quando sai cosa manca («Nessun cliente ancora») |
 | Toast | In alto su desktop, in basso sul telefono, 4 s (8 s con un'azione) | Mai |
 | Tab | Sezioni di una pagina: Tabs. Filtri o viste: Segmented | — |
-| Tab scelto | Pillola di vetro con due luci del colore del brand che scorrono lente dietro (variante «Deriva»). La luce non viene mai tagliata né coperta | Mai. Con «riduci animazioni» la luce sta ferma |
+| Tab scelto | Pillola di vetro con due luci chiare del colore del brand (`tab-glow`, `ill-glow-2`) che scorrono lente dietro (variante «Deriva»). La luce non viene mai tagliata né coperta | Mai. Con «riduci animazioni» la luce sta ferma |
 | Dialog | Misura conferma (420 STC, 480 Lumen) | `wide` solo per moduli |
 | Campi | Etichetta sopra, formato automatico (date, importi, IBAN, telefono) | — |
 | Illustrazione | Misura M 120 | S 88 in drawer e fogli, XS 56 in righe e tendine |

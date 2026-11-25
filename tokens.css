@@ -90,6 +90,8 @@
   --accent: var(--accent-400);
   --accent-hover: var(--accent-500);
   --on-accent: oklch(1.000 0.000 0);
+  --control: var(--accent-400);
+  --on-control: oklch(1.000 0.000 0);
   --accent-tint: var(--accent-100);
   --accent-tint-fg: var(--accent-800);
   --accent-line: var(--accent-400);
@@ -97,6 +99,7 @@
   --accent-wash-strong: rgba(2, 103, 243, 0.16);
   --ill-glow: oklch(0.860 0.069 260);
   --ill-glow-2: oklch(0.900 0.050 240);
+  --tab-glow: var(--accent-300);
   --ill-glass: rgba(255, 255, 255, 0.62);
   --ill-glass-hi: rgba(255, 255, 255, 1);
   --ill-glass-lo: rgba(255, 255, 255, 0.35);
@@ -126,7 +129,7 @@
   --neutral-bd: var(--neutral-200);
   --on-danger: oklch(1.000 0.000 0);
   --viz-ink: var(--neutral-800);
-  --viz-line: var(--neutral-950);
+  --viz-line: var(--accent-400);
   --viz-wash: rgba(17, 17, 17, 0.06);
   --viz-1: var(--accent-400);
   --viz-2: var(--neutral-900);
@@ -312,11 +315,13 @@
   --primary-pressed: oklch(0.700 0.150 260);
   --on-primary: oklch(0.178 0.000 0);
   --on-accent: oklch(0.178 0.000 0);
+  --on-control: oklch(0.178 0.000 0);
   --accent-tint-fg: var(--accent-700);
   --accent-wash: rgba(131, 178, 255, 0.12);
   --accent-wash-strong: rgba(131, 178, 255, 0.18);
   --ill-glow: oklch(0.500 0.110 260);
   --ill-glow-2: oklch(0.480 0.070 240);
+  --tab-glow: var(--ill-glow);
   --ill-glass: rgba(255, 255, 255, 0.07);
   --ill-glass-hi: rgba(255, 255, 255, 0.42);
   --ill-glass-lo: rgba(255, 255, 255, 0.06);
@@ -340,7 +345,6 @@
   --neutral-bd: var(--neutral-300);
   --on-danger: oklch(0.178 0.000 0);
   --viz-ink: var(--neutral-500);
-  --viz-line: var(--accent-400);
   --viz-wash: rgba(131, 178, 255, 0.10);
   --viz-4: var(--neutral-500);
   --viz-5: var(--neutral-300);

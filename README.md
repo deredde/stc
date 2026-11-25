@@ -97,12 +97,13 @@ Le scale sono `accent-*` (la marca: si cambia per progetto), `neutral-*` (grafit
 - **Testo:** `text-primary` (17:1), `text-secondary` (9:1), `text-tertiary` per didascalie e intestazioni di colonna (6,5:1), `text-placeholder` (4,7:1), `text-disabled` (non porta informazioni).
 - **Bordi:** `border` per card e pannelli, `border-strong`, `border-field` e `border-field-hover` per campi e bottoni secondari, `divider` tra le righe.
 - **Primario:** `primary` è inchiostro in chiaro e accento in scuro, con `on-primary` sopra; `primary-hover`, `primary-pressed`.
+- **Controlli:** `control` con `on-control` sopra, blu nei due temi: caselle, radio e interruttori accesi, slider, barre di avanzamento e misuratori, passi fatti, giorno scelto, carte scelte. Il nero resta al bottone primario e al testo.
 - **Richiamo:** `accent` (pieno, con `on-accent`), `accent-tint` con `accent-tint-fg` (icone degli stati vuoti, evidenziazione nella ricerca), `accent-line` (linea del tab, barretta della voce attiva), `accent-wash` e `accent-wash-strong` (la pastiglia al 10 % della voce attiva, del tab, dell'opzione scelta, di oggi nel calendario), `nav-active-icon`.
 - **Stati:** per ognuno `-fg` (inchiostro), `-bg` (fondo), `-bd` (bordo), `-solid` (pieno). `success` va bene, `danger` blocca, `warning` chiede attenzione (arancio: l'accento non è mai uno stato), `info` informa, `neutral-fg/bg/bd` per sospeso, archiviato, da pagare.
 - **Campi:** `field-bg`, `field-bg-disabled`; al fuoco bordo `focus-color` e alone `field-focus-halo`.
 - **Sempre scuri:** `toast-bg` con `toast-fg`, `toast-muted`, `toast-action` per toast, tooltip e barra di selezione.
 - **Vetro:** `glass-bg`, `glass-bd`, `shadow-glass`, con sfocatura 22 px e saturazione 1,8: per tendine, menu e calendari. Abbastanza pieno da leggere tutto.
-- **Grafici:** `viz-ink` per le barre, `viz-line` per linee e barra in evidenza, `viz-wash` per aree e giorni chiusi. Una serie per grafico; la barra da notare prende `accent`.
+- **Grafici:** `viz-ink` per le barre, `viz-line` (accento) per linee e barra in evidenza, `viz-wash` per aree e giorni chiusi. Una serie per grafico; la barra da notare prende `accent`.
 - **Più serie:** `viz-1`…`viz-5` in quest'ordine, quando un grafico ne ha davvero più di una (barre impilate, ciambella, confronto). Oltre cinque si raggruppa in «Altro» con `viz-5`. La serie da guardare è sempre `viz-1`.
 - **Intensità:** `heat-0` (vuoto) … `heat-4` (pieno) per le mappe di calore (`CalendarHeatmap`, `HourHeatmap`, `HeatScale`). Sempre con la legenda «Meno … Di più» e il valore nel tooltip.
 
@@ -222,7 +223,7 @@ Il logo è di STC. Un progetto costruito su STC mette il suo logo al posto di `W
 
 ## Iconografia
 
-Solo Lucide, tratto 1,5 su 24, colore dal testo (`Icon`). Misure: 14 nei badge e nei controlli da 30, 16 nei controlli da 32 e nei menu, 18 di serie, 20 nelle barre in basso, 24 negli stati vuoti. Un concetto, un'icona: la barra laterale fa da àncora e la stessa icona torna ovunque per lo stesso concetto (lo stesso pacchetto nella barra, nel menu e nella scheda). Le icone di stato sono fisse: `circle-check` successo, `octagon-x` blocco, `triangle-alert` attenzione, `info` informazione, `circle-pause` sospeso. Niente emoji. Il set è in `src/icone.ts` del kit; un'icona nuova si copia dal pacchetto Lucide, non si disegna.
+Solo Lucide, tratto 1,5 su 24, colore dal testo (`Icon`). Misure: 14 nei badge e nei controlli da 30, 16 nei controlli da 32 e nei menu, 18 di serie, 20 nelle barre in basso, 24 negli stati vuoti. Un concetto, un'icona: la barra laterale fa da àncora e la stessa icona torna ovunque per lo stesso concetto (lo stesso pacchetto nella barra, nel menu e nella scheda). Le icone di stato sono fisse: `circle-check` successo, `octagon-x` blocco, `triangle-alert` attenzione, `info` informazione, `circle-pause` sospeso. Niente emoji. STC contiene già tutta la raccolta Lucide (2.322 icone, versione 1.70.0, licenza ISC): si cercano nella scheda `Icon` e si chiamano con il nome di lucide.dev (`<Icon name="chart-pie" />`). Un'icona non si disegna mai a mano.
 
 Per i progetti senza logo il nome del prodotto si scrive con `Wordmark` in carattere display, e la tessera `AppMark` porta l'iniziale in `brand-accent` su `brand-ink`. Il logo di STC è nella sezione Logo.
 
