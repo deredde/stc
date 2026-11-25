@@ -13,7 +13,7 @@ const ROOT = path.resolve(HERE, process.env.STC_ROOT || "..");
 const OUT = path.resolve(HERE, process.argv[2] || "dist");
 const SRC = path.join(HERE, "src");
 const COMP = path.join(ROOT, "components");
-const SITE_URL = (process.env.SITE_URL || "https://stc.pages.dev").replace(/\/$/, "");
+const SITE_URL = (process.env.SITE_URL || "https://stc-ds.pages.dev").replace(/\/$/, "");
 const SKIP = new Set(["Cover", "lib"]);
 const GROUP_ORDER = ["Azioni", "Form", "Date e ore", "Passi", "Layout", "Testate", "Navigazione", "Overlay", "Mobile", "Dati", "Grafici", "Stato", "Caricamento", "Marca"];
 
