@@ -22,6 +22,7 @@
   <header class="nav glass">
     <a class="brand" href="./" aria-label="STC, pagina iniziale"><img src="assets/logo/simbolo-piatto-chiaro.svg" alt="">STC</a>
     <nav class="nav-links" aria-label="Sezioni">
+      <a href="#ai">AI</a>
       <a href="docs.html#c-Button">Componenti</a>
       <a href="docs.html#p-icone">Icone</a>
       <a href="docs.html#p-illustrazioni">Illustrazioni</a>
@@ -36,7 +37,7 @@
 
 <main>
   <section class="wrap hero">
-    <div>
+    <div class="hero-txt">
       <span class="eyebrow glass"><b>Nuovo</b>{{COMPS}} componenti React, pronti</span>
       <h1>Costruisci il prodotto. <span class="grad">Non ricominciare da zero.</span></h1>
       <p class="lead">STC è un design system completo: componenti, icone, illustrazioni animate, attese e temi. Tutto già deciso, tutto coerente, dal primo pulsante all'ultima pagina.</p>
@@ -51,19 +52,14 @@
     </div>
     <div class="stage" id="stage">
       <div class="hexglow" aria-hidden="true"></div>
-      <div class="float glass f-trend" id="h-trend"></div>
-      <div class="float glass f-ctrl" id="h-ctrl"></div>
-      <div class="float glass f-ill" id="h-ill"></div>
-      <div class="float glass f-team" id="h-team"></div>
-    </div>
-  </section>
-
-  <section class="wrap rv" aria-label="Video di presentazione">
-    <div class="video glass">
-      <div class="video-in">
-        <img src="assets/logo/simbolo-chiaro.svg" alt="" id="video-mark">
-        <span class="play glass"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></i>Il video di lancio arriva qui</span>
+      <div class="video glass hero-video" aria-label="Video di presentazione">
+        <div class="video-in">
+          <img src="assets/logo/simbolo-chiaro.svg" alt="" id="video-mark">
+          <span class="play glass"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></i>Il video di lancio arriva qui</span>
+        </div>
       </div>
+      <div class="float glass f-trend" id="h-trend"></div>
+      <div class="float glass f-ill" id="h-ill"></div>
     </div>
   </section>
 
@@ -72,7 +68,23 @@
   </section>
 
   <div class="wrap">
-    <section class="feat rv">
+    <section class="feat ai rv" id="ai">
+      <div class="feat-txt">
+        <div class="feat-ico glass"><i data-i="bot" data-s="24"></i><em></em></div>
+        <h2>Un'AI che conosce STC e ti guida.</h2>
+        <p>Nella repo ci sono le istruzioni per Claude, Codex e le altre AI. Chi costruisce con STC chiede quello che gli serve, e l'AI lavora come il sistema è pensato.</p>
+        <ul class="ai-list">
+          <li><i data-i="shield-check" data-s="18"></i><span><b>Ti ferma prima dell'errore.</b> Se una richiesta va contro STC, te lo dice prima di scrivere il codice.</span></li>
+          <li><i data-i="message-circle-question" data-s="18"></i><span><b>Ti dice sempre il perché.</b> Cosa succede a chi usa il prodotto, e come si fa in STC.</span></li>
+          <li><i data-i="git-commit-horizontal" data-s="18"></i><span><b>Se insisti, lo fa.</b> E segna la deroga nel codice, così chi arriva dopo sa che è voluta.</span></li>
+        </ul>
+        <div class="chips"><span class="glass">CLAUDE.md</span><span class="glass">AGENTS.md</span><span class="glass">regole.md</span><span class="glass">llms.txt</span></div>
+        <a class="more" href="https://github.com/deredde/stc/blob/main/CLAUDE.md" target="_blank" rel="noopener">Leggi le istruzioni per le AI <i data-i="arrow-right" data-s="16"></i></a>
+      </div>
+      <div class="demo glass"><div class="demo-in" id="d-ai"></div></div>
+    </section>
+
+    <section class="feat flip rv">
       <div class="feat-txt">
         <div class="feat-ico glass"><i data-i="layout-dashboard" data-s="24"></i><em></em></div>
         <h2>Pagine intere, pezzo per pezzo.</h2>
@@ -83,7 +95,7 @@
       <div class="demo glass"><div class="demo-in" id="d-dash"></div></div>
     </section>
 
-    <section class="feat flip rv">
+    <section class="feat rv">
       <div class="feat-txt">
         <div class="feat-ico glass"><i data-i="sliders-horizontal" data-s="24"></i><em></em></div>
         <h2>Controlli che rispondono bene.</h2>
@@ -94,7 +106,7 @@
       <div class="demo glass"><div class="demo-in" id="d-ctrl"></div></div>
     </section>
 
-    <section class="feat rv">
+    <section class="feat flip rv">
       <div class="feat-txt">
         <div class="feat-ico glass"><i data-i="text-cursor-input" data-s="24"></i><em></em></div>
         <h2>Form che si compilano da soli.</h2>
@@ -105,7 +117,7 @@
       <div class="demo glass"><div class="demo-in" id="d-form"></div></div>
     </section>
 
-    <section class="feat flip rv">
+    <section class="feat rv">
       <div class="feat-txt">
         <div class="feat-ico glass"><i data-i="shapes" data-s="24"></i><em></em></div>
         <h2>2.322 icone, una sola voce.</h2>
@@ -116,7 +128,7 @@
       <div class="demo glass"><div class="demo-in" id="d-icons"></div></div>
     </section>
 
-    <section class="feat rv">
+    <section class="feat flip rv">
       <div class="feat-txt">
         <div class="feat-ico glass"><i data-i="sparkles" data-s="24"></i><em></em></div>
         <h2>Illustrazioni che si muovono piano.</h2>
@@ -127,7 +139,7 @@
       <div class="demo glass"><div class="demo-in" id="d-ill"></div></div>
     </section>
 
-    <section class="feat flip rv">
+    <section class="feat rv">
       <div class="feat-txt">
         <div class="feat-ico glass"><i data-i="loader" data-s="24"></i><em></em></div>
         <h2>Anche l'attesa è progettata.</h2>
@@ -138,7 +150,7 @@
       <div class="demo glass"><div class="demo-in" id="d-wait"></div></div>
     </section>
 
-    <section class="feat rv">
+    <section class="feat flip rv">
       <div class="feat-txt">
         <div class="feat-ico glass"><i data-i="chart-spline" data-s="24"></i><em></em></div>
         <h2>Grafici leggibili al primo colpo.</h2>
@@ -149,7 +161,7 @@
       <div class="demo glass"><div class="demo-in" id="d-chart"></div></div>
     </section>
 
-    <section class="feat flip rv" id="temi">
+    <section class="feat rv" id="temi">
       <div class="feat-txt">
         <div class="feat-ico glass"><i data-i="palette" data-s="24"></i><em></em></div>
         <h2>Un colore. Mille temi.</h2>

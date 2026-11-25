@@ -173,13 +173,44 @@
     return h(R.Fragment, null, S.HUES.map(function (x) { return h("button", { key: x[0], type: "button", className: "sw", style: { "--sw": x[0] }, "aria-label": x[1], "aria-pressed": s[0] === x[0] ? "true" : "false", title: x[1], onClick: function () { S.setHue(x[0]); } }); }));
   }
 
+  // ---------- l'AI che guida ----------
+  var AI_CASES = [
+    { ask: ["Metti «Nuovo cliente» ed «Esporta» tutti e due primari."], code: "P1", rule: "Un solo bottone primario per vista",
+      why: "Con due primari nessuno dei due si nota più, e chi usa il gestionale deve fermarsi a leggere.",
+      way: "«Nuovo cliente» primario, «Esporta» secondario.", alt: "Voglio due primari",
+      prev: function () { return [h(X.Button, { key: 1, variant: "primary", icon: "plus", size: "card" }, "Nuovo cliente"), h(X.Button, { key: 2, icon: "download", size: "card" }, "Esporta")]; } },
+    { ask: ["Aggiungi un bottone «Salva» in fondo alle impostazioni."], code: "P5", rule: "Si salva da solo",
+      why: "Con un «Salva» in fondo, chi cambia un'opzione e chiude la pagina perde la modifica senza accorgersene.",
+      way: "ogni scelta vale subito, con lo stato del salvataggio a vista.", alt: "Metti il Salva",
+      prev: function () { return [h(X.Switch, { key: 1, label: "Promemoria via email", checked: true, onChange: noop }), h(X.SaveStatus, { key: 2, state: "saved", time: "ora" })]; } },
+    { ask: ["Per la provincia usa un ", h("code", { key: "c" }, "<select>"), " normale."], code: "P6", rule: "Niente controlli nativi a vista",
+      why: "Il select del browser cambia aspetto su ogni sistema, non segue il tema scuro e rompe il ritmo dei campi.",
+      way: "il Select di STC, con la ricerca perché le province sono tante.", alt: "Usa il nativo",
+      prev: function () { return [h("div", { key: 1, style: { flex: 1, minWidth: 0 } }, h(X.Select, { label: "Provincia", value: "MI", onChange: noop, searchable: true, options: [{ value: "MI", label: "Milano" }, { value: "TO", label: "Torino" }, { value: "RM", label: "Roma" }] }))]; } }
+  ];
+  function Ai() {
+    var tk = useTick(1100), i = tk[1];
+    var STEPS = 9, c = pick(AI_CASES, Math.floor(i / STEPS)), st = REDUCED ? 8 : i % STEPS;
+    var k = Math.floor(i / STEPS);
+    return h("div", { ref: tk[0], className: "chat" },
+      h("div", { className: "chat-head" }, h("span", { className: "dot" }), h("b", null, "Assistente"), h("span", null, "· ha letto CLAUDE.md e regole.md")),
+      h("div", { key: "m" + k, className: "bub-me in" }, c.ask),
+      st >= 1 && st < 2 ? h("div", { key: "t" + k, className: "in", style: { alignSelf: "flex-start" } }, h(X.TypingDots, { label: "L'assistente sta scrivendo" })) : null,
+      st >= 2 ? h("div", { key: "n" + k, className: "note in" },
+        h("div", { className: "note-t" }, h(X.Badge, { tone: "accent", icon: "info", size: "sm" }, "Nota STC · " + c.code), c.rule),
+        h("div", null, c.why),
+        st >= 3 ? h("div", { className: "note-way in" }, h("b", null, "In STC si fa così: "), c.way) : null,
+        st >= 4 ? h("div", { className: "note-prev in" }, c.prev()) : null,
+        st >= 5 ? h("div", { className: "note-q in" }, h(X.Button, { variant: "accent", size: "row", icon: "check" }, "Fai così"), h(X.Button, { size: "row", variant: "tertiary" }, c.alt)) : null) : null);
+  }
+
   // ---------- avvio ----------
   document.addEventListener("DOMContentLoaded", function () {
     mount("install", h(Install));
-    mount("h-trend", h(HeroTrend)); mount("h-ctrl", h(HeroCtrl)); mount("h-ill", h(HeroIll)); mount("h-team", h(HeroTeam));
+    mount("h-trend", h(HeroTrend)); mount("h-ill", h(HeroIll));
     mount("d-dash", h(Dash)); mount("d-ctrl", h(Ctrl)); mount("d-form", h(Form)); mount("d-icons", h(Icons));
     mount("d-ill", h(Ill)); mount("d-wait", h(Wait)); mount("d-chart", h(Chart)); mount("d-theme", h(Theme));
-    mount("page-sw", h(PageSwatches));
+    mount("page-sw", h(PageSwatches)); mount("d-ai", h(Ai));
     // nastro con i nomi dei componenti
     var names = ["Button", "Switch", "Slider", "DatePicker", "Combobox", "DataTable", "Kanban", "Timeline", "Sidebar", "CommandSearch", "Toast", "Sheet", "Drawer", "PinPad", "OtpInput", "PlanPicker", "Stepper", "WizardPage", "LineChart", "DonutChart", "Heatmap", "Illustration", "Loader", "Skeleton", "ProgressRing", "NotificationCenter", "TreeView", "Accordion", "Tabs", "Popover"];
     var mq = document.getElementById("mq");
