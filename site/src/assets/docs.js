@@ -42,27 +42,31 @@
   }
 
   // ---------- barra del riquadro ----------
-  function swatches() { return '<span class="swatches" role="group" aria-label="Tinta dell\'accento">' + S.HUES.map(function (x) { return '<button type="button" class="sw" style="--sw:' + x[0] + '" data-h="' + x[0] + '" aria-label="' + x[1] + '" title="' + x[1] + '" aria-pressed="' + (S.h === x[0]) + '"></button>'; }).join("") + "</span>"; }
-  function themeSeg() { return '<span class="seg" role="group" aria-label="Tema"><button type="button" data-t="light" aria-pressed="' + (S.theme === "light") + '">' + I("sun", 15) + "Chiaro</button><button type=\"button\" data-t=\"dark\" aria-pressed=\"" + (S.theme === "dark") + '">' + I("moon", 15) + "Scuro</button></span>"; }
-  function hueSlider() { return '<label class="hue"><input type="range" id="hue" min="0" max="359" value="' + S.h + '" aria-label="Tinta dell\'accento"><output id="hue-v">' + S.h + "</output></label>"; }
+  // tinta e tema dell'anteprima: valgono solo per il componente che guardi, non per il sito
+  var P = { theme: S.theme, h: 260 };
+  function setP(k, v) { P[k] = v; syncBar(); }
+  function swatches() { return '<span class="swatches" role="group" aria-label="Tinta dell\'accento">' + S.HUES.map(function (x) { return '<button type="button" class="sw" style="--sw:' + x[0] + '" data-h="' + x[0] + '" aria-label="' + x[1] + '" title="' + x[1] + '" aria-pressed="' + (P.h === x[0]) + '"></button>'; }).join("") + "</span>"; }
+  function themeSeg() { return '<span class="seg" role="group" aria-label="Tema"><button type="button" data-t="light" aria-pressed="' + (P.theme === "light") + '">' + I("sun", 15) + "Chiaro</button><button type=\"button\" data-t=\"dark\" aria-pressed=\"" + (P.theme === "dark") + '">' + I("moon", 15) + "Scuro</button></span>"; }
+  function hueSlider() { return '<label class="hue"><input type="range" id="hue" min="0" max="359" value="' + P.h + '" aria-label="Tinta dell\'accento"><output id="hue-v">' + P.h + "</output></label>"; }
   function toolbar(extra) { return '<div class="toolbar glass">' + themeSeg() + swatches() + hueSlider() + '<span class="grow"></span>' + (extra || "") + '<button type="button" class="tb-btn" id="copy-theme">' + I("palette", 15) + "Tema</button></div>"; }
   function syncBar() {
-    document.querySelectorAll("[data-t]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-t") === S.theme); });
-    document.querySelectorAll(".sw[data-h]").forEach(function (b) { b.setAttribute("aria-pressed", +b.getAttribute("data-h") === S.h); });
-    var r = $("#hue"); if (r && +r.value !== S.h) r.value = S.h; var o = $("#hue-v"); if (o) o.textContent = S.h;
-    document.querySelectorAll("iframe.live").forEach(function (f) { try { f.contentWindow.postMessage({ stc: { theme: S.theme, h: S.h } }, "*"); } catch (e) {} });
+    document.querySelectorAll("[data-t]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-t") === P.theme); });
+    document.querySelectorAll(".sw[data-h]").forEach(function (b) { b.setAttribute("aria-pressed", +b.getAttribute("data-h") === P.h); });
+    var r = $("#hue"); if (r && +r.value !== P.h) r.value = P.h; var o = $("#hue-v"); if (o) o.textContent = P.h;
+    document.querySelectorAll("iframe.live").forEach(function (f) { try { f.contentWindow.postMessage({ stc: { theme: P.theme, h: P.h } }, "*"); } catch (e) {} });
+    var sc = $("#scale"); if (sc) { sc.setAttribute("data-theme", P.theme); sc.style.setProperty("--h", P.h); }
   }
   function themeCss() {
     var out = [];
     ["light", "dark"].forEach(function (t) {
-      var p = document.createElement("div"); p.setAttribute("data-hue", ""); p.setAttribute("data-theme", t); p.style.setProperty("--h", S.h); p.hidden = true; document.body.appendChild(p);
+      var p = document.createElement("div"); p.setAttribute("data-hue", ""); p.setAttribute("data-theme", t); p.style.setProperty("--h", P.h); p.hidden = true; document.body.appendChild(p);
       var cs = getComputedStyle(p), lines = [];
       ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950"].forEach(function (k) { lines.push("  --accent-" + k + ": " + cs.getPropertyValue("--accent-" + k).trim().replace(/calc\(([\d.]+) ([+-]) ([\d.]+)\)/, function (_, a, s, b) { return String(s === "+" ? +a + +b : +a - +b); }) + ";"); });
       ["--ill-glow", "--ill-glow-2"].forEach(function (k) { lines.push("  " + k + ": " + cs.getPropertyValue(k).trim().replace(/calc\(([\d.]+) ([+-]) ([\d.]+)\)/, function (_, a, s, b) { return String(s === "+" ? +a + +b : (+a - +b + 360) % 360); }) + ";"); });
       p.remove();
       out.push((t === "light" ? ":root" : '[data-theme="dark"]') + " {\n" + lines.join("\n") + "\n}");
     });
-    return "/* STC · tinta " + S.h + " · incolla dopo tokens.css */\n" + out.join("\n");
+    return "/* STC · tinta " + P.h + " · incolla dopo tokens.css */\n" + out.join("\n");
   }
 
   // ---------- pagine ----------
@@ -72,7 +76,7 @@
     return '<nav class="pager">' + (p ? '<a class="glass" href="#' + p + '"><span>Precedente</span><b>' + esc(lab(p)) + "</b></a>" : "<span></span>") + (n ? '<a class="glass next" href="#' + n + '"><span>Successivo</span><b>' + esc(lab(n)) + "</b></a>" : "") + "</nav>";
   }
   function compPage(c) {
-    var src = "frame/" + c.name + ".html?theme=" + S.theme + "&h=" + S.h;
+    var src = "frame/" + c.name + ".html?theme=" + P.theme + "&h=" + P.h;
     var open = '<a class="tb-btn" href="frame/' + c.name + '.html" target="_blank" rel="noopener">' + I("external-link", 15) + "Apri</a>";
     var wseg = '<span class="seg" role="group" aria-label="Larghezza"><button type="button" data-w="desktop" aria-pressed="' + (width === "desktop") + '">' + I("monitor", 15) + 'Desktop</button><button type="button" data-w="phone" aria-pressed="' + (width === "phone") + '">' + I("smartphone", 15) + "Telefono</button></span>";
     return '<div class="crumb">Componenti · <b>' + esc(c.group) + "</b></div><h1>" + esc(c.name) + "</h1>" + (c.lead ? '<p class="lead">' + esc(c.lead) + "</p>" : "") +
@@ -90,6 +94,7 @@
   }
   function scale() {
     var el = $("#scale"); if (!el) return;
+    el.setAttribute("data-hue", ""); el.setAttribute("data-theme", P.theme); el.style.setProperty("--h", P.h); el.style.background = "transparent";
     el.innerHTML = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"].map(function (k) { return '<div class="glass" style="padding:10px;border-radius:14px"><div style="height:54px;border-radius:10px;background:var(--accent-' + k + ')"></div><div style="font:11px var(--font-num);color:var(--text-tertiary);margin-top:8px">accent-' + k + "</div></div>"; }).join("");
   }
   var roots = [];
@@ -141,8 +146,8 @@
   // ---------- eventi ----------
   document.addEventListener("click", function (e) {
     var t = e.target.closest("button, a"); if (!t) return;
-    if (t.hasAttribute("data-t")) S.setTheme(t.getAttribute("data-t"));
-    else if (t.hasAttribute("data-h")) S.setHue(+t.getAttribute("data-h"));
+    if (t.hasAttribute("data-t")) setP("theme", t.getAttribute("data-t"));
+    else if (t.hasAttribute("data-h")) setP("h", +t.getAttribute("data-h"));
     else if (t.hasAttribute("data-w")) { width = t.getAttribute("data-w"); var v = $(".viewer"); if (v) v.classList.toggle("phone", width === "phone"); document.querySelectorAll("[data-w]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-w") === width); }); }
     else if (t.hasAttribute("data-tab")) { tab = t.getAttribute("data-tab"); document.querySelectorAll("[data-tab]").forEach(function (b) { b.setAttribute("aria-selected", b.getAttribute("data-tab") === tab); }); $(".viewer").hidden = tab !== "preview"; $(".codebox").hidden = tab !== "code"; }
     else if (t.id === "copy-code") { S.copy($(".codebox code").textContent, function () { t.textContent = "Copiato"; setTimeout(function () { t.textContent = "Copia"; }, 1500); }); }
@@ -150,13 +155,13 @@
     else if (t.hasAttribute("data-icon")) { var n = t.getAttribute("data-icon"); S.copy(n, function () { S.toast("Copiato: " + n); }); }
     else if (t.id === "side-btn") { var s = $("#side"), o = !s.classList.contains("open"); s.classList.toggle("open", o); t.setAttribute("aria-expanded", o); }
   });
-  document.addEventListener("input", function (e) { if (e.target.id === "hue") S.setHue(+e.target.value); if (e.target.id === "q") filter(e.target.value); });
+  document.addEventListener("input", function (e) { if (e.target.id === "hue") setP("h", +e.target.value); if (e.target.id === "q") filter(e.target.value); });
   addEventListener("message", function (e) {
     var m = e.data; if (!m || !m.stcH) return;
     document.querySelectorAll("iframe.live").forEach(function (f) { if (f.contentWindow === e.source) f.style.height = Math.max(+f.getAttribute("data-min") || 200, Math.min(m.stcH, 1400)) + "px"; });
   });
   addEventListener("keydown", function (e) { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); var s = $("#side"); if (getComputedStyle($("#side-btn")).display !== "none") { s.classList.add("open"); } $("#q").focus(); } });
-  S.on(function () { syncBar(); syncLogo(); });
+  S.on(function () { P.theme = S.theme; syncBar(); syncLogo(); });
   addEventListener("hashchange", route);
   document.addEventListener("DOMContentLoaded", function () { toc(); route(); });
 })();

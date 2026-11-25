@@ -2,7 +2,7 @@
 
 Ogni colore di STC è un token. L'accento ha una scala da `accent-50` a `accent-950`, calcolata in OKLCH: luminosità e croma restano, cambia solo la **tinta**. Per questo basta un numero per avere un tema nuovo, chiaro e scuro insieme, con illustrazioni e luci comprese.
 
-Scegli una tinta qui sopra: cambia tutto il sito, anche le anteprime dei componenti. Con **Copia tema** hai le variabili pronte da incollare nel tuo progetto.
+Scegli una tinta qui sopra: cambia la scala e le anteprime dei componenti, il resto del sito resta com'è. Con **Copia tema** hai le variabili pronte da incollare nel tuo progetto.
 
 ## Nel tuo progetto
 
