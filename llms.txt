@@ -21,6 +21,7 @@ Leggi prima le istruzioni per le AI, poi le regole. Le props esatte stanno in in
 
 - [Tipi dei componenti](https://raw.githubusercontent.com/deredde/stc/main/components/index.d.ts): tutte le props
 - [Token](https://raw.githubusercontent.com/deredde/stc/main/tokens.css): i valori in CSS, chiaro e scuro
+- [Temi](https://raw.githubusercontent.com/deredde/stc/main/temi.css): 30 temi pronti 60·30·10, si attivano con data-palette
 - [Schede dei componenti](https://github.com/deredde/stc/tree/main/components): components/<Nome>/README.md
 
 ## Facoltativo

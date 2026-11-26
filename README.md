@@ -7,13 +7,14 @@
 
 # STC · Standard Template Construct
 
-Design system neutro per gestionali e per le app che li accompagnano: token, oltre 250 componenti React, illustrazioni animate, loader, logo e regole di scrittura. Tema chiaro e scuro, in italiano.
+Design system neutro per gestionali e per le app che li accompagnano: token, oltre 250 componenti React, illustrazioni animate, loader, logo e regole di scrittura. Tema chiaro e scuro, 30 temi pronti, in italiano.
 
 ## Cosa c'è
 
 | Percorso | Contenuto |
 | --- | --- |
 | `tokens.json` · `tokens.css` | Tutti i valori (colori OKLCH, tipografia, spazi, raggi, ombre, movimento), chiaro e scuro |
+| `temi.json` · `temi.css` | 30 temi pronti 60·30·10, 15 chiari e 15 scuri (`data-palette`) |
 | `components/bundle.js` · `bundle.css` | I componenti React come `window.STC`, con gli stili |
 | `components/index.d.ts` | I tipi di ogni componente |
 | `components/<Nome>/` | Scheda (`README.md`) e anteprima (`preview.html`) di ogni componente |
@@ -128,6 +129,77 @@ Le scale sono `accent-*` (la marca: si cambia per progetto), `neutral-*` (grafit
 ### Superfici di marca
 
 Uguali nei due temi, sempre scure: `brand-ink` (fondo), `on-brand` (17:1), `on-brand-muted` (8:1), `on-brand-faint`, `brand-accent` (l'accento chiaro, con testo `brand-ink` sopra), `brand-glow` (bagliore sfocato), `brand-line` e `brand-dot` (trame), `brand-glass-bg/bd/hover`. Si usano solo per: testata della barra laterale, schermate di accesso, tessera digitale dell'app, un numero in evidenza. Tre trame: griglia a punti (passo 16), zigrinatura (righe a 45° ogni 10 px), grana. Una per superficie, sempre con un bagliore dell'accento.
+
+### Temi pronti
+
+Oltre al blu di serie, STC ha **30 temi** pronti, 15 chiari e 15 scuri, in `temi.css` (sorgente in `temi.json`). Ognuno segue la regola **60·30·10**:
+
+- **60, main:** il fondo e i neutri. Pagina, card, superfici e bordi ne prendono la tinta.
+- **30, second:** il testo, il bottone primario e la struttura (barra laterale, superfici di marca, toast).
+- **10, accent:** il richiamo. Controlli accesi, voce attiva, tab, linee e prima serie dei grafici, luci delle illustrazioni.
+
+I colori di stato (`success`, `danger`, `warning`, `info`) **non cambiano**: un errore resta rosso in ogni tema.
+
+Per usarne uno carica `temi.css` dopo `tokens.css` e metti `data-palette` sullo stesso elemento di `data-theme`, con il modo del tema. Ogni tema è o chiaro o scuro: un tema chiaro va con `data-theme="light"`, uno scuro con `data-theme="dark"`. Senza `data-palette` resta STC di serie, blu.
+
+```html
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="temi.css">
+<link rel="stylesheet" href="components/bundle.css">
+
+<html data-theme="light" data-palette="tahini">   <!-- chiaro -->
+<html data-theme="dark" data-palette="obsidian">  <!-- scuro -->
+```
+
+Per cambiarlo da codice: `el.dataset.palette = 'sage'; el.dataset.theme = 'light';`. Funziona anche su un contenitore, non solo su `<html>`. L'elenco con nome e modo di ogni tema è in `temi.json`.
+
+**Chiari:**
+
+| id | Nome (main · second · accent) | Colori |
+|---|---|---|
+| `tahini` | Tahini Cream · Thunder Navy · Tangerine Blitz | `#ECDFC6` · `#1A2238` · `#FF6216` |
+| `pomelo` | Pomelo Pink · Spruce Night · Canary Volt | `#F28BA8` · `#1A3530` · `#FFE01A` |
+| `horchata` | Horchata Cream · Loden Green · Pachino Red | `#EEE2CB` · `#1C4433` · `#F0422A` |
+| `placid` | Vintage Mint · Placid Blue · Punk Pink | `#E6EBDA` · `#2E5FA8` · `#FF2D87` |
+| `oat` | Oat Milk · Espresso · Matcha | `#EFE8DC` · `#2A1E18` · `#6BA33A` |
+| `porcelain` | Porcelain · Ink Plum · Saffron | `#EDEFF2` · `#2D1B3D` · `#FFB000` |
+| `sage` | Sage Mist · Forest Ink · Coral Pop | `#DFE5D8` · `#16302B` · `#FF6B5A` |
+| `butter` | Butter · Cocoa · Cobalt Flash | `#F4EACB` · `#3B2418` · `#2250FF` |
+| `linen` | Linen · Graphite · Electric Violet | `#F1ECE4` · `#26272B` · `#6C4CFF` |
+| `peach` | Peach Fuzz · Plum Wine · Lagoon Teal | `#F9E3D5` · `#3A1F3D` · `#00A89D` |
+| `cloud` | Cloud Blue · Midnight · Marigold | `#E3EBF4` · `#13203A` · `#FFA41B` |
+| `lilac` | Lilac Milk · Aubergine · Jade | `#ECE6F4` · `#2E1A33` · `#00A676` |
+| `dune` | Sand Dune · Rust Brown · Turquoise | `#E9DDC9` · `#4A2418` · `#12B5B0` |
+| `stone` | Stone · Deep Teal · Hot Pink | `#E5E2DB` · `#0F3B3E` · `#FF4F9A` |
+| `vanilla` | Vanilla · Bordeaux · Brass Gold | `#F5EFE1` · `#4A1526` · `#E3A920` |
+
+**Scuri:**
+
+| id | Nome (main · second · accent) | Colori |
+|---|---|---|
+| `anthracite` | Anthracite Grey · Oyster Suede · Polar Cyan | `#2B2D31` · `#D2C6B4` · `#00E2F2` |
+| `nocturne` | Nocturne Navy · Lavender Haze · Solar Volt | `#1B2134` · `#C8C4E0` · `#FFD60F` |
+| `obsidian` | Obsidian · Bone · Blaze Orange | `#141518` · `#E8E2D6` · `#FF6A1A` |
+| `forest` | Deep Forest · Sage Leaf · Neon Coral | `#12251F` · `#C9D6C3` · `#FF6F61` |
+| `aubergine` | Aubergine Night · Rose Quartz · Lime Shock | `#22172B` · `#EBC7D3` · `#C8F135` |
+| `teal` | Midnight Teal · Seafoam · Sunset Orange | `#0E2A2E` · `#BFE3D9` · `#FF7A3D` |
+| `espresso` | Espresso Bean · Latte · Electric Blue | `#1E1714` · `#E6D5C3` · `#2F7BFF` |
+| `inknavy` | Ink Navy · Ice Blue · Hot Magenta | `#0F1A2E` · `#D6E4F0` · `#FF3D8B` |
+| `olive` | Charcoal Olive · Khaki · Ultra Violet | `#1D1F17` · `#D9D3B8` · `#8B6CFF` |
+| `oxblood` | Oxblood · Blush Sand · Mint Pop | `#2A1215` · `#EFD9CF` · `#3DF2B0` |
+| `graphite` | Graphite · Pearl · Acid Lime | `#1F2023` · `#E9E9EC` · `#D4FF3A` |
+| `storm` | Storm Blue · Sky Haze · Amber Glow | `#1B2533` · `#C7D7EA` · `#FFB020` |
+| `moss` | Moss Night · Pale Lichen · Fuchsia | `#18221A` · `#DCE5C5` · `#E8408C` |
+| `plum` | Plum Velvet · Lilac · Aqua Glow | `#2B1630` · `#D9C8EA` · `#3FE0D0` |
+| `cosmic` | Cosmic Navy · Moonstone · Ember Red | `#101529` · `#DCE0EA` · `#FF5533` |
+
+#### Un tema nuovo
+
+1. Aggiungi una voce a `temi.json` con `id`, `label`, `name`, `mode` (`light` o `dark`), `main`, `second`, `accent` e `onAccent` (il colore del testo sopra l'accento: bianco o il second, quello col contrasto più alto).
+2. Scegli i tre colori così: in chiaro `main` è un fondo chiaro e caldo o appena tinto, `second` un colore scuro e profondo (navy, verde bosco, prugna, cacao); in scuro il contrario, `main` scuro e `second` chiaro e polveroso. `accent` è un colore saturo, lontano sulla ruota da `second`, mai uguale a un colore di stato.
+3. Controlla il contrasto: `second` su `main` almeno 7:1, `accent` su `main` almeno 3:1 (è il colore dei controlli), `onAccent` su `accent` almeno 4,5:1.
+4. Se il `main` è molto saturo (un rosa, un azzurro) e copre troppo, usa `surface` per un fondo più chiaro della stessa tinta e tieni `main` per i grafici (vedi `pomelo`). Se il `second` è un colore medio, usa `ink` per il testo più scuro (vedi `placid`). `overrides` cambia singoli token.
+5. Lancia `node scripts/temi.mjs` per rigenerare `temi.css` (con `--check` controlla solo che sia aggiornato).
 
 ## Tipografia
 

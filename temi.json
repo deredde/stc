@@ -1,0 +1,325 @@
+{
+ "name": "STC · Temi 60·30·10",
+ "version": 1,
+ "note": "Ogni tema: main (60%, fondo e neutri), second (30%, testo, primario e struttura), accent (10%, accento, controlli e grafici). I colori di stato restano quelli di STC. Si genera temi.css con: node scripts/temi.mjs",
+ "themes": [
+  {
+   "id": "tahini",
+   "label": "Tahini",
+   "name": "Tahini Cream · Thunder Navy · Tangerine Blitz",
+   "mode": "light",
+   "main": "#ECDFC6",
+   "second": "#1A2238",
+   "accent": "#FF6216",
+   "onAccent": "#1A2238",
+   "source": "video 1"
+  },
+  {
+   "id": "pomelo",
+   "label": "Pomelo",
+   "name": "Pomelo Pink · Spruce Night · Canary Volt",
+   "mode": "light",
+   "main": "#F28BA8",
+   "second": "#1A3530",
+   "accent": "#FFE01A",
+   "onAccent": "#1A3530",
+   "source": "video 1",
+   "surface": "#FBE3EA",
+   "overrides": {
+    "--viz-3": "#F28BA8",
+    "--heat-2": "#F28BA8",
+    "--tab-glow": "#F28BA8",
+    "--ill-glow": "#F7B9CB"
+   }
+  },
+  {
+   "id": "horchata",
+   "label": "Horchata",
+   "name": "Horchata Cream · Loden Green · Pachino Red",
+   "mode": "light",
+   "main": "#EEE2CB",
+   "second": "#1C4433",
+   "accent": "#F0422A",
+   "onAccent": "#FFFFFF",
+   "source": "video 2"
+  },
+  {
+   "id": "placid",
+   "label": "Placid",
+   "name": "Vintage Mint · Placid Blue · Punk Pink",
+   "mode": "light",
+   "main": "#E6EBDA",
+   "second": "#2E5FA8",
+   "accent": "#FF2D87",
+   "onAccent": "#FFFFFF",
+   "source": "video 2",
+   "ink": "#1A2D4C",
+   "overrides": {
+    "--brand-accent": "#E6EBDA",
+    "--brand-glow": "rgba(255,45,135,.45)"
+   }
+  },
+  {
+   "id": "oat",
+   "label": "Oat",
+   "name": "Oat Milk · Espresso · Matcha",
+   "mode": "light",
+   "main": "#EFE8DC",
+   "second": "#2A1E18",
+   "accent": "#6BA33A",
+   "onAccent": "#2A1E18"
+  },
+  {
+   "id": "porcelain",
+   "label": "Porcelain",
+   "name": "Porcelain · Ink Plum · Saffron",
+   "mode": "light",
+   "main": "#EDEFF2",
+   "second": "#2D1B3D",
+   "accent": "#FFB000",
+   "onAccent": "#2D1B3D"
+  },
+  {
+   "id": "sage",
+   "label": "Sage",
+   "name": "Sage Mist · Forest Ink · Coral Pop",
+   "mode": "light",
+   "main": "#DFE5D8",
+   "second": "#16302B",
+   "accent": "#FF6B5A",
+   "onAccent": "#16302B"
+  },
+  {
+   "id": "butter",
+   "label": "Butter",
+   "name": "Butter · Cocoa · Cobalt Flash",
+   "mode": "light",
+   "main": "#F4EACB",
+   "second": "#3B2418",
+   "accent": "#2250FF",
+   "onAccent": "#FFFFFF"
+  },
+  {
+   "id": "linen",
+   "label": "Linen",
+   "name": "Linen · Graphite · Electric Violet",
+   "mode": "light",
+   "main": "#F1ECE4",
+   "second": "#26272B",
+   "accent": "#6C4CFF",
+   "onAccent": "#FFFFFF"
+  },
+  {
+   "id": "peach",
+   "label": "Peach",
+   "name": "Peach Fuzz · Plum Wine · Lagoon Teal",
+   "mode": "light",
+   "main": "#F9E3D5",
+   "second": "#3A1F3D",
+   "accent": "#00A89D",
+   "onAccent": "#3A1F3D"
+  },
+  {
+   "id": "cloud",
+   "label": "Cloud",
+   "name": "Cloud Blue · Midnight · Marigold",
+   "mode": "light",
+   "main": "#E3EBF4",
+   "second": "#13203A",
+   "accent": "#FFA41B",
+   "onAccent": "#13203A"
+  },
+  {
+   "id": "lilac",
+   "label": "Lilac",
+   "name": "Lilac Milk · Aubergine · Jade",
+   "mode": "light",
+   "main": "#ECE6F4",
+   "second": "#2E1A33",
+   "accent": "#00A676",
+   "onAccent": "#2E1A33"
+  },
+  {
+   "id": "dune",
+   "label": "Dune",
+   "name": "Sand Dune · Rust Brown · Turquoise",
+   "mode": "light",
+   "main": "#E9DDC9",
+   "second": "#4A2418",
+   "accent": "#12B5B0",
+   "onAccent": "#4A2418"
+  },
+  {
+   "id": "stone",
+   "label": "Stone",
+   "name": "Stone · Deep Teal · Hot Pink",
+   "mode": "light",
+   "main": "#E5E2DB",
+   "second": "#0F3B3E",
+   "accent": "#FF4F9A",
+   "onAccent": "#0F3B3E"
+  },
+  {
+   "id": "vanilla",
+   "label": "Vanilla",
+   "name": "Vanilla · Bordeaux · Brass Gold",
+   "mode": "light",
+   "main": "#F5EFE1",
+   "second": "#4A1526",
+   "accent": "#E3A920",
+   "onAccent": "#4A1526"
+  },
+  {
+   "id": "anthracite",
+   "label": "Anthracite",
+   "name": "Anthracite Grey · Oyster Suede · Polar Cyan",
+   "mode": "dark",
+   "main": "#2B2D31",
+   "second": "#D2C6B4",
+   "accent": "#00E2F2",
+   "onAccent": "#2B2D31",
+   "source": "video 1"
+  },
+  {
+   "id": "nocturne",
+   "label": "Nocturne",
+   "name": "Nocturne Navy · Lavender Haze · Solar Volt",
+   "mode": "dark",
+   "main": "#1B2134",
+   "second": "#C8C4E0",
+   "accent": "#FFD60F",
+   "onAccent": "#1B2134",
+   "source": "video 2"
+  },
+  {
+   "id": "obsidian",
+   "label": "Obsidian",
+   "name": "Obsidian · Bone · Blaze Orange",
+   "mode": "dark",
+   "main": "#141518",
+   "second": "#E8E2D6",
+   "accent": "#FF6A1A",
+   "onAccent": "#141518"
+  },
+  {
+   "id": "forest",
+   "label": "Forest",
+   "name": "Deep Forest · Sage Leaf · Neon Coral",
+   "mode": "dark",
+   "main": "#12251F",
+   "second": "#C9D6C3",
+   "accent": "#FF6F61",
+   "onAccent": "#12251F"
+  },
+  {
+   "id": "aubergine",
+   "label": "Aubergine",
+   "name": "Aubergine Night · Rose Quartz · Lime Shock",
+   "mode": "dark",
+   "main": "#22172B",
+   "second": "#EBC7D3",
+   "accent": "#C8F135",
+   "onAccent": "#22172B"
+  },
+  {
+   "id": "teal",
+   "label": "Teal",
+   "name": "Midnight Teal · Seafoam · Sunset Orange",
+   "mode": "dark",
+   "main": "#0E2A2E",
+   "second": "#BFE3D9",
+   "accent": "#FF7A3D",
+   "onAccent": "#0E2A2E"
+  },
+  {
+   "id": "espresso",
+   "label": "Espresso",
+   "name": "Espresso Bean · Latte · Electric Blue",
+   "mode": "dark",
+   "main": "#1E1714",
+   "second": "#E6D5C3",
+   "accent": "#2F7BFF",
+   "onAccent": "#1E1714"
+  },
+  {
+   "id": "inknavy",
+   "label": "Ink Navy",
+   "name": "Ink Navy · Ice Blue · Hot Magenta",
+   "mode": "dark",
+   "main": "#0F1A2E",
+   "second": "#D6E4F0",
+   "accent": "#FF3D8B",
+   "onAccent": "#0F1A2E"
+  },
+  {
+   "id": "olive",
+   "label": "Olive",
+   "name": "Charcoal Olive · Khaki · Ultra Violet",
+   "mode": "dark",
+   "main": "#1D1F17",
+   "second": "#D9D3B8",
+   "accent": "#8B6CFF",
+   "onAccent": "#1D1F17"
+  },
+  {
+   "id": "oxblood",
+   "label": "Oxblood",
+   "name": "Oxblood · Blush Sand · Mint Pop",
+   "mode": "dark",
+   "main": "#2A1215",
+   "second": "#EFD9CF",
+   "accent": "#3DF2B0",
+   "onAccent": "#2A1215"
+  },
+  {
+   "id": "graphite",
+   "label": "Graphite",
+   "name": "Graphite · Pearl · Acid Lime",
+   "mode": "dark",
+   "main": "#1F2023",
+   "second": "#E9E9EC",
+   "accent": "#D4FF3A",
+   "onAccent": "#1F2023"
+  },
+  {
+   "id": "storm",
+   "label": "Storm",
+   "name": "Storm Blue · Sky Haze · Amber Glow",
+   "mode": "dark",
+   "main": "#1B2533",
+   "second": "#C7D7EA",
+   "accent": "#FFB020",
+   "onAccent": "#1B2533"
+  },
+  {
+   "id": "moss",
+   "label": "Moss",
+   "name": "Moss Night · Pale Lichen · Fuchsia",
+   "mode": "dark",
+   "main": "#18221A",
+   "second": "#DCE5C5",
+   "accent": "#E8408C",
+   "onAccent": "#18221A"
+  },
+  {
+   "id": "plum",
+   "label": "Plum",
+   "name": "Plum Velvet · Lilac · Aqua Glow",
+   "mode": "dark",
+   "main": "#2B1630",
+   "second": "#D9C8EA",
+   "accent": "#3FE0D0",
+   "onAccent": "#2B1630"
+  },
+  {
+   "id": "cosmic",
+   "label": "Cosmic",
+   "name": "Cosmic Navy · Moonstone · Ember Red",
+   "mode": "dark",
+   "main": "#101529",
+   "second": "#DCE0EA",
+   "accent": "#FF5533",
+   "onAccent": "#101529"
+  }
+ ]
+}
