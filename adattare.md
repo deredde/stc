@@ -19,6 +19,10 @@ L'accento non deve sembrare uno stato. Tieni la tinta (H in OKLCH) lontana da qu
 
 Le luminosità per ruolo restano quelle di `tokens.json`: in chiaro il pieno (`accent-400`) sta intorno a L 0,53–0,56 con testo bianco sopra; in scuro intorno a L 0,76 con testo `#111` sopra. Un accento molto chiaro (un giallo) va al contrario: pieno chiaro anche in chiaro, testo scuro sopra (`on-accent`), e niente testo d'accento su fondo chiaro. Ricontrolla sempre il contrasto (vedi sotto).
 
+### Partire da un tema pronto
+
+Se il progetto non ha già una marca, parti da uno dei 30 temi di `temi.css` (README, Temi pronti): basta `data-palette` accanto a `data-theme`. Se la marca c'è, aggiungi a `temi.json` un tema con i suoi tre colori 60·30·10 e rigenera `temi.css` con `node scripts/temi.mjs`.
+
 ## Parte B: cosa resta
 
 Tutto ciò che sta nel README e in **Pattern di pagina**: le quattro altezze dei controlli e i loro raggi, il guscio e le sue tre forme, le pagine tipo, gli overlay, gli stati di ogni componente, il movimento, la voce. Se un progetto ha bisogno di qualcosa che non c'è, si aggiunge al sistema con le stesse regole, non si scrive a parte.
@@ -27,7 +31,7 @@ Tutto ciò che sta nel README e in **Pattern di pagina**: le quattro altezze dei
 
 Tutto ciò che serve è in questa repo: `tokens.css` (i token compilati, chiaro e scuro), `components/bundle.css` (gli stili), `components/bundle.js` (i componenti come `window.STC`) e `components/index.d.ts` (i tipi).
 
-1. Copia `tokens.css` e la cartella `components/` nel progetto (es. `public/stc/`).
+1. Copia `tokens.css` (e `temi.css` se usi un tema pronto) e la cartella `components/` nel progetto (es. `public/stc/`).
 2. Carica, in quest'ordine: `tokens.css`, `components/bundle.css`, poi React 18 o 19 e `components/bundle.js` (come nella prova veloce del README).
 3. Avvolgi l'app in `<ToastProvider>` e metti il tema sulla radice: `<html data-theme="light">` (il tema lo sceglie ogni persona; al primo accesso parti da `prefers-color-scheme`).
 4. Costruisci le pagine dentro `<AppShell sidebar={…}>` con `ListPage`, `DetailPage`, `SettingsPage`; l'accesso con `AuthScreen`; l'app dell'utente con `MemberApp`.

@@ -86,6 +86,7 @@ Ricontrolla quello che hai scritto:
 | `componenti.md` | Indice dei componenti per gruppo, con le regole che li riguardano (generato) |
 | `README.md` · `default.md` · `pattern.md` · `adattare.md` | La guida completa |
 | `tokens.json` · `tokens.css` | Tutti i valori, chiaro e scuro |
+| `temi.json` · `temi.css` | 30 temi pronti 60·30·10 (`data-palette`, vedi README, Temi pronti); si rigenera con `node scripts/temi.mjs` |
 | `components/bundle.js` · `bundle.css` · `index.d.ts` | I componenti React come `window.STC`, gli stili, i tipi |
 | `components/<Nome>/` | Scheda (`README.md`) e anteprima (`preview.html`) di ogni componente |
 | `assets/Logo/` | Il logo di STC |

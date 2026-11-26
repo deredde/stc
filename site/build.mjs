@@ -138,6 +138,10 @@ async function main() {
   const tokens = read(path.join(ROOT, "tokens.css"));
   write(path.join(A, "stc/tokens.css"), tokens);
   write(path.join(A, "stc/hue.css"), hueCss(tokens));
+  // 30 temi pronti 60·30·10: stessi file della repo
+  write(path.join(A, "stc/temi.css"), read(path.join(ROOT, "temi.css")));
+  const temi = JSON.parse(read(path.join(ROOT, "temi.json"))).themes.map(({ id, label, name, mode, main, second, accent }) => ({ id, label, name, mode, main, second, accent }));
+  write(path.join(A, "temi-data.js"), "window.STC_TEMI=" + JSON.stringify(temi) + ";");
   copy(path.join(COMP, "bundle.css"), path.join(A, "stc/bundle.css"));
   copy(path.join(COMP, "bundle.js"), path.join(A, "stc/bundle.js"));
   copy(path.join(COMP, "lib/react.production.min.js"), path.join(A, "stc/react.js"));
@@ -186,7 +190,7 @@ async function main() {
     comps.push({ name: n, group, height, title: doc.title || n, lead: doc.lead, html: md(doc.body), code });
     // riquadro live
     let f = html.replace(/^<!--\s*@dsCard[^>]*-->\s*/, "");
-    const inject = `<meta name="viewport" content="width=device-width,initial-scale=1"><script>(function(){var q=new URLSearchParams(location.search),d=document.documentElement;d.setAttribute('data-theme',q.get('theme')==='dark'?'dark':'light');d.setAttribute('data-hue','');d.style.setProperty('--h',q.get('h')||'260')})()</script><link rel="stylesheet" href="../assets/stc/tokens.css"><link rel="stylesheet" href="../assets/stc/bundle.css"><link rel="stylesheet" href="../assets/stc/hue.css"><style>html,body{background:var(--page-bg);color:var(--text-primary);font-family:var(--font-text);margin:0}</style><script src="../assets/stc/react.js"></script><script src="../assets/stc/react-dom.js"></script><script src="../assets/stc/bundle.js"></script><script src="../assets/frame.js"></script>`;
+    const inject = `<meta name="viewport" content="width=device-width,initial-scale=1"><script>(function(){var q=new URLSearchParams(location.search),d=document.documentElement;d.setAttribute('data-theme',q.get('theme')==='dark'?'dark':'light');d.style.setProperty('--h',q.get('h')||'260');if(q.get('pal'))d.setAttribute('data-palette',q.get('pal'));else d.setAttribute('data-hue','')})()</script><link rel="stylesheet" href="../assets/stc/tokens.css"><link rel="stylesheet" href="../assets/stc/bundle.css"><link rel="stylesheet" href="../assets/stc/hue.css"><link rel="stylesheet" href="../assets/stc/temi.css"><style>html,body{background:var(--page-bg);color:var(--text-primary);font-family:var(--font-text);margin:0}</style><script src="../assets/stc/react.js"></script><script src="../assets/stc/react-dom.js"></script><script src="../assets/stc/bundle.js"></script><script src="../assets/frame.js"></script>`;
     f = /<head[^>]*>/.test(f) ? f.replace(/<head[^>]*>/, (h) => h + inject) : inject + f;
     write(path.join(OUT, "frame", n + ".html"), f);
   }
@@ -198,7 +202,7 @@ async function main() {
   const pages = [
     { id: "introduzione", label: "Introduzione", lead: readme.lead, html: md(readme.body) },
     { id: "installazione", label: "Installazione", lead: "STC si prende dalla repo su GitHub: cloni, copi i file nel progetto e i componenti sono pronti.", html: md(read(path.join(SRC, "installazione.md"))) },
-    { id: "temi", label: "Temi e colore", lead: "Chiaro e scuro sono di serie. L'accento si cambia da un solo valore: la tinta.", html: md(read(path.join(SRC, "temi.md"))), special: "temi" },
+    { id: "temi", label: "Temi e colore", lead: "Chiaro e scuro sono di serie, con 30 temi pronti. L'accento si cambia anche da un solo valore: la tinta.", html: md(read(path.join(SRC, "temi.md"))), special: "temi" },
     pageDoc("default.md", "regole", "Regole di default"),
     pageDoc("pattern.md", "pattern", "Pattern di pagina"),
     pageDoc("adattare.md", "adattare", "Adattare a un progetto"),

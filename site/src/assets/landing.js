@@ -158,15 +158,19 @@
 
   // ---------- temi ----------
   // tinta scelta con i pallini: vale solo per il riquadro dei temi, non per la pagina
-  var demo = { h: null, fns: [] };
-  function setDemoHue(h) { demo.h = h; demo.fns.forEach(function (f) { f(h); }); }
-  function useDemoHue() { var s = useState(demo.h); useEffect(function () { demo.fns.push(s[1]); }, []); return s[0]; }
+  // anche i temi pronti (60·30·10) valgono solo per il riquadro
+  var demo = { h: null, pal: null, fns: [] }, TEMI = window.STC_TEMI || [];
+  function setDemo(h, pal) { demo.h = h; demo.pal = pal; demo.fns.forEach(function (f) { f({ h: h, pal: pal }); }); }
+  function setDemoHue(h) { setDemo(h, null); }
+  function useDemo() { var s = useState({ h: demo.h, pal: demo.pal }); useEffect(function () { demo.fns.push(s[1]); }, []); return s[0]; }
+  function useDemoHue() { return useDemo().h; }
   function Theme() {
-    var tk = useTick(2400), i = tk[1], picked = useDemoHue();
-    var hue = picked != null ? (S.HUES.find(function (x) { return x[0] === picked; }) || [picked, "Tinta " + picked]) : pick(S.HUES, i), dark = i % 2 === 1;
+    var tk = useTick(2400), i = tk[1], st = useDemo(), picked = st.h, pal = st.pal && TEMI.find(function (t) { return t.id === st.pal; });
+    var hue = picked != null ? (S.HUES.find(function (x) { return x[0] === picked; }) || [picked, "Tinta " + picked]) : pick(S.HUES, i), dark = pal ? pal.mode === "dark" : i % 2 === 1;
+    var box = pal ? { className: "theme-demo", "data-palette": pal.id, "data-theme": pal.mode } : { className: "theme-demo", "data-hue": "", "data-theme": dark ? "dark" : "light", style: { "--h": hue[0] } };
     return h("div", { ref: tk[0] },
-      h("div", { className: "theme-demo", "data-hue": "", "data-theme": dark ? "dark" : "light", style: { "--h": hue[0] } },
-        h("div", { className: "f-row" }, h("b", null, hue[1]), h(X.Badge, { tone: "accent", icon: false, size: "sm" }, (dark ? "Scuro" : "Chiaro") + " · tinta " + hue[0])),
+      h("div", box,
+        h("div", { className: "f-row" }, h("b", null, pal ? pal.label : hue[1]), h(X.Badge, { tone: "accent", icon: false, size: "sm" }, pal ? (dark ? "Scuro" : "Chiaro") + " · 60·30·10" : (dark ? "Scuro" : "Chiaro") + " · tinta " + hue[0])),
         h(X.StatTile, { title: "Prenotazioni", value: "1.284", note: "Questa settimana", icon: "calendar-check", tone: "accent" }),
         h("div", { className: "f-row" }, h(X.Switch, { label: "Promemoria", checked: true, onChange: noop }), h(X.Button, { variant: "accent", icon: "plus", size: "card" }, "Nuova")),
         h(X.Slider, { min: 0, max: 100, value: 64, onChange: noop, label: "Intensità" }),
@@ -175,6 +179,13 @@
   function PageSwatches() {
     var cur = useDemoHue();
     return h(R.Fragment, null, S.HUES.map(function (x) { return h("button", { key: x[0], type: "button", className: "sw", style: { "--sw": x[0] }, "aria-label": x[1], "aria-pressed": cur === x[0] ? "true" : "false", title: x[1], onClick: function () { setDemoHue(x[0]); } }); }));
+  }
+  function PagePalettes() {
+    var cur = useDemo().pal;
+    var chip = function (t) { return h("button", { key: t.id, type: "button", className: "pal", "data-pal": t.id, style: { "--m": t.main, "--s": t.second, "--a": t.accent }, "aria-label": t.label + ": " + t.name, title: t.label + " · " + t.name, "aria-pressed": cur === t.id ? "true" : "false", onClick: function () { setDemo(null, t.id); } }); };
+    return h(R.Fragment, null,
+      h("div", { className: "pals-t" }, "Temi chiari"), TEMI.filter(function (t) { return t.mode === "light"; }).map(chip),
+      h("div", { className: "pals-t" }, "Temi scuri"), TEMI.filter(function (t) { return t.mode === "dark"; }).map(chip));
   }
 
   // ---------- l'AI che guida ----------
@@ -214,7 +225,7 @@
     
     mount("d-dash", h(Dash)); mount("d-ctrl", h(Ctrl)); mount("d-form", h(Form)); mount("d-icons", h(Icons));
     mount("d-ill", h(Ill)); mount("d-wait", h(Wait)); mount("d-chart", h(Chart)); mount("d-theme", h(Theme));
-    mount("page-sw", h(PageSwatches)); mount("d-ai", h(Ai));
+    mount("page-sw", h(PageSwatches)); mount("page-pal", h(PagePalettes)); mount("d-ai", h(Ai));
     // nastro con i nomi dei componenti
     var names = ["Button", "Switch", "Slider", "DatePicker", "Combobox", "DataTable", "Kanban", "Timeline", "Sidebar", "CommandSearch", "Toast", "Sheet", "Drawer", "PinPad", "OtpInput", "PlanPicker", "Stepper", "WizardPage", "LineChart", "DonutChart", "Heatmap", "Illustration", "Loader", "Skeleton", "ProgressRing", "NotificationCenter", "TreeView", "Accordion", "Tabs", "Popover"];
     var mq = document.getElementById("mq");
