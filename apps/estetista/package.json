@@ -1,0 +1,17 @@
+{
+  "name": "stc-estetista",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Gestionale per centri estetici costruito con STC: clienti, agenda, servizi, pacchetti, cassa, promemoria, fedeltà, report.",
+  "scripts": {
+    "stc": "node scripts/copia-stc.mjs",
+    "dev": "npm run stc && vite",
+    "build": "npm run stc && vite build",
+    "preview": "vite preview",
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
