@@ -24,7 +24,7 @@
 
   // ---------- installazione ----------
   function Install() {
-    return h(X.CopyField, { value: "git clone https://github.com/deredde/stc", copyLabel: "Copia", copiedLabel: "Copiato" });
+    return h(X.CopyField, { value: "https://github.com/deredde/stc", copyLabel: "Copia", copiedLabel: "Copiato" });
   }
 
   // ---------- hero ----------
