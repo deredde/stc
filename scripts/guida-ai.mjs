@@ -12,6 +12,7 @@
 //   5. i componenti citati tra apici in regole.md e CLAUDE.md esistano davvero;
 //   6. i codici di regola citati altrove esistano in regole.md;
 //   7. i file citati nelle Fonti esistano;
+//   6b. i temi di configurare.md siano quelli di temi.json;
 //   8. nessun file pubblico nomini il gestionale d'origine.
 // Nessuna dipendenza: basta Node 18 o più nuovo.
 
@@ -151,18 +152,34 @@ for (const [, n, titolo] of sezioni) {
 const dts = leggi('components/index.d.ts');
 const esportati = new Set([...dts.matchAll(/^export (?:declare )?(?:const|function|interface|type|class) ([A-Za-z_]+)/gm)].map((m) => m[1]));
 const noti = new Set([...esportati, ...nomiComponenti]);
-for (const file of ['regole.md', 'CLAUDE.md']) {
+for (const file of ['regole.md', 'CLAUDE.md', 'configurare.md']) {
   for (const [, nome] of leggi(file).matchAll(/`([A-Z][a-z]+[A-Z][A-Za-z]*|[A-Z][a-z]{2,})(?=[ `])/g)) {
     if (!noti.has(nome)) errore(`${file}: \`${nome}\` non è un componente né un export di index.d.ts.`);
   }
 }
 
 // 6. codici citati esistono
-for (const file of ['CLAUDE.md', 'README.md', 'llms.txt', 'regole.md']) {
+for (const file of ['CLAUDE.md', 'README.md', 'llms.txt', 'regole.md', 'configurare.md']) {
   if (!existsSync(join(ROOT, file))) { errore(`manca ${file}.`); continue; }
   for (const [, c] of leggi(file).matchAll(/\b([PDCSTVAM]\d{1,2})\b/g)) {
     if (!codici.has(c)) errore(`${file}: cita la regola ${c}, che non esiste in regole.md.`);
   }
+}
+
+// 6b. i temi pronti di configurare.md sono quelli di temi.json, con il modo giusto
+{
+  const temi = JSON.parse(leggi('temi.json')).themes;
+  const tabella = leggi('configurare.md').split('## Temi pronti')[1] || '';
+  const righe = [...tabella.matchAll(/^\| `([a-z]+)` \|[^|]*\| `([a-z]+)` \|/gm)];
+  const chiari = new Set(righe.map((m) => m[1])), scuri = new Set(righe.map((m) => m[2]));
+  for (const t of temi) {
+    const lato = t.mode === 'dark' ? scuri : chiari;
+    if (!lato.has(t.id)) errore(`configurare.md: il tema \`${t.id}\` (${t.mode === 'dark' ? 'scuro' : 'chiaro'}) manca nella tabella dei temi pronti.`);
+  }
+  const ids = new Map(temi.map((t) => [t.id, t.mode]));
+  for (const id of chiari) if (ids.get(id) !== 'light') errore(`configurare.md: \`${id}\` è tra i chiari ma in temi.json non è un tema chiaro.`);
+  for (const id of scuri) if (ids.get(id) !== 'dark') errore(`configurare.md: \`${id}\` è tra gli scuri ma in temi.json non è un tema scuro.`);
+  for (const [, id] of leggi('configurare.md').matchAll(/data-palette="([a-z]+)"/g)) if (!ids.has(id)) errore(`configurare.md: data-palette="${id}" non esiste in temi.json.`);
 }
 
 // 7. file citati nelle Fonti

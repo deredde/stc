@@ -7,6 +7,7 @@ Leggi prima le istruzioni per le AI, poi le regole. Le props esatte stanno in in
 ## Per le AI
 
 - [Istruzioni per le AI](https://raw.githubusercontent.com/deredde/stc/main/AGENTS.md): cosa leggere, come costruire, come segnalare una richiesta contro STC
+- [Domande iniziali](https://raw.githubusercontent.com/deredde/stc/main/configurare.md): le sei domande per impostare tema, modo, marca e componenti all'inizio di un progetto
 - [Regole con il perché](https://raw.githubusercontent.com/deredde/stc/main/regole.md): ogni regola con codice, perché e cosa fare invece
 - [Indice dei componenti](https://raw.githubusercontent.com/deredde/stc/main/componenti.md): i componenti per gruppo, con le regole che li riguardano
 
