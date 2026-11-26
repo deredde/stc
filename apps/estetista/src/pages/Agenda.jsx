@@ -1,6 +1,6 @@
 // Agenda: il giorno per operatrice, la settimana, o la lista. Su telefono la striscia dei giorni (pattern Calendario).
 import { STC, useState, useMemo } from '../stc.js';
-import { useAzioni, StatoAppuntamento, TagOperatrice, CellaCliente, Euro, useTelefono, contiene } from '../parts/ui.jsx';
+import { useAzioni, StatoAppuntamento, TagOperatrice, CellaCliente, Euro, useTelefono, contiene, Tabella } from '../parts/ui.jsx';
 import { useRotta, vai } from '../router.js';
 import { trova, nomeCliente, fine, ATTIVI, STATI, motivoChiusura, turno } from '../lib/dominio.js';
 import { oggi, piuGiorni, inizioSettimana, giornoSett, minuti, adessoOra, daIso, GIORNI_BREVI, MESI, dataLunga, data as fData } from '../lib/tempo.js';
@@ -119,7 +119,7 @@ export function Agenda({ db }) {
             </div>
           </Card>
         ) : vista === 'lista' ? (
-          <Table label="Appuntamenti della settimana" rows={lista.slice((pagina - 1) * 25, pagina * 25)} rowKey={a => a.id} onRowClick={a => azioni.apriAppuntamento(a.id)}
+          <Tabella label="Appuntamenti della settimana" rows={lista.slice((pagina - 1) * 25, pagina * 25)} rowKey={a => a.id} onRowClick={a => azioni.apriAppuntamento(a.id)}
             toolbar={<div className="colonna" style={{ width: '100%' }}>{barra}<SearchInput size="card" value={q} onChange={v => { setQ(v); setPagina(1); }} placeholder="Cerca cliente o servizio" width={320} /></div>}
             columns={[
               { key: 'quando', label: 'Quando', width: 'minmax(0, 1.1fr)', render: a => <span className="num">{fData(a.data).slice(0, 5)} · {a.inizio}</span> },

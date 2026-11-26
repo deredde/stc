@@ -1,6 +1,6 @@
 // Promemoria e messaggi: cosa c'è da mandare oggi (promemoria, auguri, richiami) e cosa è partito.
 import { STC, useState, useMemo } from '../stc.js';
-import { useAzioni, telefono } from '../parts/ui.jsx';
+import { useAzioni, telefono, Tabella } from '../parts/ui.jsx';
 import { cambia, nuovoId } from '../data/store.js';
 import { vai } from '../router.js';
 import { trova, nomeCliente, componi, linkWhatsApp, linkSms, numeriCliente, ATTIVI } from '../lib/dominio.js';
@@ -95,7 +95,7 @@ export function Messaggi({ db }) {
               </List>}
           </Card>
         ) : (
-          <Table label="Messaggi mandati" rows={mandati.slice(0, 200)} rowKey={m => m.id} onRowClick={m => azioni.apriCliente(m.clienteId)}
+          <Tabella label="Messaggi mandati" rows={mandati.slice(0, 200)} rowKey={m => m.id} onRowClick={m => azioni.apriCliente(m.clienteId)}
             columns={[
               { key: 'quando', label: 'Quando', width: 'minmax(0, 1fr)', render: m => <span className="num">{fData(m.data)} · {m.ora}</span> },
               { key: 'cliente', label: 'Cliente', width: 'minmax(0, 1.6fr)', render: m => nomeCliente(trova(db.clienti, m.clienteId)) },

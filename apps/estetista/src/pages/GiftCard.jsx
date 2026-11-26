@@ -1,6 +1,6 @@
 // Gift card: vendute dalla cassa, usate alla cassa con il codice.
 import { STC, useState } from '../stc.js';
-import { useAzioni, Euro, StatoGift, VuotoFiltri, contiene } from '../parts/ui.jsx';
+import { useAzioni, Euro, StatoGift, VuotoFiltri, contiene, Tabella } from '../parts/ui.jsx';
 import { cambia } from '../data/store.js';
 import { trova, nomeCliente, statoGift } from '../lib/dominio.js';
 import { oggi, piuMesi, data as fData } from '../lib/tempo.js';
@@ -35,10 +35,10 @@ export function GiftCard({ db }) {
       filters={<FilterMenu label="Stato" value={stato} onChange={setStato} options={['Da usare', 'Usata in parte', 'Usata', 'Scaduta'].map(v => ({ value: v, label: v, count: db.giftcard.filter(x => statoGift(x, t).label === v).length }))} />}
       chips={stato ? <Chip prefix="Stato" onRemove={() => setStato('')}>{stato}</Chip> : null}
       onClearFilters={stato ? () => setStato('') : undefined}>
-      <Table label="Gift card" rows={righe} rowKey={x => x.id} onRowClick={x => setAperta(x.id)}
+      <Tabella label="Gift card" rows={righe} rowKey={x => x.id} onRowClick={x => setAperta(x.id)}
         columns={[
           { key: 'codice', label: 'Codice', width: 'minmax(0, 1.2fr)', render: x => <span className="num">{x.codice}</span> },
-          { key: 'per', label: 'Per', width: 'minmax(0, 1.6fr)', render: x => <div className="colonna" style={{ gap: 2 }}><span>{x.beneficiario || 'Senza nome'}</span><span className="caption">Regalata da {nomeCliente(trova(db.clienti, x.acquirenteId))}</span></div> },
+          { key: 'per', hideOnMobile: true, label: 'Per', width: 'minmax(0, 1.6fr)', render: x => <div className="colonna" style={{ gap: 2 }}><span>{x.beneficiario || 'Senza nome'}</span><span className="caption">Regalata da {nomeCliente(trova(db.clienti, x.acquirenteId))}</span></div> },
           { key: 'emessa', label: 'Emessa', width: 'minmax(0, .9fr)', align: 'right', hideOnMobile: true, render: x => <span className="num">{fData(x.emessa)}</span> },
           { key: 'scade', label: 'Scade', width: 'minmax(0, .9fr)', align: 'right', hideOnMobile: true, render: x => <span className="num">{fData(x.scadenza)}</span> },
           { key: 'valore', label: 'Valore', width: 'minmax(0, .9fr)', align: 'right', hideOnMobile: true, render: x => <Euro c={x.valore} /> },

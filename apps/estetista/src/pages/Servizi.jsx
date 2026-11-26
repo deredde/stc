@@ -1,6 +1,6 @@
 // Il listino dei servizi: durata, prezzo, chi li fa, se si prenotano online.
 import { STC, useState, useMemo } from '../stc.js';
-import { useAzioni, Euro, TagCategoria, VuotoFiltri, contiene } from '../parts/ui.jsx';
+import { useAzioni, Euro, TagCategoria, VuotoFiltri, contiene, Tabella } from '../parts/ui.jsx';
 import { useModulo } from '../parts/modulo.js';
 import { cambia, nuovoId } from '../data/store.js';
 import { trova, CATEGORIE, categoria } from '../lib/dominio.js';
@@ -55,14 +55,14 @@ export function Servizi({ db }) {
       </>}
       chips={filtri ? <>{cat.length > 0 && <Chip prefix="Categoria" onRemove={() => setCat([])}>{cat.length === 1 ? categoria(cat[0]).label : `${cat.length} scelte`}</Chip>}{vis && <Chip prefix="Visibilità" onRemove={() => setVis('')}>{{ attivi: 'Nel listino', online: 'Online', spenti: 'Tolti' }[vis]}</Chip>}</> : null}
       onClearFilters={filtri ? azzera : undefined} count={filtri || q ? `${righe.length} servizi` : undefined}>
-      <Table label="Servizi" rows={righe} rowKey={s => s.id} onRowClick={s => setAperto({ id: s.id })} sort={sort} onSort={setSort}
+      <Tabella label="Servizi" rows={righe} rowKey={s => s.id} onRowClick={s => setAperto({ id: s.id })} sort={sort} onSort={setSort}
         columns={[
           { key: 'nome', label: 'Servizio', width: 'minmax(0, 2.4fr)', sortable: true, render: s => <div className="colonna" style={{ gap: 2 }}><span className="forte">{s.nome}</span>{s.descrizione && <span className="caption">{s.descrizione}</span>}</div> },
           { key: 'categoria', label: 'Categoria', width: 'minmax(0, 1.2fr)', sortable: true, hideOnMobile: true, render: s => <TagCategoria v={s.categoria} /> },
           { key: 'chi', label: 'Chi lo fa', width: 'minmax(0, 1.2fr)', hideOnMobile: true, render: s => s.operatrici?.length ? <span className="secondary">{s.operatrici.map(id => trova(db.operatrici, id)?.nome).filter(Boolean).join(', ')}</span> : <span className="secondary">Tutte</span> },
-          { key: 'stato', label: 'Stato', width: 'minmax(0, 1.1fr)', render: s => !s.attivo ? <Badge tone="neutral" size="sm" icon="eye-off">Tolto</Badge> : s.online ? <Badge tone="accent" size="sm" icon="globe">Online</Badge> : <Badge tone="neutral" size="sm" icon="store">Solo al banco</Badge> },
+          { key: 'stato', hideOnMobile: true, label: 'Stato', width: 'minmax(0, 1.1fr)', render: s => !s.attivo ? <Badge tone="neutral" size="sm" icon="eye-off">Tolto</Badge> : s.online ? <Badge tone="accent" size="sm" icon="globe">Online</Badge> : <Badge tone="neutral" size="sm" icon="store">Solo al banco</Badge> },
           { key: 'fatti', label: 'Ultimi 90 gg', width: 'minmax(0, .9fr)', align: 'right', sortable: true, hideOnMobile: true, mono: true, render: s => quanti.get(s.id) || 0 },
-          { key: 'durata', label: 'Durata', width: 'minmax(0, .8fr)', align: 'right', sortable: true, render: s => <span className="num">{s.durata} min</span> },
+          { key: 'durata', hideOnMobile: true, label: 'Durata', width: 'minmax(0, .8fr)', align: 'right', sortable: true, render: s => <span className="num">{s.durata} min</span> },
           { key: 'prezzo', label: 'Prezzo', width: 'minmax(0, .9fr)', align: 'right', sortable: true, render: s => <Euro c={s.prezzo} /> },
         ]}
         actions={s => <Menu items={[

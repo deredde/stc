@@ -1,6 +1,6 @@
 // Lo staff: chi lavora, quando, cosa fa e quanto ha prodotto nel mese.
 import { STC, useState, useMemo } from '../stc.js';
-import { Euro, TagOperatrice } from '../parts/ui.jsx';
+import { Euro, TagOperatrice, Tabella } from '../parts/ui.jsx';
 import { useModulo } from '../parts/modulo.js';
 import { cambia, nuovoId } from '../data/store.js';
 import { trova, report } from '../lib/dominio.js';
@@ -37,16 +37,16 @@ export function Staff({ db }) {
     <>
       <PageHeader title="Staff" subtitle={`${db.operatrici.filter(o => o.attiva !== false).length} operatrici · numeri del mese in corso`} actions={<Button variant="primary" icon="user-plus" onClick={() => setAperto({})}>Nuova operatrice</Button>} />
       <PageBody>
-        <Table label="Operatrici" rows={db.operatrici} rowKey={o => o.id} onRowClick={o => setAperto({ id: o.id })}
+        <Tabella label="Operatrici" rows={db.operatrici} rowKey={o => o.id} onRowClick={o => setAperto({ id: o.id })}
           columns={[
             { key: 'nome', label: 'Operatrice', width: 'minmax(0, 2fr)', render: o => <CellPerson avatar={<Avatar name={`${o.nome} ${o.cognome}`} size={32} />} name={`${o.nome} ${o.cognome}`} meta={o.ruolo} /> },
             { key: 'colore', label: 'In agenda', width: 'minmax(0, .9fr)', hideOnMobile: true, render: o => <TagOperatrice op={o} /> },
             { key: 'orari', label: 'Quando lavora', width: 'minmax(0, 1.8fr)', hideOnMobile: true, render: o => <span className="secondary">{giorniLavoro(o)}</span> },
             { key: 'oggi', label: 'Oggi', width: 'minmax(0, .7fr)', align: 'right', mono: true, hideOnMobile: true, render: o => db.appuntamenti.filter(a => a.data === t && a.operatriceId === o.id && a.stato !== 'annullato').length },
-            { key: 'mese', label: 'Trattamenti del mese', width: 'minmax(0, 1fr)', align: 'right', mono: true, render: o => r.perOperatrice.get(o.id)?.servizi || 0 },
+            { key: 'mese', hideOnMobile: true, label: 'Trattamenti del mese', width: 'minmax(0, 1fr)', align: 'right', mono: true, render: o => r.perOperatrice.get(o.id)?.servizi || 0 },
             { key: 'incasso', label: 'Incasso del mese', width: 'minmax(0, 1fr)', align: 'right', render: o => <Euro c={r.perOperatrice.get(o.id)?.valore || 0} /> },
             { key: 'prov', label: 'Provvigione', width: 'minmax(0, 1fr)', align: 'right', hideOnMobile: true, render: o => o.provvigione ? <span className="num">{euro(Math.round((r.perOperatrice.get(o.id)?.valore || 0) * o.provvigione / 100))}</span> : <span className="testo-tenue">—</span> },
-            { key: 'stato', label: 'Stato', width: 'minmax(0, .9fr)', render: o => o.attiva !== false ? <Badge tone="success" size="sm">Attiva</Badge> : <Badge tone="neutral" size="sm">Non attiva</Badge> },
+            { key: 'stato', hideOnMobile: true, label: 'Stato', width: 'minmax(0, .9fr)', render: o => o.attiva !== false ? <Badge tone="success" size="sm">Attiva</Badge> : <Badge tone="neutral" size="sm">Non attiva</Badge> },
           ]}
           actions={o => <Menu items={[
             { id: 'modifica', label: 'Modifica orari e servizi', icon: 'pencil', onSelect: () => setAperto({ id: o.id }) },

@@ -83,3 +83,12 @@ export const csv = (righe) => righe.map(r => r.map(v => {
   const s = String(v ?? '');
   return /[;"\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 }).join(';')).join('\n');
+
+/**
+ * La tabella di STC che, sotto i 1000 px (tablet in verticale e telefono), tiene solo le colonne
+ * che contano: quelle segnate hideOnMobile spariscono già dal tablet, così le righe non si schiacciano.
+ */
+export function Tabella({ columns, ...props }) {
+  const stretto = useTelefono(1000);
+  return <STC.Table columns={stretto ? columns.filter(c => !c.hideOnMobile) : columns} {...props} />;
+}

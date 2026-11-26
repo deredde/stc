@@ -1,6 +1,6 @@
 // Scheda della cliente (pattern Scheda di dettaglio).
 import { STC, useState, useMemo } from '../stc.js';
-import { useAzioni, Euro, StatoAppuntamento, StatoPacchetto, StatoVendita, TagOperatrice, telefono } from '../parts/ui.jsx';
+import { useAzioni, Euro, StatoAppuntamento, StatoPacchetto, StatoVendita, TagOperatrice, telefono, Tabella } from '../parts/ui.jsx';
 import { cambia, nuovoId } from '../data/store.js';
 import { vai } from '../router.js';
 import { trova, nomeCliente, numeriCliente, segnaliCliente, fine, linkWhatsApp, metodo as fMetodo, ATTIVI, STATI } from '../lib/dominio.js';
@@ -106,7 +106,7 @@ function Scheda({ db, c }) {
 
   const tabelle = {
     appuntamenti: (
-      <Table label="Appuntamenti" rows={app} rowKey={a => a.id} onRowClick={a => azioni.apriAppuntamento(a.id)}
+      <Tabella label="Appuntamenti" rows={app} rowKey={a => a.id} onRowClick={a => azioni.apriAppuntamento(a.id)}
         columns={[
           { key: 'quando', label: 'Quando', width: 'minmax(0, 1.2fr)', render: a => <span className="num">{fData(a.data)} · {a.inizio}</span> },
           { key: 'servizio', label: 'Servizio', width: 'minmax(0, 2fr)', render: a => trova(db.servizi, a.servizioId)?.nome },
@@ -116,19 +116,19 @@ function Scheda({ db, c }) {
         empty={<EmptyState illustration="history-empty" title="Nessun appuntamento ancora" action={<Button icon="calendar-plus" onClick={() => azioni.nuovoAppuntamento({ clienteId: c.id })}>Fissa un appuntamento</Button>}>Gli appuntamenti fatti e da fare compaiono qui.</EmptyState>} />
     ),
     pacchetti: (
-      <Table label="Pacchetti" rows={pacchetti} rowKey={p => p.id}
+      <Tabella label="Pacchetti" rows={pacchetti} rowKey={p => p.id}
         columns={[
           { key: 'nome', label: 'Pacchetto', width: 'minmax(0, 2fr)', render: p => p.nome },
           { key: 'sedute', label: 'Sedute', width: 'minmax(0, 1.4fr)', render: p => <SegmentedProgress value={p.usate} total={p.sedute} label={`${p.usate} di ${p.sedute}`} showValue /> },
           { key: 'acq', label: 'Comprato', width: 'minmax(0, 1fr)', align: 'right', hideOnMobile: true, render: p => <span className="num">{fData(p.acquistato)}</span> },
-          { key: 'scad', label: 'Scade', width: 'minmax(0, 1fr)', align: 'right', render: p => <span className="num">{fData(p.scadenza)}</span> },
+          { key: 'scad', hideOnMobile: true, label: 'Scade', width: 'minmax(0, 1fr)', align: 'right', render: p => <span className="num">{fData(p.scadenza)}</span> },
           { key: 'stato', label: 'Stato', width: 'minmax(0, 1fr)', render: p => <StatoPacchetto pc={p} /> },
         ]}
         toolbar={<div className="riga riga--fine" style={{ width: '100%' }}><Button size="card" icon="ticket" onClick={() => azioni.incassa({ clienteId: c.id })}>Vendi un pacchetto</Button></div>}
         empty={<EmptyState illustration="orders-first" title="Nessun pacchetto comprato" action={<Button icon="ticket" onClick={() => azioni.incassa({ clienteId: c.id })}>Vendi un pacchetto</Button>}>I pacchetti di sedute che compra compaiono qui, con le sedute che restano.</EmptyState>} />
     ),
     pagamenti: (
-      <Table label="Pagamenti" rows={vendite} rowKey={v => v.id} onRowClick={v => azioni.apriRicevuta(v.id)}
+      <Tabella label="Pagamenti" rows={vendite} rowKey={v => v.id} onRowClick={v => azioni.apriRicevuta(v.id)}
         columns={[
           { key: 'data', label: 'Data', width: 'minmax(0, 1fr)', render: v => <span className="num">{fData(v.data)}</span> },
           { key: 'cosa', label: 'Cosa', width: 'minmax(0, 2.4fr)', render: v => v.righe.map(r => r.nome).join(', ') },

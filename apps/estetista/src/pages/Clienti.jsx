@@ -1,6 +1,6 @@
 // Elenco delle clienti (pattern Elenco): ricerca, filtri, tabella, selezione.
 import { STC, useState, useMemo } from '../stc.js';
-import { useAzioni, Euro, CellaCliente, VuotoFiltri, contiene, scarica, csv, telefono } from '../parts/ui.jsx';
+import { useAzioni, Euro, CellaCliente, VuotoFiltri, contiene, scarica, csv, telefono, Tabella } from '../parts/ui.jsx';
 import { nomeCliente, numeriCliente, segnaliCliente, linkWhatsApp } from '../lib/dominio.js';
 import { data as fData, oggi } from '../lib/tempo.js';
 import { euro } from '../lib/soldi.js';
@@ -75,11 +75,11 @@ export function Clienti({ db }) {
           <Button size="card" icon="download" onClick={() => esporta(righe.filter(r => scelte.includes(r.c.id)))}>Esporta</Button>
         </SelectionBar>
       )}
-      <Table label="Clienti" rows={visibili} rowKey={r => r.c.id} onRowClick={r => azioni.apriCliente(r.c.id)}
+      <Tabella label="Clienti" rows={visibili} rowKey={r => r.c.id} onRowClick={r => azioni.apriCliente(r.c.id)}
         selectable selected={scelte} onSelect={setScelte} sort={sort} onSort={s => { setSort(s); setPagina(1); }}
         columns={[
           { key: 'nome', label: 'Cliente', width: 'minmax(0, 2.2fr)', sortable: true, render: r => <CellaCliente db={db} id={r.c.id} /> },
-          { key: 'segnali', label: 'Segnali', width: 'minmax(0, 1.6fr)', render: r => <div className="riga">{r.s.slice(0, 2).map(s => <Badge key={s.codice} tone={s.tone} size="sm">{s.label}</Badge>)}{(r.c.tag || []).includes('VIP') && <Badge tone="accent" size="sm" icon="star">VIP</Badge>}</div> },
+          { key: 'segnali', hideOnMobile: true, label: 'Segnali', width: 'minmax(0, 1.6fr)', render: r => <div className="riga">{r.s.slice(0, 2).map(s => <Badge key={s.codice} tone={s.tone} size="sm">{s.label}</Badge>)}{(r.c.tag || []).includes('VIP') && <Badge tone="accent" size="sm" icon="star">VIP</Badge>}</div> },
           { key: 'ultima', label: 'Ultima visita', width: 'minmax(0, 1fr)', align: 'right', sortable: true, hideOnMobile: true, render: r => r.n.ultima ? <span className="num">{fData(r.n.ultima)}</span> : <span className="testo-tenue">Mai</span> },
           { key: 'visite', label: 'Visite', width: 'minmax(0, .7fr)', align: 'right', sortable: true, hideOnMobile: true, mono: true, render: r => r.n.visite },
           { key: 'speso', label: 'Speso', width: 'minmax(0, 1fr)', align: 'right', sortable: true, hideOnMobile: true, render: r => <Euro c={r.n.speso} /> },

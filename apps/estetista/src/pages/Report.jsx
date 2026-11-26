@@ -1,6 +1,6 @@
 // Report (pattern Report): il periodo, i numeri che contano, un grafico per domanda, poi il dettaglio.
 import { STC, useState, useMemo } from '../stc.js';
-import { Euro, scarica, csv } from '../parts/ui.jsx';
+import { Euro, scarica, csv, Tabella } from '../parts/ui.jsx';
 import { trova, report, metodo as fMetodo, categoria } from '../lib/dominio.js';
 import { oggi, piuGiorni, giorniTra, inizioSettimana, daIso, data as fData } from '../lib/tempo.js';
 import { euro, euroTondo, percento } from '../lib/soldi.js';
@@ -75,10 +75,10 @@ export function Report({ db }) {
               </div>
             </Card>
           </div>
-          <Table label="Lo staff nel periodo" rows={staff} rowKey={s => s.o.id}
+          <Tabella label="Lo staff nel periodo" rows={staff} rowKey={s => s.o.id}
             columns={[
               { key: 'nome', label: 'Operatrice', width: 'minmax(0, 1.8fr)', render: s => `${s.o.nome} ${s.o.cognome}` },
-              { key: 'n', label: 'Trattamenti', width: 'minmax(0, 1fr)', align: 'right', mono: true, render: s => s.x.servizi },
+              { key: 'n', hideOnMobile: true, label: 'Trattamenti', width: 'minmax(0, 1fr)', align: 'right', mono: true, render: s => s.x.servizi },
               { key: 'ore', label: 'Ore in cabina', width: 'minmax(0, 1fr)', align: 'right', hideOnMobile: true, render: s => <span className="num">{(s.min / 60).toFixed(1).replace('.', ',')} h</span> },
               { key: 'orario', label: 'Incasso all\'ora', width: 'minmax(0, 1fr)', align: 'right', hideOnMobile: true, render: s => <Euro c={s.min ? Math.round(s.x.valore / (s.min / 60)) : 0} /> },
               { key: 'valore', label: 'Incasso', width: 'minmax(0, 1fr)', align: 'right', render: s => <Euro c={s.x.valore} /> },

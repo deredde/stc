@@ -1,6 +1,6 @@
 // Cassa: gli incassi del giorno (o del periodo), la chiusura e i rimborsi.
 import { STC, useState, useMemo } from '../stc.js';
-import { useAzioni, Euro, StatoVendita, CellaCliente, scarica, csv } from '../parts/ui.jsx';
+import { useAzioni, Euro, StatoVendita, CellaCliente, scarica, csv, Tabella } from '../parts/ui.jsx';
 import { cambia } from '../data/store.js';
 import { trova, nomeCliente, METODI, metodo as fMetodo, rimborsaVendita } from '../lib/dominio.js';
 import { oggi, piuGiorni, inizioSettimana, data as fData } from '../lib/tempo.js';
@@ -63,7 +63,7 @@ export function Cassa({ db }) {
           <StatTile title="Totale" value={euro(totale)} icon="wallet" note={`${pagate.length} pagamenti${rimborsate.length ? ` · ${rimborsate.length} rimborsati` : ''}`} />
           {perMetodo.filter(m => db.impostazioni.pagamenti.metodi[m.value]).slice(0, 3).map(m => <StatTile key={m.value} title={m.label} value={euro(m.valore)} icon={m.icon} note={totale ? `${Math.round(m.valore / totale * 100)} % del totale` : 'Nessun incasso'} />)}
         </div>
-        <Table label="Movimenti di cassa" rows={vendite.slice((pagina - 1) * 25, pagina * 25)} rowKey={v => v.id} onRowClick={v => azioni.apriRicevuta(v.id)}
+        <Tabella label="Movimenti di cassa" rows={vendite.slice((pagina - 1) * 25, pagina * 25)} rowKey={v => v.id} onRowClick={v => azioni.apriRicevuta(v.id)}
           toolbar={<CardToolbar start={<DateRangePicker size="card" value={periodo} onChange={x => { if (x) { setPeriodo(x); setPagina(1); } }} presets={presets} today={t} label="Periodo" />} end={<FilterMenu size="card" label="Metodo" multiple value={metodi} onChange={setMetodi} options={[...METODI, { value: 'pacchetto', label: 'Pacchetto' }, { value: 'giftcard', label: 'Gift card' }].map(m => ({ value: m.value, label: m.label }))} />} />}
           columns={[
             { key: 'ora', label: giornoSolo ? 'Ora' : 'Quando', width: 'minmax(0, .9fr)', render: v => <span className="num">{giornoSolo ? v.ora : `${fData(v.data).slice(0, 5)} ${v.ora}`}</span> },

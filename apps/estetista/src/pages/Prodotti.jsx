@@ -1,6 +1,6 @@
 // Prodotti in vendita e magazzino: giacenze, scorta minima, carichi.
 import { STC, useState } from '../stc.js';
-import { Euro, VuotoFiltri, contiene, scarica, csv } from '../parts/ui.jsx';
+import { Euro, VuotoFiltri, contiene, scarica, csv, Tabella } from '../parts/ui.jsx';
 import { useModulo } from '../parts/modulo.js';
 import { cambia, nuovoId } from '../data/store.js';
 import { trova } from '../lib/dominio.js';
@@ -57,14 +57,14 @@ export function Prodotti({ db }) {
         <StatTile title="Venduti negli ultimi 30 giorni" value={`${venduti30} pezzi`} icon="shopping-bag" note="Dalla cassa" />
         <StatTile title="Da riordinare" value={String(daOrdinare.length)} icon="triangle-alert" tone={daOrdinare.length ? 'warning' : undefined} note="Sotto la scorta minima" onClick={() => setStato('riordino')} />
       </div>
-      <Table label="Prodotti" rows={righe} rowKey={p => p.id} onRowClick={p => setAperto({ id: p.id })}
+      <Tabella label="Prodotti" rows={righe} rowKey={p => p.id} onRowClick={p => setAperto({ id: p.id })}
         columns={[
           { key: 'nome', label: 'Prodotto', width: 'minmax(0, 2.4fr)', render: p => <div className="colonna" style={{ gap: 2 }}><span className="forte">{p.nome}</span><span className="caption">{p.marca} · <span className="num">{p.codice}</span></span></div> },
           { key: 'cat', label: 'Categoria', width: 'minmax(0, .9fr)', hideOnMobile: true, render: p => p.categoria },
-          { key: 'stato', label: 'Magazzino', width: 'minmax(0, 1.2fr)', render: p => { const s = scorta(p); return <Badge tone={s.tone} size="sm" icon={s.icon}>{s.label}</Badge>; } },
+          { key: 'stato', hideOnMobile: true, label: 'Magazzino', width: 'minmax(0, 1.2fr)', render: p => { const s = scorta(p); return <Badge tone={s.tone} size="sm" icon={s.icon}>{s.label}</Badge>; } },
           { key: 'giacenza', label: 'Pezzi', width: 'minmax(0, .7fr)', align: 'right', mono: true, render: p => p.giacenza },
           { key: 'soglia', label: 'Minimo', width: 'minmax(0, .7fr)', align: 'right', mono: true, hideOnMobile: true, render: p => p.soglia },
-          { key: 'prezzo', label: 'Prezzo', width: 'minmax(0, .9fr)', align: 'right', render: p => <Euro c={p.prezzo} /> },
+          { key: 'prezzo', hideOnMobile: true, label: 'Prezzo', width: 'minmax(0, .9fr)', align: 'right', render: p => <Euro c={p.prezzo} /> },
         ]}
         actions={p => <div className="riga">
           <Button size="row" icon="package-plus" onClick={() => { setCarico(p.id); setQta(Math.max(1, p.soglia * 2 - p.giacenza)); setNotaCarico(''); }}>Carica</Button>

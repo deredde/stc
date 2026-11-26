@@ -1,6 +1,6 @@
 // Pacchetti: quelli venduti alle clienti (con le sedute che restano) e il catalogo da vendere.
 import { STC, useState, useMemo } from '../stc.js';
-import { useAzioni, Euro, StatoPacchetto, CellaCliente, VuotoFiltri, contiene } from '../parts/ui.jsx';
+import { useAzioni, Euro, StatoPacchetto, CellaCliente, VuotoFiltri, contiene, Tabella } from '../parts/ui.jsx';
 import { useModulo } from '../parts/modulo.js';
 import { cambia, nuovoId } from '../data/store.js';
 import { trova, nomeCliente, statoPacchetto } from '../lib/dominio.js';
@@ -57,13 +57,13 @@ export function Pacchetti({ db }) {
               <StatTile title="Valore ancora da godere" value={euro(valore)} icon="wallet" note="Già incassato, sedute non ancora fatte" />
               <StatTile title="In scadenza entro 30 giorni" value={String(db.pacchettiClienti.filter(p => statoPacchetto(p, t).codice === 'scadenza').length)} icon="clock" tone="warning" note="Ricordalo alle clienti" onClick={() => setStati(['scadenza'])} />
             </div>
-            <Table label="Pacchetti venduti" rows={venduti} rowKey={r => r.p.id} onRowClick={r => azioni.apriCliente(r.p.clienteId)}
+            <Tabella label="Pacchetti venduti" rows={venduti} rowKey={r => r.p.id} onRowClick={r => azioni.apriCliente(r.p.clienteId)}
               toolbar={<CardToolbar start={<SearchInput size="card" value={q} onChange={setQ} placeholder="Cerca cliente o pacchetto" width={300} />} end={<FilterMenu size="card" label="Stato" multiple value={stati} onChange={setStati} options={STATI_PC.map(o => ({ ...o, count: db.pacchettiClienti.filter(p => statoPacchetto(p, t).codice === o.value).length }))} />} />}
               columns={[
                 { key: 'cliente', label: 'Cliente', width: 'minmax(0, 1.8fr)', render: r => <CellaCliente db={db} id={r.p.clienteId} /> },
                 { key: 'nome', label: 'Pacchetto', width: 'minmax(0, 1.8fr)', hideOnMobile: true, render: r => r.p.nome },
                 { key: 'sedute', label: 'Sedute fatte', width: 'minmax(0, 1.5fr)', render: r => <SegmentedProgress value={r.p.usate} total={r.p.sedute} label={`${r.p.usate} di ${r.p.sedute}`} showValue /> },
-                { key: 'scade', label: 'Scade', width: 'minmax(0, .9fr)', align: 'right', render: r => <span className="num">{fData(r.p.scadenza)}</span> },
+                { key: 'scade', hideOnMobile: true, label: 'Scade', width: 'minmax(0, .9fr)', align: 'right', render: r => <span className="num">{fData(r.p.scadenza)}</span> },
                 { key: 'stato', label: 'Stato', width: 'minmax(0, 1.1fr)', render: r => <StatoPacchetto pc={r.p} /> },
               ]}
               actions={r => <Menu items={[
@@ -77,11 +77,11 @@ export function Pacchetti({ db }) {
                 : <VuotoFiltri onAzzera={() => { setStati([]); setQ(''); }} cosa="pacchetto" />} />
           </>
         ) : (
-          <Table label="Catalogo dei pacchetti" rows={db.pacchetti} rowKey={p => p.id} onRowClick={p => setAperto({ id: p.id })}
+          <Tabella label="Catalogo dei pacchetti" rows={db.pacchetti} rowKey={p => p.id} onRowClick={p => setAperto({ id: p.id })}
             columns={[
               { key: 'nome', label: 'Pacchetto', width: 'minmax(0, 2.2fr)', render: p => <div className="colonna" style={{ gap: 2 }}><span className="forte">{p.nome}</span>{p.descrizione && <span className="caption">{p.descrizione}</span>}</div> },
               { key: 'servizio', label: 'Servizio', width: 'minmax(0, 1.6fr)', hideOnMobile: true, render: p => trova(db.servizi, p.servizioId)?.nome || 'Servizio tolto' },
-              { key: 'sedute', label: 'Sedute', width: 'minmax(0, .7fr)', align: 'right', mono: true, render: p => p.sedute },
+              { key: 'sedute', hideOnMobile: true, label: 'Sedute', width: 'minmax(0, .7fr)', align: 'right', mono: true, render: p => p.sedute },
               { key: 'validita', label: 'Validità', width: 'minmax(0, .9fr)', align: 'right', hideOnMobile: true, render: p => <span className="num">{p.validitaMesi} mesi</span> },
               { key: 'risparmio', label: 'Risparmio', width: 'minmax(0, 1fr)', align: 'right', hideOnMobile: true, render: p => { const s = trova(db.servizi, p.servizioId); const r = s ? s.prezzo * p.sedute - p.prezzo : 0; return r > 0 ? <span className="num sconto">−{euro(r).replace('€ ', '€ ')}</span> : <span className="testo-tenue">—</span>; } },
               { key: 'prezzo', label: 'Prezzo', width: 'minmax(0, .9fr)', align: 'right', render: p => <Euro c={p.prezzo} /> },
