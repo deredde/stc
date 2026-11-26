@@ -1,0 +1,52 @@
+/* Le classi della scala di STC (README › Tipografia) e qualche aiuto di impaginazione.
+   Solo token: nessun colore, raggio, spazio o durata scritto a mano (V1). */
+html, body, #app { height: 100%; margin: 0; }
+body { background: var(--page-bg); color: var(--text-primary); font-family: var(--font-text); font-size: 14px; -webkit-font-smoothing: antialiased; }
+
+.num { font-family: var(--font-num); font-variant-numeric: tabular-nums; font-weight: 500; white-space: nowrap; }
+.amount { font-family: var(--font-num); font-variant-numeric: tabular-nums; font-size: 24px; font-weight: 500; white-space: nowrap; }
+.num-kpi { font-family: var(--font-num); font-variant-numeric: tabular-nums; font-size: 30px; font-weight: 500; }
+.secondary { font-size: 13px; color: var(--text-secondary); line-height: 1.45; }
+.caption { font-size: 12px; color: var(--text-tertiary); line-height: 1.4; }
+.overline { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+.card-title { font-size: 16px; font-weight: 600; }
+.body { font-size: 14px; line-height: 1.5; color: var(--text-primary); }
+.testo-tenue { color: var(--text-secondary); }
+.destra { text-align: right; }
+.forte { font-weight: 600; }
+.riga { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; }
+.riga--larga { justify-content: space-between; }
+.riga--fine { justify-content: flex-end; }
+.colonna { display: flex; flex-direction: column; gap: var(--sp-3); }
+.colonna--larga { gap: var(--sp-4); }
+.griglia-2 { display: grid; gap: var(--sp-4); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.griglia-3 { display: grid; gap: var(--sp-4); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.griglia-4 { display: grid; gap: var(--sp-4); grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.griglia-campi { display: grid; gap: var(--sp-4); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.span-2 { grid-column: 1 / -1; }
+@media (max-width: 1100px) { .griglia-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .griglia-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 720px) { .griglia-2, .griglia-3, .griglia-4, .griglia-campi { grid-template-columns: minmax(0, 1fr); } }
+
+.divisore { height: 1px; background: var(--divider); border: 0; margin: var(--sp-1) 0; }
+.blocco-tenue { background: var(--surface-sunken); border-radius: var(--r-12); padding: var(--sp-3) var(--sp-4); }
+.totale-riga { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-3); font-size: 14px; }
+.totale-riga--grande { font-size: 16px; font-weight: 600; padding-top: var(--sp-2); }
+.sconto { color: var(--success-fg); }
+.testo-lungo { white-space: pre-wrap; line-height: 1.5; font-size: 14px; color: var(--text-secondary); margin: 0; }
+.punto { display: inline-block; width: 8px; height: 8px; border-radius: var(--r-full); flex: none; }
+
+/* Agenda: la testata del calendario e la lista del giorno su telefono. */
+.agenda-barra { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; }
+.agenda-periodo { font-size: 18px; font-weight: 600; margin: 0 var(--sp-2); }
+.agenda-spazio { flex: 1; }
+.orari { display: grid; gap: var(--sp-2); grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); }
+
+/* L'app per le clienti: centrata e larga come un telefono anche su computer. */
+.app-clienti { min-height: 100%; display: flex; justify-content: center; background: var(--page-bg); }
+.app-clienti > * { width: 100%; max-width: 440px; }
+
+@media print {
+  .stc-shell__side, .stc-sidebar, .stc-bottomnav, .no-print { display: none !important; }
+}
+.largo-2 { grid-column: span 2; min-width: 0; }
+@media (max-width: 1100px) { .griglia-3 > .largo-2 { grid-column: 1 / -1; } }
