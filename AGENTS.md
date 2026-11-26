@@ -15,8 +15,13 @@ Questa repo è **STC (Standard Template Construct)**, un design system per gesti
 
 Non inventare props, componenti o token: se non li trovi in `index.d.ts` o in `tokens.css`, non esistono.
 
+### All'inizio di un progetto nuovo
+
+Prima di disegnare la prima schermata, guarda se il progetto ha già una configurazione (`stc-config.md`, o «Configurazione STC» nelle istruzioni del progetto). Se non c'è, fai le **sei domande di `configurare.md`**, tutte in un messaggio: cosa costruisci, dove si usa, che colori, chiaro o scuro, quanta marca, nome e logo. Chiedi solo quelle a cui la persona non ha già risposto. Se dice «fai tu», usa le risposte di serie e dillo in una riga. Poi scrivi `stc-config.md` e rileggilo prima di ogni schermata.
+
 ## 2. Come costruisci
 
+- Segui `stc-config.md`: tema, modo, quanta marca e da quali componenti partire.
 - Parti dalla pagina tipo più vicina (`ListPage`, `DetailPage`, `SettingsPage`, `WizardPage`, dentro `AppShell`) e dal suo pattern in `pattern.md`.
 - Usa i componenti di STC così come sono. Niente controlli nativi, niente `div` cliccabili, niente copie dei componenti nelle pagine.
 - Solo token: nessun colore, raggio, ombra, spazio o durata scritto a mano. I semantici (`text-secondary`, `surface`), non le scale.
@@ -83,6 +88,7 @@ Ricontrolla quello che hai scritto:
 | Percorso | Cosa c'è |
 |---|---|
 | `regole.md` | Le regole con il perché, una per codice |
+| `configurare.md` | Le sei domande iniziali e cosa vuol dire ogni risposta |
 | `componenti.md` | Indice dei componenti per gruppo, con le regole che li riguardano (generato) |
 | `README.md` · `default.md` · `pattern.md` · `adattare.md` | La guida completa |
 | `tokens.json` · `tokens.css` | Tutti i valori, chiaro e scuro |

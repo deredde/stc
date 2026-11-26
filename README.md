@@ -20,6 +20,7 @@ Design system neutro per gestionali e per le app che li accompagnano: token, olt
 | `components/<Nome>/` | Scheda (`README.md`) e anteprima (`preview.html`) di ogni componente |
 | `assets/Logo/` | Il logo in SVG: colonna, breve, riga, simbolo, favicon |
 | `adattare.md` · `pattern.md` · `default.md` | Adattare STC a un progetto, pattern di pagina, regole di default |
+| `configurare.md` | Le sei domande con cui un'AI imposta STC all'inizio di un progetto |
 | `regole.md` · `componenti.md` | Tutte le regole con il perché; indice dei componenti con le regole che li riguardano |
 | `CLAUDE.md` · `AGENTS.md` · `llms.txt` | Istruzioni per Claude e le altre AI che costruiscono con STC |
 
@@ -44,8 +45,10 @@ Design system neutro per gestionali e per le app che li accompagnano: token, olt
 
 STC ha le istruzioni per le AI già pronte: `CLAUDE.md` (per Claude) e `AGENTS.md` (lo stesso testo, per Cursor, Codex, Copilot e le altre). Dicono cosa leggere, come costruire e cosa fare quando una richiesta va contro STC: l'AI lo segnala con il codice della regola e il perché (da `regole.md`), propone la via STC e, se insisti, lo fa e segna la deroga nel codice.
 
+All'inizio di un progetto nuovo l'AI fa sei domande veloci (`configurare.md`): cosa costruisci, dove si usa, che colori, chiaro o scuro, quanta marca, nome e logo. Con le risposte imposta tema e componenti e le scrive in `stc-config.md`.
+
 - **Claude Code, Cursor, Codex:** clona la repo nel progetto o accanto. `CLAUDE.md` e `AGENTS.md` si leggono da soli.
-- **Progetto Claude (claude.ai):** aggiungi la repo da GitHub alle conoscenze del progetto, con almeno `CLAUDE.md`, `regole.md`, `componenti.md`, `README.md`, `default.md`, `pattern.md`, `adattare.md` e `components/index.d.ts`. Poi incolla questo nelle istruzioni del progetto:
+- **Progetto Claude (claude.ai):** aggiungi la repo da GitHub alle conoscenze del progetto, con almeno `CLAUDE.md`, `configurare.md`, `regole.md`, `componenti.md`, `README.md`, `default.md`, `pattern.md`, `adattare.md` e `components/index.d.ts`. Poi incolla questo nelle istruzioni del progetto:
 
 ```
 Costruiamo con il design system STC, che è nelle conoscenze del progetto.
@@ -54,6 +57,7 @@ componenti, props e token che esistono in STC.
 Se ti chiedo qualcosa che va contro una regola di STC, prima di farlo dimmelo
 con il codice della regola, il perché e la soluzione STC. Se insisto, fallo e
 segna la deroga nel codice con un commento «deroga STC <codice>».
+Se il progetto è nuovo, prima fammi le domande di configurare.md.
 ```
 
 ---
