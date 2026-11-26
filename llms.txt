@@ -1,6 +1,6 @@
 # STC · Standard Template Construct
 
-> Design system per gestionali e per le app che li accompagnano: token, oltre 160 componenti React (window.STC), illustrazioni animate, loader, logo e regole di scrittura in italiano. Tema chiaro e scuro. Chi costruisce con STC deve seguire le regole di regole.md: quando una richiesta va contro una regola, l'AI lo segnala con il codice e il perché, propone la via STC e, se la persona insiste, lo fa e segna la deroga.
+> Design system per gestionali e per le app che li accompagnano: token, oltre 250 componenti React (window.STC), illustrazioni animate, loader, logo e regole di scrittura in italiano. Tema chiaro e scuro. Chi costruisce con STC deve seguire le regole di regole.md: quando una richiesta va contro una regola, l'AI lo segnala con il codice e il perché, propone la via STC e, se la persona insiste, lo fa e segna la deroga.
 
 Leggi prima le istruzioni per le AI, poi le regole. Le props esatte stanno in index.d.ts: non inventarne.
 

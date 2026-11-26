@@ -2067,3 +2067,823 @@ export declare const DEFAULTS: {
     readonly dialog: { size: 'confirm' };
     readonly waits: { none: 300; phrase: 2000; slow: 10000 };
 };
+
+// ---------- componenti complessi (99)
+/** Isola eventi. */
+export declare function EventIsland(props: {
+    events?: any;
+    timeout?: any;
+    autoOpen?: any;
+    onExpire?: any;
+    onResolve?: any;
+    onDismiss?: any;
+    position?: any;
+    placement?: any;
+    label?: any;
+    defaultOpen?: any;
+    state?: any;
+}): any;
+/** Card articolo. */
+export declare function ArticleCard(props: {
+    variant?: any;
+    image?: any;
+    imageTone?: any;
+    category?: any;
+    title?: any;
+    excerpt?: any;
+    author?: any;
+    minutes?: any;
+    date?: any;
+    isNew?: any;
+    saved?: any;
+    onSave?: any;
+    progress?: any;
+    href?: any;
+    loading?: any;
+}): any;
+/** Card evento. */
+export declare function EventCard(props: {
+    variant?: any;
+    date?: any;
+    time?: any;
+    title?: any;
+    place?: any;
+    online?: any;
+    people?: any;
+    seats?: any;
+    capacity?: any;
+    status?: any;
+    image?: any;
+    onJoin?: any;
+    onLeave?: any;
+    loading?: any;
+}): any;
+/** Card prodotto. */
+export declare function ProductCard(props: {
+    variant?: any;
+    name?: any;
+    brand?: any;
+    price?: any;
+    was?: any;
+    image?: any;
+    image2?: any;
+    imageTone?: any;
+    colors?: any;
+    rating?: any;
+    reviews?: any;
+    stock?: any;
+    badge?: any;
+    loading?: any;
+    onAdd?: any;
+}): any;
+/** Stelle di valutazione. */
+export declare function Stars(props: {
+    value?: any;
+    count?: any;
+    size?: any;
+}): any;
+/** Card persona. */
+export declare function PersonCard(props: {
+    variant?: any;
+    name?: any;
+    role?: any;
+    team?: any;
+    email?: any;
+    phone?: any;
+    presence?: any;
+    until?: any;
+    tags?: any;
+    src?: any;
+    loading?: any;
+    me?: any;
+}): any;
+/** Card testimonianza. */
+export declare function TestimonialCard(props: {
+    variant?: any;
+    quote?: any;
+    author?: any;
+    role?: any;
+    company?: any;
+    rating?: any;
+    video?: any;
+    loading?: any;
+    clamp?: any;
+}): any;
+/** Card transazione. */
+export declare function TransactionList(props: {
+    groups?: any;
+    loading?: any;
+    empty?: any;
+    variant?: any;
+}): any;
+/** Carta di pagamento 3D. */
+export declare function PaymentCard3D(props: {
+    holder?: any;
+    last4?: any;
+    number?: any;
+    exp?: any;
+    cvc?: any;
+    network?: any;
+    finish?: any;
+    kind?: any;
+    state?: any;
+    loading?: any;
+    tilt?: any;
+}): any;
+/** Pila di card da scorrere. */
+export declare function SwipeStack(props: {
+    items?: any;
+    render?: any;
+    onDecide?: any;
+    leftLabel?: any;
+    rightLabel?: any;
+    empty?: any;
+}): any;
+/** Card snippet di codice. */
+export declare function CodeSnippet(props: {
+    tabs?: any;
+    file?: any;
+    theme?: any;
+    highlight?: any;
+    wrap?: any;
+    loading?: any;
+    maxLines?: any;
+}): any;
+/** Card confronto. */
+export declare function CompareCards(props: {
+    options?: any;
+    rows?: any;
+    value?: any;
+    current?: any;
+    recommended?: any;
+    onChange?: any;
+    layout?: any;
+    loading?: any;
+}): any;
+/** Immagine con segnaposto e scheletro. */
+export declare function Media(props: {
+    src?: any;
+    alt?: any;
+    ratio?: any;
+    icon?: any;
+    className?: any;
+    children?: any;
+    tone?: any;
+}): any;
+/** Blocco data (giorno e mese). */
+export declare function DateBlock(props: {
+    date?: any;
+    tone?: any;
+}): any;
+/** Barra promo con conto alla rovescia. */
+export declare function PromoBar(props: {
+    tone?: any;
+    badge?: any;
+    text?: any;
+    short?: any;
+    code?: any;
+    seconds?: any;
+    cta?: any;
+    onDismiss?: any;
+    dismissible?: any;
+    endedText?: any;
+}): any;
+/** Consenso cookie. */
+export declare function CookieConsent(props: {
+    variant?: any;
+    cats?: any;
+    defaultView?: any;
+    onSave?: any;
+    policyHref?: any;
+    state?: any;
+}): any;
+/** Prova che scade. */
+export declare function TrialBanner(props: {
+    variant?: any;
+    days?: any;
+    total?: any;
+    plan?: any;
+    onUpgrade?: any;
+    loading?: any;
+}): any;
+/** Annuncio a pillola. */
+export declare function AnnouncePill(props: {
+    tag?: any;
+    text?: any;
+    href?: any;
+    variant?: any;
+    shine?: any;
+    loading?: any;
+}): any;
+/** Modalità di prova. */
+export declare function SandboxMode(props: {
+    variant?: any;
+    active?: any;
+    label?: any;
+    note?: any;
+    onToggle?: any;
+    children?: any;
+}): any;
+/** Invito a scaricare l'app. */
+export declare function AppInvite(props: {
+    variant?: any;
+    name?: any;
+    sub?: any;
+    rating?: any;
+    reviews?: any;
+    installed?: any;
+    onDismiss?: any;
+}): any;
+/** Voto da 0 a 10. */
+export declare function NpsSurvey(props: {
+    variant?: any;
+    question?: any;
+    onSubmit?: any;
+    step?: any;
+    score?: any;
+}): any;
+/** Nuova versione disponibile. */
+export declare function UpdateAvailable(props: {
+    variant?: any;
+    version?: any;
+    notes?: any;
+    state?: any;
+    critical?: any;
+    seconds?: any;
+}): any;
+/** Nastro di notizie. */
+export declare function NewsTicker(props: {
+    items?: any;
+    label?: any;
+    tone?: any;
+    speed?: any;
+    loading?: any;
+}): any;
+/** Schermata finta di prodotto per le sezioni pubbliche. */
+export declare function Screen(props: {
+    kind?: any;
+    tone?: any;
+    label?: any;
+    children?: any;
+}): any;
+/** Griglia bento. */
+export declare function BentoGrid(props: {
+    items?: any;
+    loading?: any;
+}): any;
+/** Funzioni a schede con immagine. */
+export declare function FeatureTabs(props: {
+    tabs?: any;
+    autoplay?: any;
+    loading?: any;
+}): any;
+/** Immagine che resta mentre scorri. */
+export declare function StickyScroll(props: {
+    steps?: any;
+    height?: any;
+}): any;
+/** Noi contro loro. */
+export declare function VersusTable(props: {
+    us?: any;
+    them?: any;
+    rows?: any;
+    note?: any;
+}): any;
+/** Integrazioni in orbita. */
+export declare function IntegrationOrbit(props: {
+    center?: any;
+    rings?: any;
+    more?: any;
+    loading?: any;
+}): any;
+/** Registro delle novità. */
+export declare function Changelog(props: {
+    entries?: any;
+    seen?: any;
+    loading?: any;
+    pageSize?: any;
+}): any;
+/** Iscrizione alla newsletter. */
+export declare function Newsletter(props: {
+    variant?: any;
+    title?: any;
+    solo?: any;
+    text?: any;
+    novità?: any;
+    count?: any;
+    state?: any;
+    taken?: any;
+}): any;
+/** Barra laterale a due livelli. */
+export declare function TwoLevelSidebar(props: {
+    sections?: any;
+    defaultSec?: any;
+    defaultItem?: any;
+    height?: any;
+    children?: any;
+}): any;
+/** Elenco e dettaglio. */
+export declare function ListDetail(props: {
+    items?: any;
+    render?: any;
+    min?: any;
+    max?: any;
+    start?: any;
+    height?: any;
+    loading?: any;
+    empty?: any;
+}): any;
+/** Indice della pagina. */
+export declare function PageToc(props: {
+    items?: any;
+    rootRef?: any;
+    title?: any;
+}): any;
+/** Schede dei documenti. */
+export declare function DocTabs(props: {
+    tabs?: any;
+    max?: any;
+}): any;
+/** Mega menu. */
+export declare function MegaMenu(props: {
+    menus?: any;
+    brand?: any;
+    defaultOpen?: any;
+}): any;
+/** Barra che diventa una pillola di vetro. */
+export declare function GlassPillNav(props: {
+    links?: any;
+    brand?: any;
+    rootRef?: any;
+    threshold?: any;
+}): any;
+/** Filtri a chip con conteggi. */
+export declare function FilterChips(props: {
+    options?: any;
+    multiple?: any;
+    value?: any;
+    defaultValue?: any;
+    onChange?: any;
+    allLabel?: any;
+    total?: any;
+    loading?: any;
+    label?: any;
+}): any;
+/** Pannello a faccette. */
+export declare function FacetPanel(props: {
+    facets?: any;
+    defaultValue?: any;
+    total?: any;
+    loading?: any;
+    sticky?: any;
+    onChange?: any;
+}): any;
+/** Ricerca con gettoni. */
+export declare function TokenSearch(props: {
+    fields?: any;
+    defaultTokens?: any;
+    placeholder?: any;
+    es?: any;
+    onChange?: any;
+}): any;
+/** Filtri su telefono. */
+export declare function MobileFilters(props: {
+    groups?: any;
+    sorts?: any;
+    total?: any;
+    defaultOpen?: any;
+    defaultValue?: any;
+    items?: any;
+}): any;
+/** Intervallo con istogramma. */
+export declare function RangeHistogram(props: {
+    data?: any;
+    min?: any;
+    max?: any;
+    step?: any;
+    defaultValue?: any;
+    unit?: any;
+    label?: any;
+    countLabel?: any;
+    loading?: any;
+}): any;
+/** Filtro per colori e taglie. */
+export declare function VariantFilter(props: {
+    colors?: any;
+    sizes?: any;
+    defaultColors?: any;
+    defaultSizes?: any;
+    onlyAvailable?: any;
+}): any;
+/** Barra della tabella. */
+export declare function TableToolbar(props: {
+    rows?: any;
+    loading?: any;
+}): any;
+/** Riepilogo dei filtri attivi. */
+export declare function ActiveFilters(props: {
+    filters?: any;
+    total?: any;
+    query?: any;
+    max?: any;
+    zeroHint?: any;
+}): any;
+/** Cerca in quest'area. */
+export declare function SearchArea(props: {
+    height?: any;
+    auto?: any;
+    state?: any;
+}): any;
+/** Filtro rapido con un tasto. */
+export declare function QuickKeys(props: {
+    presets?: any;
+    items?: any;
+    render?: any;
+}): any;
+/** Importo in centesimi scritto all'italiana: euro(123450) → «€ 1.234,50». */
+export declare function euro(cents: number): string;
+/** Riepilogo con IVA. */
+export declare function OrderSummary(props: {
+    lines?: any;
+    shipping?: any;
+    discount?: any;
+    vat?: any;
+    freeFrom?: any;
+    collapsible?: any;
+    loading?: any;
+    title?: any;
+    children?: any;
+    editable?: any;
+}): any;
+/** Codice sconto. */
+export declare function PromoCode(props: {
+    codes?: any;
+    subtotal?: any;
+    defaultOpen?: any;
+    defaultApplied?: any;
+    onApply?: any;
+}): any;
+/** Scelta della spedizione. */
+export declare function ShippingPicker(props: {
+    options?: any;
+    defaultValue?: any;
+    freeFrom?: any;
+    subtotal?: any;
+    loading?: any;
+    lockers?: any;
+}): any;
+/** Pagamento veloce. */
+export declare function ExpressPay(props: {
+    methods?: any;
+    total?: any;
+    unavailable?: any;
+    divider?: any;
+    onPay?: any;
+}): any;
+/** Paga a rate. */
+export declare function Installments(props: {
+    total?: any;
+    plans?: any;
+    max?: any;
+    min?: any;
+    defaultN?: any;
+}): any;
+/** Mancia e importi rapidi. */
+export declare function TipPicker(props: {
+    base?: any;
+    mode?: any;
+    presets?: any;
+    defaultValue?: any;
+    min?: any;
+    title?: any;
+    note?: any;
+}): any;
+/** Aggiungi anche. */
+export declare function CrossSell(props: {
+    items?: any;
+    title?: any;
+    max?: any;
+    loading?: any;
+    layout?: any;
+}): any;
+/** Carrello laterale. */
+export declare function CartDrawer(props: {
+    lines?: any;
+    freeFrom?: any;
+    shipping?: any;
+    defaultOpen?: any;
+    cross?: any;
+}): any;
+/** Attesa della banca. */
+export declare function BankWait(props: {
+    state?: any;
+    amount?: any;
+    seconds?: any;
+    method?: any;
+    bank?: any;
+}): any;
+/** Ordine confermato. */
+export declare function OrderConfirmed(props: {
+    number?: any;
+    email?: any;
+    eta?: any;
+    guest?: any;
+    lines?: any;
+    total?: any;
+}): any;
+/** Ricevuta. */
+export declare function Receipt(props: {
+    variant?: any;
+    merchant?: any;
+    vatId?: any;
+    addr?: any;
+    number?: any;
+    date?: any;
+    lines?: any;
+    vat?: any;
+    method?: any;
+    status?: any;
+}): any;
+/** Pagamento in una pagina. */
+export declare function OnePageCheckout(props: {
+    lines?: any;
+    shippingOptions?: any;
+    lockers?: any;
+}): any;
+/** Una domanda alla volta. */
+export declare function OneQuestion(props: {
+    questions?: any;
+    title?: any;
+    onDone?: any;
+}): any;
+/** Form a conversazione. */
+export declare function ChatForm(props: {
+    steps?: any;
+    bot?: any;
+    onDone?: any;
+}): any;
+/** Form lungo con indice. */
+export declare function LongForm(props: {
+    sections?: any;
+    height?: any;
+}): any;
+/** Indirizzo con mappa. */
+export declare function AddressMap(props: {
+    defaultPicked?: any;
+    outOfZone?: any;
+}): any;
+/** Firma. */
+export declare function SignaturePad(props: {
+    name?: any;
+    disabled?: any;
+    height?: any;
+    defaultMode?: any;
+}): any;
+/** Editor di testo. */
+export declare function RichEditor(props: {
+    defaultHtml?: any;
+    placeholder?: any;
+    max?: any;
+    readOnly?: any;
+    minHeight?: any;
+}): any;
+/** Menzioni e tag. */
+export declare function MentionInput(props: {
+    people?: any;
+    tags?: any;
+    placeholder?: any;
+    onSend?: any;
+}): any;
+/** Ripetizione degli eventi. */
+export declare function Recurrence(props: {
+    defaultFreq?: any;
+    defaultDays?: any;
+    start?: any;
+}): any;
+/** Orari di apertura. */
+export declare function OpeningHours(props: {
+    defaultValue?: any;
+    now?: any;
+}): any;
+/** Ritaglio dell'immagine. */
+export declare function ImageCrop(props: {
+    shape?: any;
+    ratio?: any;
+    hue?: any;
+    defaultZoom?: any;
+}): any;
+/** Righe ripetibili. */
+export declare function RepeatRows(props: {
+    columns?: any;
+    defaultRows?: any;
+    min?: any;
+    max?: any;
+    addLabel?: any;
+    total?: any;
+}): any;
+/** Prenotazione di un orario. */
+export declare function SlotBooking(props: {
+    days?: any;
+    closed?: any;
+    full?: any;
+    service?: any;
+    loading?: any;
+}): any;
+/** Calendario del mese. */
+export declare function MonthCalendar(props: {
+    events?: any;
+    loading?: any;
+    today?: any;
+    defaultMonth?: any;
+}): any;
+/** Gantt. */
+export declare function Gantt(props: {
+    tasks?: any;
+    start?: any;
+    span?: any;
+    today?: any;
+}): any;
+/** Agenda per persona. */
+export declare function PersonAgenda(props: {
+    people?: any;
+    appts?: any;
+    from?: any;
+    to?: any;
+    now?: any;
+    loading?: any;
+}): any;
+/** Organigramma. */
+export declare function OrgChart(props: {
+    root?: any;
+    height?: any;
+}): any;
+/** Mappa con gruppi. */
+export declare function ClusterMap(props: {
+    points?: any;
+    height?: any;
+}): any;
+/** Galleria con visore. */
+export declare function Gallery(props: {
+    items?: any;
+    loading?: any;
+}): any;
+/** Visore PDF con note. */
+export declare function PdfNotes(props: {
+    initialNotes?: any;
+}): any;
+/** Confronto tra versioni. */
+export declare function VersionDiff(props: {
+    versions?: any;
+}): any;
+/** Foglio modificabile. */
+export declare function SheetGrid(props: {
+    data?: any;
+    rows?: any;
+    money?: any;
+}): any;
+/** Lavagna. */
+export declare function Whiteboard(props: {
+    notes?: any;
+    links?: any;
+    height?: any;
+}): any;
+/** Tabella a gruppi con totali. */
+export declare function GroupedTable(props: {
+    rows?: any;
+    loading?: any;
+}): any;
+/** Risposta che si scrive. */
+export declare function StreamingAnswer(props: {
+    question?: any;
+    answer?: any;
+    sources?: any;
+    state?: any;
+}): any;
+/** Pannello assistente. */
+export declare function AssistantPanel(props: {
+    context?: any;
+    suggestions?: any;
+    defaultMessages?: any;
+}): any;
+/** Stato del ragionamento. */
+export declare function ReasoningStatus(props: {
+    steps?: any;
+    autoplay?: any;
+    defaultOpen?: any;
+    failAt?: any;
+}): any;
+/** Riassunto in cima. */
+export declare function SummaryTop(props: {
+    points?: any;
+    more?: any;
+    sources?: any;
+    state?: any;
+    title?: any;
+    pages?: any;
+}): any;
+/** Lista da riordinare con molla. */
+export declare function SpringList(props: {
+    items?: any;
+    rowH?: any;
+}): any;
+/** Selezione a lazo. */
+export declare function LassoSelect(props: {
+    items?: any;
+    height?: any;
+}): any;
+/** Dock con ingrandimento. */
+export declare function Dock(props: {
+    apps?: any;
+    max?: any;
+    range?: any;
+}): any;
+/** Bottone magnetico. */
+export declare function MagneticButton(props: {
+    children?: any;
+    icon?: any;
+    strength?: any;
+    radius?: any;
+    round?: any;
+    variant?: any;
+    onClick?: any;
+}): any;
+/** Festa del traguardo. */
+export declare function Celebration(props: {
+    title?: any;
+    text?: any;
+    value?: any;
+    unit?: any;
+    icon?: any;
+    autoplay?: any;
+}): any;
+/** Tira per aggiornare. */
+export declare function PullToRefresh(props: {
+    items?: any;
+    fresh?: any;
+    fail?: any;
+    height?: any;
+}): any;
+/** Zoom sulla linea del tempo. */
+export declare function TimelineZoom(props: {
+    events?: any;
+    year?: any;
+}): any;
+/** Numero con le cifre che girano. */
+export declare function Roller(props: {
+    value?: any;
+    decimals?: any;
+    prefix?: any;
+    suffix?: any;
+}): any;
+/** Numeri a rullo. */
+export declare function RollingStat(props: {
+    label?: any;
+    value?: any;
+    decimals?: any;
+    prefix?: any;
+    live?: any;
+}): any;
+/** Disfa con la cronologia. */
+export declare function UndoHistory(props?: {}): any;
+/** Storie a schermo intero. */
+export declare function Stories(props: {
+    stories?: any;
+    duration?: any;
+    author?: any;
+    start?: any;
+    paused?: any;
+}): any;
+/** Presentazione dell'app. */
+export declare function AppIntro(props: {
+    slides?: any;
+    onDone?: any;
+}): any;
+/** Widget per la schermata Home. */
+export declare function HomeWidgets(props: {
+    loading?: any;
+    stale?: any;
+}): any;
+/** Scanner con mirino. */
+export declare function Scanner(props: {
+    state?: any;
+    autoDetect?: any;
+}): any;
+/** Tastierino per l'importo. */
+export declare function AmountPad(props: {
+    max?: any;
+    to?: any;
+    quick?: any;
+    defaultCents?: any;
+    balance?: any;
+}): any;
+/** Attività in corso. */
+export declare function LiveActivity(props: {
+    step?: any;
+    eta?: any;
+    auto?: any;
+    mode?: any;
+}): any;
+/** Scheda grande che si allarga. */
+export declare function ExpandCard(props: {
+    cards?: any;
+}): any;

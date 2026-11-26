@@ -15,7 +15,7 @@ const SRC = path.join(HERE, "src");
 const COMP = path.join(ROOT, "components");
 const SITE_URL = (process.env.SITE_URL || "https://stc-ds.pages.dev").replace(/\/$/, "");
 const SKIP = new Set(["Cover", "lib"]);
-const GROUP_ORDER = ["Azioni", "Form", "Date e ore", "Passi", "Layout", "Testate", "Navigazione", "Overlay", "Mobile", "Dati", "Grafici", "Stato", "Caricamento", "Marca"];
+const GROUP_ORDER = ["Azioni", "Form", "Date e ore", "Passi", "Layout", "Testate", "Navigazione", "Overlay", "Mobile", "Dati", "Grafici", "Stato", "Caricamento", "Marca", "Card", "Sezioni", "Banner", "Filtri", "Checkout", "Interazioni", "AI"];
 
 const read = (p) => fs.readFileSync(p, "utf8");
 const write = (p, s) => { fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, s); };

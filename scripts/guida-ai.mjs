@@ -26,7 +26,7 @@ const errore = (m) => errori.push(m);
 
 // ---------- componenti ----------
 const ESCLUSI = new Set(['lib', 'Cover']);
-const ORDINE_GRUPPI = ['Layout', 'Testate', 'Navigazione', 'Azioni', 'Form', 'Date e ore', 'Passi', 'Overlay', 'Dati', 'Grafici', 'Stato', 'Caricamento', 'Mobile', 'Marca'];
+const ORDINE_GRUPPI = ['Layout', 'Testate', 'Navigazione', 'Azioni', 'Form', 'Date e ore', 'Passi', 'Overlay', 'Dati', 'Grafici', 'Stato', 'Caricamento', 'Mobile', 'Marca', 'Card', 'Sezioni', 'Banner', 'Filtri', 'Checkout', 'Interazioni', 'AI'];
 
 function componenti() {
   const dir = join(ROOT, 'components');

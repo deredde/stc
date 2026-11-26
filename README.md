@@ -7,7 +7,7 @@
 
 # STC · Standard Template Construct
 
-Design system neutro per gestionali e per le app che li accompagnano: token, oltre 160 componenti React, illustrazioni animate, loader, logo e regole di scrittura. Tema chiaro e scuro, in italiano.
+Design system neutro per gestionali e per le app che li accompagnano: token, oltre 250 componenti React, illustrazioni animate, loader, logo e regole di scrittura. Tema chiaro e scuro, in italiano.
 
 ## Cosa c'è
 
@@ -201,6 +201,36 @@ Oltre ai componenti di base, STC ha i pezzi che tornano in ogni gestionale. Ognu
 - **Grafici:** `LineChart` (con confronto), `AreaChart`, `DonutChart`, `StackedBarChart`, `ComboChart` (due assi), `FunnelChart`, `Sparkline`, `ProgressRing`, `CalendarHeatmap`, `HourHeatmap`. Ognuno ha la tabella per lo screen reader.
 - **Azioni:** `SplitButton`, `ButtonGroup`, `ButtonCount`, `Popconfirm`, `TypeToConfirm` (per cancellare cose grandi), `SegmentedProgress`, `StackedProgress`.
 - **Telefono:** `ActionSheet`, `SwipeRow`, `Fab`, `CtaBar`, `PinPad`, `DayStrip`.
+
+## Componenti complessi
+
+99 componenti più ricchi, costruiti con i pezzi e i token di STC: ognuno ha varianti, tutti gli stati (caricamento, vuoto, errore, disattivato), i casi limite e le sue regole nella scheda. Si usano col tocco e da tastiera, e con «riduci animazioni» si fermano.
+
+- **Card:** `ArticleCard`, `EventCard`, `ProductCard`, `PersonCard`, `TestimonialCard`, `TransactionList`, `PaymentCard3D`, `SwipeStack`, `CodeSnippet`, `CompareCards`.
+- **Sezioni:** `BentoGrid`, `FeatureTabs`, `StickyScroll`, `VersusTable`, `IntegrationOrbit`, `Changelog`, `Newsletter`.
+- **Banner:** `PromoBar`, `CookieConsent`, `TrialBanner`, `AnnouncePill`, `SandboxMode`, `AppInvite`, `NpsSurvey`, `UpdateAvailable`, `NewsTicker`.
+- **Interazioni:** `EventIsland`, `EventIslandQueue`, `SpringList`, `LassoSelect`, `Dock`, `MagneticButton`, `Celebration`, `PullToRefresh`, `TimelineZoom`, `RollingStat`, `UndoHistory`.
+- **Filtri:** `FilterChips`, `FacetPanel`, `TokenSearch`, `MobileFilters`, `RangeHistogram`, `VariantFilter`, `TableToolbar`, `ActiveFilters`, `SearchArea`, `QuickKeys`.
+- **Navigazione:** `TwoLevelSidebar`, `ListDetail`, `PageToc`, `DocTabs`, `MegaMenu`, `GlassPillNav`.
+- **Checkout:** `OnePageCheckout`, `CartDrawer`, `ShippingPicker`, `PromoCode`, `OrderSummary`, `OrderConfirmed`, `CrossSell`, `ExpressPay`, `Installments`, `TipPicker`, `Receipt`, `BankWait`.
+- **Form:** `OneQuestion`, `ChatForm`, `LongForm`, `AddressMap`, `SignaturePad`, `RichEditor`, `MentionInput`, `Recurrence`, `OpeningHours`, `ImageCrop`, `RepeatRows`, `SlotBooking`.
+- **Dati:** `MonthCalendar`, `Gantt`, `PersonAgenda`, `OrgChart`, `ClusterMap`, `Gallery`, `PdfNotes`, `VersionDiff`, `SheetGrid`, `Whiteboard`, `GroupedTable`.
+- **AI:** `StreamingAnswer`, `AssistantPanel`, `ReasoningStatus`, `SummaryTop`.
+- **Mobile:** `Stories`, `AppIntro`, `HomeWidgets`, `Scanner`, `AmountPad`, `LiveActivity`, `ExpandCard`.
+
+Regole comuni:
+
+- Ogni gesto ha un'alternativa: bottone, tastiera o campo da scrivere. Trascinare non è mai l'unico modo.
+- Tutto ciò che si muove da solo per più di 5 secondi ha una pausa; con «riduci animazioni» si ferma e mostra lo stato finale.
+- Stati, categorie e scelte mai solo col colore: icona, forma o parole.
+- Togliere non chiede conferma: «Annulla» per qualche secondo. Si conferma solo ciò che non si disfa.
+- Importi in centesimi, scritti «€ 1.234,50» con il punto delle migliaia, e ricalcolati sul server: il client passa solo ID. «Gratis» in parole.
+- Date in giorni veri («giovedì 26 nov»), mai solo «3–5 giorni».
+- Form con `noValidate`: niente fumetti del browser, l'errore va sotto il campo quando si lascia il campo.
+- Un solo avviso di testata per pagina (prova, promo, aggiornamento); ogni avviso chiuso dice quando ritorna.
+- Ciò che è fatto con l'AI lo dice, mostra le fonti e non agisce senza conferma.
+- Sezioni pubbliche: il prodotto si mostra con `Screen` (blocchi finti), mai immagini di altre app.
+- Componenti scuri in pagina chiara (isola, snippet, storie, scanner) usano `brand-*` o `toast-*`, testo chiaro fisso e anello del focus bianco.
 
 ## Caricamento
 

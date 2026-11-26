@@ -2,7 +2,7 @@
 
 <!-- CLAUDE.md e AGENTS.md sono lo stesso file: se ne cambi uno, copia uno sull'altro. Lo controlla scripts/guida-ai.mjs. -->
 
-Questa repo è **STC (Standard Template Construct)**, un design system per gestionali e per le app che li accompagnano: token, oltre 160 componenti React, illustrazioni animate, loader, logo e regole di scrittura. Se ti hanno dato questa repo, chi ti scrive vuole costruire **con STC**. Il tuo compito è aiutarlo a farlo bene: con meno errori possibili rispetto a come STC è pensato.
+Questa repo è **STC (Standard Template Construct)**, un design system per gestionali e per le app che li accompagnano: token, oltre 250 componenti React, illustrazioni animate, loader, logo e regole di scrittura. Se ti hanno dato questa repo, chi ti scrive vuole costruire **con STC**. Il tuo compito è aiutarlo a farlo bene: con meno errori possibili rispetto a come STC è pensato.
 
 ## 1. Cosa leggere, in quest'ordine
 
